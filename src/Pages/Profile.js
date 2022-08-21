@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Field, useFormik } from 'formik'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import 'bulma/css/bulma.min.css'
@@ -7,6 +7,7 @@ import 'bulma/css/bulma.min.css'
 const Profile = () => {
 	const [isEditable, setIsEditable] = useState(false)
 
+	// TODO: get initial values from store
 	const formik = useFormik({
 		initialValues: {
 			firstName: 'Usuario',
@@ -34,6 +35,7 @@ const Profile = () => {
 			}
 			setIsEditable(false)
 			console.log(JSON.stringify(values, null, 2))
+			// TODO: update user
 		}
 	})
 
@@ -45,6 +47,12 @@ const Profile = () => {
 		borderBottom: isEditable ? '2.5px solid #363636' : 'none',
 		boxShadow: 'none',
 		transition: 'border-bottom 200ms ease-in'
+	}
+
+	const handleDeleteAccount = () => {
+		// TODO: delete user
+		const { value } = formik.getFieldProps()
+		console.log(value)
 	}
 
 	return (
@@ -73,6 +81,7 @@ const Profile = () => {
 						<button
 							className='is-rounded is-responsive button is-danger mx-2'
 							type='button'
+							onClick={handleDeleteAccount}
 						>
 							Borrar Cuenta
 						</button>

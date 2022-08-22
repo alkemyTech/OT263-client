@@ -10,10 +10,10 @@ const Profile = () => {
 	// TODO: get initial values from store
 	const formik = useFormik({
 		initialValues: {
-			firstName: 'Usuario',
-			lastName: 'Prueba',
-			email: 'usuario@mail.com',
-			password: 'somosmas'
+			firstName: '',
+			lastName: '',
+			email: '',
+			password: ''
 		},
 		isSubmitting: isEditable,
 		validationSchema: Yup.object({
@@ -29,11 +29,8 @@ const Profile = () => {
 			password: Yup.string().min(5, 'Mínimo 5 caracteres').required('Campo Obligatorio')
 		}),
 		onSubmit: values => {
-			if (!isEditable) {
-				setIsEditable(true)
-				return
-			}
-			setIsEditable(false)
+			if (!isEditable) return
+
 			console.log(JSON.stringify(values, null, 2))
 			// TODO: update user
 		}
@@ -49,8 +46,16 @@ const Profile = () => {
 		transition: 'border-bottom 200ms ease-in'
 	}
 
+	const handleClick = () => {
+		if (isEditable && Object.keys(formik.errors).length) {
+			alert('Some errors there!')
+			return
+		}
+		setIsEditable(!isEditable)
+	}
+
 	const handleDeleteAccount = () => {
-		// TODO: delete user
+		// TODO: delete user and redirect to home page
 		const { value } = formik.getFieldProps()
 		console.log(value)
 	}
@@ -73,8 +78,10 @@ const Profile = () => {
 						</span>
 						<button
 							className='is-rounded is-responsive button is-info mx-2'
-							type='submit'
+							type={isEditable ? 'submit' : 'button'}
 							form='profileForm'
+							onClick={handleClick}
+							disabled={isEditable && Object.keys(formik.errors).length}
 						>
 							{isEditable ? 'Guardar' : 'Editar'}
 						</button>
@@ -89,7 +96,9 @@ const Profile = () => {
 
 					<div className='field'>
 						<div className='control'>
-							<label className='label'>Nombre</label>
+							<label className='label' htmlFor='firstName'>
+								Nombre
+							</label>
 							<input
 								id='firstName'
 								type='text'
@@ -106,7 +115,9 @@ const Profile = () => {
 
 					<div className='field'>
 						<div className='control'>
-							<label className='label'>Apellido</label>
+							<label className='label' htmlFor='lastName'>
+								Apellido
+							</label>
 							<input
 								id='lastName'
 								type='text'
@@ -123,7 +134,9 @@ const Profile = () => {
 
 					<div className='field'>
 						<div className='control'>
-							<label className='label'>Email</label>
+							<label className='label' htmlFor='email'>
+								Email
+							</label>
 							<input
 								id='email'
 								type='email'
@@ -140,7 +153,9 @@ const Profile = () => {
 
 					<div className='field'>
 						<div className='control'>
-							<label className='label'>Contraseña</label>
+							<label className='label' htmlFor='password'>
+								Contraseña
+							</label>
 
 							<input
 								id='password'

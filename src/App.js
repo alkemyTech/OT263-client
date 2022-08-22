@@ -2,6 +2,7 @@ import React from 'react'
 import logo from './logo.svg'
 import { Counter } from './features/counter/Counter'
 import './App.css'
+import 'bulma/css/bulma.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ActivitiesForm from './Components/Activities/ActivitiesForm'
 import CategoriesForm from './Components/Categories/CategoriesForm'
@@ -13,6 +14,7 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign'
 import ToysCampaign from './Campaigns/Toys/ToysCampaign'
 import MembersForm from './Components/Members/MembersForm'
 import ProjectsForm from './Components/Projects/ProjectsForm'
+
 
 function App() {
 	return (

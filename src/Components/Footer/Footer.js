@@ -9,7 +9,7 @@ function Footer() {
 
     useEffect(() => {
         const fetchData = async () => {
-            fetch("organizations/1/public")
+            fetch("http://localhost:3000/organizations/1/public")
                 .then((res) => res.json())
                 .then((data) => {
                     setData(data);
@@ -55,28 +55,25 @@ function Footer() {
             <div className="footer-column">
                 <ul className="footer-column-links">
                     <li className="footer-column-link">
-                        <Link
-                            to="https://www.facebook.com/somosmas-ong"
+                        <a href="https://www.facebook.com/somosmas-ong"
                             className="footer-column-link-icon"
                         >
                             <BsFacebook />
-                        </Link>
+                        </a>
                     </li>
                     <li className="footer-column-link">
-                        <Link
-                            to="https://www.instagram.com/somosmas-ong"
+                        <a href="https://www.instagram.com/somosmas-ong"
                             className="footer-column-link-icon"
                         >
                             <BsInstagram />
-                        </Link>
+                        </a>
                     </li>
                     <li className="footer-column-link">
-                        <Link
-                            to="https://twitter.com/somosmas-ong"
+                        <a href="https://twitter.com/somosmas-ong"
                             className="footer-column-link-icon"
                         >
                             <BsTwitter />
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </div>

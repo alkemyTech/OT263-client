@@ -50,14 +50,6 @@ const Profile = () => {
 		transition: 'border-bottom 200ms ease-in'
 	}
 
-	const handleClick = () => {
-		if (isEditable && Object.keys(formik.errors).length) {
-			alert('Some errors there!')
-			return
-		}
-		setIsEditable(!isEditable)
-	}
-
 	const handleDeleteAccount = () => {
 		// TODO: delete user
 		const { value } = formik.getFieldProps()
@@ -79,7 +71,7 @@ const Profile = () => {
 								className='is-rounded is-responsive button is-info mx-2'
 								type='submit'
 								form='profileForm'
-								onClick={handleClick}
+								onClick={() => setIsEditable(!isEditable)}
 								disabled={isEditable && Object.keys(formik.errors).length}
 							>
 								{isEditable ? 'Guardar' : 'Editar'}

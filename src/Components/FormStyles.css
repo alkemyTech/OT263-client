@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .form-container{
     width: 60%;
     margin: 15px auto;
@@ -11,6 +13,11 @@
     border: 1px solid #c1c1c1;
 }
 
+.textarea-field{
+    height: 100px;
+    padding: 15px 30px;
+    border: 1px solid #c1c1c1;
+}
 .select-field{
     padding: 10px;
     border: 1px solid #c1c1c1;

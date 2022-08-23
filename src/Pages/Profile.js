@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
+import { routes } from '../Config/routes'
 
 import 'bulma/css/bulma.min.css'
 
 const Profile = () => {
+	const navigate = useNavigate()
 	const [isEditable, setIsEditable] = useState(false)
 
 	// TODO: get initial values from store
@@ -29,10 +33,10 @@ const Profile = () => {
 			password: Yup.string().min(5, 'Mínimo 5 caracteres').required('Campo Obligatorio')
 		}),
 		onSubmit: values => {
-			if (!isEditable) return
+			if (isEditable) return
 
-			console.log(JSON.stringify(values, null, 2))
 			// TODO: update user
+			console.log(JSON.stringify(values, null, 2))
 		}
 	})
 
@@ -55,122 +59,118 @@ const Profile = () => {
 	}
 
 	const handleDeleteAccount = () => {
-		// TODO: delete user and redirect to home page
+		// TODO: delete user
 		const { value } = formik.getFieldProps()
 		console.log(value)
+		navigate(routes.home, { replace: true })
 	}
 
 	return (
-		<div className='hero is-fullheight'>
-			<div className='hero-body'>
-				<form
-					onSubmit={formik.handleSubmit}
-					className='box p-4 py-6 container is-max-desktop'
-					id='profileForm'
-					style={{
-						background:
-							'linear-gradient(128deg, rgba(255,255,255,1) 75%, rgba(255,0,0,1) 82%, rgba(250,255,0,1) 90%, rgba(0,56,255,1) 100%)'
-					}}
-				>
-					<div className='field is-grouped is-grouped-right'>
-						<span className='title is-size-1-desktop mr-auto is-hidden-mobile'>
-							Mis Datos
-						</span>
-						<button
-							className='is-rounded is-responsive button is-info mx-2'
-							type={isEditable ? 'submit' : 'button'}
-							form='profileForm'
-							onClick={handleClick}
-							disabled={isEditable && Object.keys(formik.errors).length}
-						>
-							{isEditable ? 'Guardar' : 'Editar'}
-						</button>
-						<button
-							className='is-rounded is-responsive button is-danger mx-2'
-							type='button'
-							onClick={handleDeleteAccount}
-						>
-							Borrar Cuenta
-						</button>
-					</div>
-
-					<div className='field'>
-						<div className='control'>
-							<label className='label' htmlFor='firstName'>
-								Nombre
-							</label>
-							<input
-								id='firstName'
-								type='text'
-								className='input is-large has-text-info-dark'
-								disabled={!isEditable}
-								style={inputStyles}
-								{...formik.getFieldProps('firstName')}
-							/>
+		<div className='hero is-fullheight has-background-success-light'>
+			<div className='hero-body columns is-centered'>
+				<div className='column is-half-desktop'>
+					<h1 className='title is-hidden-tablet is-size-3 ml-4'>Mis Datos</h1>
+					<form onSubmit={formik.handleSubmit} className='box' id='profileForm'>
+						<div className='field is-grouped is-grouped-right'>
+							<span className='title title-3 is-size-3-tablet is-size-2-desktop mr-auto is-hidden-mobile'>
+								Mis Datos
+							</span>
+							<button
+								className='is-rounded is-responsive button is-info mx-2'
+								type='submit'
+								form='profileForm'
+								onClick={handleClick}
+								disabled={isEditable && Object.keys(formik.errors).length}
+							>
+								{isEditable ? 'Guardar' : 'Editar'}
+							</button>
+							<button
+								className='is-rounded is-responsive button is-danger mx-2'
+								type='button'
+								onClick={handleDeleteAccount}
+							>
+								Borrar Cuenta
+							</button>
 						</div>
-					</div>
-					{formik.touched.firstName && formik.errors.firstName ? (
-						<div className='help is-danger'>{formik.errors.firstName}</div>
-					) : null}
 
-					<div className='field'>
-						<div className='control'>
-							<label className='label' htmlFor='lastName'>
-								Apellido
-							</label>
-							<input
-								id='lastName'
-								type='text'
-								{...formik.getFieldProps('lastName')}
-								className='input is-large has-text-info-dark'
-								disabled={!isEditable}
-								style={inputStyles}
-							/>
+						<div className='field'>
+							<div className='control'>
+								<label className='label has-text-warning-dark' htmlFor='firstName'>
+									Nombre
+								</label>
+								<input
+									id='firstName'
+									type='text'
+									className='input is-large is-size-6-mobile'
+									disabled={!isEditable}
+									style={inputStyles}
+									{...formik.getFieldProps('firstName')}
+								/>
+							</div>
 						</div>
-					</div>
-					{formik.touched.lastName && formik.errors.lastName ? (
-						<div className='help is-danger'>{formik.errors.lastName}</div>
-					) : null}
-
-					<div className='field'>
-						<div className='control'>
-							<label className='label' htmlFor='email'>
-								Email
-							</label>
-							<input
-								id='email'
-								type='email'
-								{...formik.getFieldProps('email')}
-								className='input is-large has-text-info-dark'
-								disabled={!isEditable}
-								style={inputStyles}
-							/>
-						</div>
-					</div>
-					{formik.touched.email && formik.errors.email ? (
-						<div className='help is-danger'>{formik.errors.email}</div>
-					) : null}
-
-					<div className='field'>
-						<div className='control'>
-							<label className='label' htmlFor='password'>
-								Contraseña
-							</label>
-
-							<input
-								id='password'
-								type='password'
-								{...formik.getFieldProps('password')}
-								className='input is-large has-text-info-dark'
-								disabled={!isEditable}
-								style={inputStyles}
-							/>
-						</div>
-						{formik.touched.password && formik.errors.password ? (
-							<div className='help is-danger'>{formik.errors.password}</div>
+						{formik.touched.firstName && formik.errors.firstName ? (
+							<div className='help is-danger'>{formik.errors.firstName}</div>
 						) : null}
-					</div>
-				</form>
+
+						<div className='field'>
+							<div className='control'>
+								<label className='label has-text-warning-dark' htmlFor='lastName'>
+									Apellido
+								</label>
+								<input
+									id='lastName'
+									type='text'
+									{...formik.getFieldProps('lastName')}
+									className='input is-large is-size-6-mobile'
+									disabled={!isEditable}
+									style={inputStyles}
+								/>
+							</div>
+						</div>
+						{formik.touched.lastName && formik.errors.lastName ? (
+							<div className='help is-danger'>{formik.errors.lastName}</div>
+						) : null}
+
+						<div className='field'>
+							<div className='control'>
+								<label className='label has-text-warning-dark' htmlFor='email'>
+									Email
+								</label>
+								<input
+									id='email'
+									type='email'
+									{...formik.getFieldProps('email')}
+									className='input is-large is-size-6-mobile'
+									disabled={!isEditable}
+									style={inputStyles}
+								/>
+							</div>
+						</div>
+						{formik.touched.email && formik.errors.email ? (
+							<div className='help is-danger'>{formik.errors.email}</div>
+						) : null}
+
+						<div className='field'>
+							<div className='control'>
+								<label className='label has-text-warning-dark' htmlFor='password'>
+									Contraseña
+								</label>
+
+								<input
+									id='password'
+									type='password'
+									{...formik.getFieldProps('password')}
+									className='input is-large is-size-6-mobile'
+									disabled={!isEditable}
+									style={inputStyles}
+								/>
+							</div>
+							{formik.touched.password && formik.errors.password ? (
+								<div className='help is-danger'>{formik.errors.password}</div>
+							) : null}
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	)

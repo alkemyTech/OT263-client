@@ -17,6 +17,7 @@ import MembersForm from '../Members/MembersForm'
 import Contacts from '../Admin/Contacts'
 
 import { routes } from '../../Config/routes'
+import Profile from '../../Pages/Profile'
 
 const AppRoutes = () => {
 	const user = true // TODO: replace for store value
@@ -34,6 +35,10 @@ const AppRoutes = () => {
 			/>
 			<Route path={routes.contact} element={<Contact />} />
 			<Route path={routes.getInvolved} element={<GetInvolved />} />
+			<Route
+				path={routes.profile}
+				element={user ? <Profile /> : <Navigate to={routes.login} />}
+			/>
 			<Route
 				path={routes.login}
 				element={!user ? <Login /> : <Navigate to={routes.home} />}

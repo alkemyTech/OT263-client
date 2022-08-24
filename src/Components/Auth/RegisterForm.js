@@ -2,14 +2,20 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
 
-const onSubmit = async (values, actions) => {
-    const newUser = {...values} // contain each value
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    actions.resetForm();
+
+const onSubmit = (values, actions) => {
+    const {firstName, lastName, email, password} = values
+    const newUser = {
+        firstName,
+        lastName,
+        email,
+        password
+    }
+    
 }
 
 const RegisterForm = () => {
-    const {values, errors, isSubmitting, handleChange, handleSubmit} = useFormik({
+    const {values, errors, handleChange, handleSubmit} = useFormik({
         initialValues: {
             firstName: "",
             lastName: "",
@@ -72,7 +78,7 @@ const RegisterForm = () => {
             </div>
             <p className='' style={{paddingTop:'150px', textAlign:"center"}}>¿Ya tienes una cuenta? <strong style={{color:'red'}}>Inicia Sesión</strong></p>
         </div>
-        <figure className='column is-hidden-mobile is-half is-background-dark' style={{boxSizing:'border-box'}}>
+        <figure className='column is-hidden-mobile is-half' style={{boxSizing:'border-box'}}>
         <img  src='images/Rectangle-4.png' alt="" />
         </figure>
         </div>

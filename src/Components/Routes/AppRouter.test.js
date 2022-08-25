@@ -97,7 +97,7 @@ describe('<AppRoutes />', () => {
 	describe('With admin user logged', () => {
 		it('Renders admin dashboard if user is admin', () => {
 			renderApp(routes.admin.root)
-			expect(screen.getAllByText(/admin/i))
+			expect(screen.getAllByText(/novedades/i))
 		})
 	})
 })

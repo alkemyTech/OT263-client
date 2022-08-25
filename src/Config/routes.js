@@ -13,6 +13,14 @@ export const routes = {
 		root: '/admin',
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
-		contacts: 'consultas'
+		contacts: 'consultas',
+		news: 'novedades',
+		activities: 'actividades',
+		categories: 'categorias',
+		testimonials: 'testimonios',
+		organization: 'organizacion',
+		slides: 'slides',
+		users: 'usuarios',
+		members: 'miembros'
 	}
 }

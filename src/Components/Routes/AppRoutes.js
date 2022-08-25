@@ -9,18 +9,14 @@ import Contact from '../../Pages/Contact'
 import GetInvolved from '../../Pages/GetInvolved'
 import Login from '../../Pages/Login'
 import Signup from '../../Pages/Signup'
-import Admin from '../../Pages/Admin'
-
+import AdminRoutes from './AdminRoutes'
 import TestimonialForm from '../Testimonials/TestimonialsForm'
-import NewsForm from '../News/NewsForm'
-import MembersForm from '../Members/MembersForm'
-import Contacts from '../Admin/Contacts'
 
 import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
 
 const AppRoutes = () => {
-	const user = true // TODO: replace for store value
+	const user = false // TODO: replace for store value
 	const isAdmin = true // TODO: replace for store value
 
 	return (
@@ -48,13 +44,11 @@ const AppRoutes = () => {
 				element={!user ? <Signup /> : <Navigate to={routes.home} />}
 			/>
 			<Route
-				path={routes.admin.root}
-				element={isAdmin ? <Admin /> : <Navigate to={user ? routes.home : routes.login} />}
-			>
-				<Route path={routes.admin.newMember} element={<MembersForm />} />
-				<Route path={routes.admin.newNotice} element={<NewsForm />} />
-				<Route path={routes.admin.contacts} element={<Contacts />} />
-			</Route>
+				path={routes.admin.root + '/*'}
+				element={
+					isAdmin ? <AdminRoutes /> : <Navigate to={user ? routes.home : routes.login} />
+				}
+			/>
 			<Route path='*' element={<Navigate to={routes.home} />} />
 		</Routes>
 	)

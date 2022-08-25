@@ -8,6 +8,7 @@ export const routes = {
 	getInvolved: '/contribuye',
 	login: '/ingreso',
 	signup: '/registro',
+	profile: '/mi-perfil',
 	admin: {
 		root: '/admin',
 		newMember: 'agregar-miembro',

@@ -13,4 +13,14 @@ const Get = () => {
 		.catch(err => console.log(err))
 }
 
+export const getUsers =async () => {
+	try{
+	const users= await axios.get('https://jsonplaceholder.typicode.com/users', config)	
+	return users.data	
+	}catch(err){
+		return err
+	}
+
+}
+
 export default Get

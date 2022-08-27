@@ -3,7 +3,7 @@ import LoginFooter from './LoginFooter';
 import LoginForm from './LoginForm';
 import image4 from './Rectangle-4.png';
 
-const Login =()=> {
+export const Login =()=> {
 
     return(
         <div className='columns'>
@@ -31,5 +31,3 @@ const Login =()=> {
         </div>
     );
 }
-
-export default Login;

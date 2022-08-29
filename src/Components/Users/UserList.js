@@ -1,10 +1,11 @@
 import User from "./User"
+import "./User.css"
 
 function UserList({ users }) {
-
     return (
-        <div className="container column ">
-            <table className="table">
+        <div className="container">
+            <h1 className="title is-1" >Lista de usuarios</h1>
+            <table className="table box media-center">
                 <thead>
                     <tr>
                         <th><abbr title="Position">id</abbr></th>
@@ -14,7 +15,7 @@ function UserList({ users }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user => <User ket={user.id} user={user} />)}
+                    {users.map(user => <User key={user.id} user={user} />)}
                 </tbody>
             </table>
         </div>

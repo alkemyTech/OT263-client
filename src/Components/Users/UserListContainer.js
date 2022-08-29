@@ -12,6 +12,7 @@ function UserListContainer() {
         getUsers().
         then(result=>{
             setUsers(result)
+            setIsLoaded(true)                    
         },
         (err)=>{
             setIsLoaded(true)                    
@@ -23,7 +24,7 @@ function UserListContainer() {
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-        return <Loader/>
+        return <Loader key="1" size="200" image="./images/Somos-Mas/LOGO-SomosMas.png"/>
     } else {
         return (
             <UserList users={users.slice(0)}/>

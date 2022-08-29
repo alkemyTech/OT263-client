@@ -1,7 +1,21 @@
-.list-container{
-    display: flex;
-    justify-content: space-around;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: 'Poppins';
+}
+.container{        
     gap: 20px;
+}
+
+.card-container{
+    background:"#7E9AFD";
+    border:"1px solid #0038FF";
+    font-family:"Poppins";
+    border-radius:"2rem"
+}
+
+.title-container{
+    margin: auto; 
 }
 
 .card-info{
@@ -15,3 +29,4 @@
     cursor: pointer;
     background-color: #61BBF8;
 }
+

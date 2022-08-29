@@ -9,6 +9,7 @@
 		"@testing-library/user-event": "^13.2.1",
 		"axios": "^0.21.1",
 		"bulma": "^0.9.4",
+		"flatlist-react": "^1.5.0",
 		"formik": "^2.2.9",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -17,8 +18,8 @@
 		"react-responsive-carousel": "^3.2.23",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "^4.0.3",
-		"yup": "^0.32.11",
-		"react-spinners": "^0.13.4"
+		"react-spinners": "^0.13.4",
+		"yup": "^0.32.11"
 	},
 	"scripts": {
 		"start": "react-scripts start",

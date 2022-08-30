@@ -17,6 +17,7 @@ import MembersForm from '../Members/MembersForm'
 import Contacts from '../Admin/Contacts'
 
 import { routes } from '../../Config/routes'
+import HomeForm from '../Admin/HomeForm'
 
 const AppRoutes = () => {
 	const user = true // TODO: replace for store value
@@ -49,6 +50,7 @@ const AppRoutes = () => {
 				<Route path={routes.admin.newMember} element={<MembersForm />} />
 				<Route path={routes.admin.newNotice} element={<NewsForm />} />
 				<Route path={routes.admin.contacts} element={<Contacts />} />
+				<Route path={routes.admin.slides} element={<HomeForm />} />
 			</Route>
 			<Route path='*' element={<Navigate to={routes.home} />} />
 		</Routes>

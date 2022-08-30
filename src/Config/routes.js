@@ -12,6 +12,7 @@ export const routes = {
 		root: '/admin',
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
-		contacts: 'consultas'
+		contacts: 'consultas',
+		slides: 'formSlides'
 	}
 }

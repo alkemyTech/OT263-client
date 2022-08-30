@@ -13,6 +13,5 @@ export const routes = {
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
 		contacts: 'consultas',
-		slides: 'formSlides'
 	}
 }

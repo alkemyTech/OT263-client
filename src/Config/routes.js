@@ -8,10 +8,19 @@ export const routes = {
 	getInvolved: '/contribuye',
 	login: '/ingreso',
 	signup: '/registro',
+	profile: '/mi-perfil',
 	admin: {
 		root: '/admin',
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
 		contacts: 'consultas',
+		news: 'novedades',
+		activities: 'actividades',
+		categories: 'categorias',
+		testimonials: 'testimonios',
+		organization: 'organizacion',
+		slides: 'slides',
+		users: 'usuarios',
+		members: 'miembros'
 	}
 }

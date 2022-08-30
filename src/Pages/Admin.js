@@ -1,13 +1,14 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import Cards from '../Components/Admin/Cards'
 
-const Backoffice = () => {
+const Admin = () => {
 	return (
-		<>
-			<div>Admin</div>
-			<Outlet />
-		</>
+		<div className='section hero is-fullheight'>
+			<div className='hero-body '>
+				<Cards />
+			</div>
+		</div>
 	)
 }
 
-export default Backoffice
+export default Admin

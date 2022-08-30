@@ -1,52 +1,40 @@
 import React, { useState } from 'react'
-import ReactQuill from 'react-quill'
+import { PropTypes } from 'prop-types'
+import Form from './ActivityForm/Form'
+import Input from './ActivityForm/Input'
+import TextEditor from './ActivityForm/TextEditor'
+import Button from './ActivityForm/Button'
 
-import 'react-quill/dist/quill.snow.css'
-import './AdcivityForm.css'
-
-const ActivityForm = () => {
-	const [value, setValue] = useState('')
-
-	const handleSubmit = e => console.log(e)
+const ActivityForm = ({ activity: { id, name, content } }) => {
+	const handleSubmit = e => {
+		e.preventDefault()
+		console.log(e)
+	}
+	const [value, setValue] = useState(content)
 
 	return (
-		<div className='hero is-fullheight'>
-			<div className='hero-body columns is-centered'>
-				<div className='column is-8-tablet is-half-desktop is-full-mobile'>
-					<form onSubmit={handleSubmit} className='box'>
-						<div class='field is-horizontal'>
-							<div class='field-label is-normal'>
-								<label class='label'>Nombre</label>
-							</div>
-							<div className='field-body'>
-								<p className='control has-icons-right'>
-									<input
-										id='title'
-										name='title'
-										className='title is-size-6'
-										placeholder='Using CKEditor 5 build in React'
-									></input>
-								</p>
-							</div>
-						</div>
-						<div class='field is-horizontal'>
-							<div class='field-label is-normal'>
-								<label class='label'>Descripción</label>
-							</div>
-							<div className='field-body'>
-								<p className='control'>
-									<ReactQuill theme='snow' value={value} onChange={setValue} />
-								</p>
-							</div>
-						</div>
-						<div class='control'>
-							<button class='button is-primary'>Submit</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+		<Form onSubmit={handleSubmit} title={'Actividad'}>
+			<Input label={'Nombre'} onChange={console.log} value={'Hola'} placeholder={'Chau'} />
+			<TextEditor label={'Descripcion'} value={value} onChange={setValue} />
+			<Button text={'Guardar'} />
+		</Form>
 	)
+}
+
+ActivityForm.propTypes = {
+	activity: PropTypes.shape({
+		id: PropTypes.number,
+		name: PropTypes.string.isRequired,
+		content: PropTypes.string.isRequired
+	})
+}
+
+ActivityForm.defaultProps = {
+	activity: {
+		id: 0,
+		name: 'Nombre de la actividad',
+		content: 'Agregá el la descripción de la actividad'
+	}
 }
 
 export default ActivityForm

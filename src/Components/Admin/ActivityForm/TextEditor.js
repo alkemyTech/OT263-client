@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './TextEditor.css'
 
-const TextEditor = ({ value, onChange }) => {
+const TextEditor = ({ placeholder, value, onChange }) => {
 	const modules = {
 		toolbar: [
 			[{ header: '1' }, { header: '2' }],
@@ -41,6 +41,7 @@ const TextEditor = ({ value, onChange }) => {
 					<div className='control is-expanded'></div>
 					<ReactQuill
 						theme='snow'
+						placeholder={placeholder}
 						value={value}
 						onChange={onChange}
 						modules={modules}

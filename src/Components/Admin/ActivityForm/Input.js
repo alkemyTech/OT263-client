@@ -4,18 +4,20 @@ const Input = ({ label, placeholder, value, onChange }) => {
 	return (
 		<div className='field'>
 			<div className='field-label is-normal mb-2'>
-				<label className='label has-text-left'>{label}</label>
+				<label className='label has-text-left' htmlFor='name'>
+					{label}
+				</label>
 			</div>
 			<div className='field-body'>
 				<div className='field'>
 					<p className='control is-expanded'>
 						<input
-							id='title'
-							name='title'
-							className='input'
+							id='name'
+							name='name'
 							placeholder={placeholder}
+							className='input'
 							value={value}
-							onChange={onChange}
+							onChange={e => onChange(e.target.value)}
 						></input>
 					</p>
 				</div>

@@ -5,12 +5,27 @@
     margin: 15px auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
 }
 
-.input-field{
-    padding: 15px 30px;
-    border: 1px solid #c1c1c1;
+.form-input-field{
+    padding: 15px ;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.form-input-label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 15px;
+}
+.form-select{
+    margin-top: 15px; ;
+}
+.form-select-label{
+    margin-right: 10px;
 }
 
 .textarea-field{
@@ -18,19 +33,31 @@
     padding: 15px 30px;
     border: 1px solid #c1c1c1;
 }
-.select-field{
+.form-select-field{
     padding: 10px;
     border: 1px solid #c1c1c1;
+    border-radius: 10px;
 }
 
 .submit-btn{
     background-color: #2E86C1;
     padding: 10px 15px;
     border: none;
+    border-radius: 10px;
     color: #fff;
+    margin-top: 15px;
 }
 
 .submit-btn:hover{
     cursor: pointer;
     background-color: #3498DB;
+}
+
+.submit-btn:disabled{
+    background-color: #ccc;
+}
+
+.form-error-message{
+    color: #ff0000;
+    font-size: 1rem;
 }

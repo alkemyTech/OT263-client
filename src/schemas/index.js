@@ -14,10 +14,9 @@ export const registerSchema = yup.object().shape({
 });
 
 export const userEditSchema = yup.object().shape({
-    firstName: yup.string().required("Este campo es obligatorio"),
+    name: yup.string().required("Este campo es obligatorio"),
     lastName: yup.string().required("Este campo es obligatorio"),
     roleId: yup
-        .mixed()
-        .oneOf(["Administrador", "Usuario"], "Debe seleccionar un rol")
-        .required("Este campo es obligatorio"),
+        .string()
+        .oneOf(["1", "2"], "Tipo de rol invalido")
 });

@@ -1,33 +1,35 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
-
-
-const onSubmit = (values, actions) => {
-  const {firstName, lastName, email, password} = values
-  const newUser = {
-      firstName,
-      lastName,
-      email,
-      password
-  }
-  // axios.post("http://localhost:3001/operations", data).then((response) => {
-  //   navigate("/")
-  // })
-}
+import axios from "axios"
+import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {
-    const {values, errors, handleChange, handleSubmit} = useFormik({
-        initialValues: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: ""
+  const navigate = useNavigate()
 
-        },
-        validationSchema: registerSchema,
-        onSubmit,
-    });
+  const {values, errors, handleChange, handleSubmit} = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+
+    },
+    validationSchema: registerSchema,
+    onSubmit: values => {
+      const {firstName, lastName, email, password} = values
+      const newUser = {
+        firstName,
+        lastName,
+        email,
+        password
+    }
+      axios.post("http://localhost:3000/users/auth/register", newUser).then((response) => {
+        navigate("/")
+      }).then(/**podria ya existir el usuario con ese mail, o tener otro error de registro */)
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
 
   return (
@@ -75,7 +77,12 @@ const RegisterForm = () => {
             placeholder="Contraseña"
           />
           {errors.password && <p className='mt-0 pt-0 help is-danger'>{errors.password}</p>}
-          <button className="button is-fullwidth py-3"  style={{backgroundColor:"rgb(255, 0, 0, 1)"}} type="submit"><span className='has-text-white-ter is-size-4'>Registrarse</span></button>
+          <button 
+            className="button is-fullwidth py-3"  
+            style={{backgroundColor:"rgb(255, 0, 0, 1)"}} 
+            type="submit">
+              <span className='has-text-white-ter is-size-4'>Registrarse</span>
+          </button>
         </form>
       </div>
       <p className='' style={{paddingTop:'150px', textAlign:"center"}}>

@@ -54,10 +54,10 @@ const UserForm = ({ user }) => {
                     name="lastName"
                     placeholder="Apellido"
                 />
-                <FormSelect label="Rol" name="roleId">
-                    {user.roleId === "1" && <option value="1">Administrador</option>}
+                {user.roleId === "1" && <FormSelect label="Rol" name="roleId">
+                    <option value="1">Administrador</option>
                     <option value="2">Usuario</option>
-                </FormSelect>
+                </FormSelect>}
 
                 <button type="submit" className="submit-btn" disabled={Object.keys(formik.errors).length > 0}>
                     Submit

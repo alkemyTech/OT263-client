@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import { userEditSchema } from "../../schemas";
-import post from "../../Services/apiService.js";
+import { patch } from "../../Services/apiService";
 import FormTextInput from "../FormComponents/FormTextInput";
 import FormSelect from "../FormComponents/FormSelect";
 import "../FormStyles.css";
@@ -18,7 +18,7 @@ const UserForm = ({ user }) => {
         validationSchema={userEditSchema}
         onSubmit={async (values, { setSubmitting }) => {
             try {
-                await post(
+                await patch(
                     "http://localhost:3000/users/" + user.id,
                     values
                     );

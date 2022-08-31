@@ -60,7 +60,7 @@ const UserForm = ({ user }) => {
                 </FormSelect>}
 
                 <button type="submit" className="submit-btn" disabled={Object.keys(formik.errors).length > 0}>
-                    Submit
+                    Enviar
                 </button>
             </Form>
             )}

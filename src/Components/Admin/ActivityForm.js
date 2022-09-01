@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PropTypes } from 'prop-types'
 import { useNavigate } from 'react-router-dom'
-import 'react-toastify/dist/ReactToastify.css'
 
 import Form from './ActivityForm/Form'
 import Input from './ActivityForm/Input'

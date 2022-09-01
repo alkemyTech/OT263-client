@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import FlatList from 'flatlist-react';
 import SliderContainer from '../Components/Slider/SliderContainer'
-import { TbH1 } from 'react-icons/tb';
-
 
 
 const Home = () => {

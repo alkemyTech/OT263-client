@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.formik-container{
+    width: 60%;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formik-input-field{
+    padding: 15px ;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.formik-input-label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 15px;
+}
+.formik-select{
+    margin-top: 15px; ;
+}
+.formik-select-label{
+    margin-right: 10px;
+}
+
+.formik-select-field{
+    padding: 10px;
+    border: 1px solid #c1c1c1;
+    border-radius: 10px;
+}
+
+.formik-submit-btn{
+    background-color: #2E86C1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.formik-submit-btn:hover{
+    cursor: pointer;
+    background-color: #3498DB;
+}
+
+.submit-btn:disabled{
+    background-color: #ccc;
+}
+
+.formik-error-message{
+    color: #ff0000;
+    font-size: 1rem;
+}

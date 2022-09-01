@@ -1,6 +1,6 @@
 import React from 'react'
 import { useField } from 'formik';
-import "../FormStyles.css";
+import "../FormikStyles.css";
 
 const FormTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);

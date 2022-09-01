@@ -4,7 +4,7 @@ import { userEditSchema } from "../../schemas";
 import { patch } from "../../Services/apiService";
 import FormTextInput from "../FormComponents/FormTextInput";
 import FormSelect from "../FormComponents/FormSelect";
-import "../FormStyles.css";
+import "../FormikStyles.css";
 import Swal from "sweetalert2";
 
 const UserForm = ({ user }) => {

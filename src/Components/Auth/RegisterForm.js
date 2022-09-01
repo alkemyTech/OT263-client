@@ -26,8 +26,7 @@ const RegisterForm = () => {
     }
       axios.post("http://localhost:3000/users/auth/register", newUser).then((response) => {
         navigate("/")
-      }).then(/**podria ya existir el usuario con ese mail, o tener otro error de registro */)
-      alert(JSON.stringify(values, null, 2));
+      })
     },
   });
 

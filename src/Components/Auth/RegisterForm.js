@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
 import axios from "axios"
 import {useNavigate} from "react-router-dom";
 
+
 const RegisterForm = () => {
   const navigate = useNavigate()
+  const [apiError, setApiError] = useState({})
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -26,7 +28,11 @@ const RegisterForm = () => {
     }
       axios.post("http://localhost:3000/users/auth/register", newUser).then((response) => {
         navigate("/")
-      })
+      }).catch(error => {
+        setApiError({
+          state: error.response.status, 
+          message: error.response.data.details[0].message})
+        })
     },
   });
 

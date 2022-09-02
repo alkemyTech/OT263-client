@@ -19,12 +19,12 @@ function User(user) {
               <IoMdSync
                 color="#008000" 
                 className='updateIcon' 
-                onClick={ () => {navigate(`/Users/${id}/update`)} } //TODO
+                onClick={ () => {/*navigate(`/Users/${id}/update`)*/} } //TODO
               />
               <RiDeleteBin6Line 
                 color="#FF0000" 
                 className='deleteIcon' 
-                onClick={ () => {deleteUser(id)} } //TODO
+                onClick={ () => {/*deleteUser(id)*/} } //TODO
               />
             </div>
           </td>

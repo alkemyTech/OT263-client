@@ -15,7 +15,7 @@ const Get = () => {
 
 export const getUsers = async () => {
 	try{
-    const users= await axios.get('https://jsonplaceholder.typicode.com/users', config)	
+    const users= await axios.get('http://localhost:3001/users', config)	
     return users.data	
 	}catch(err){
 		return err

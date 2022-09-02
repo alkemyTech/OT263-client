@@ -26,7 +26,7 @@ const AppRoutes = () => {
 			<Route path={routes.home} element={<Home />} />
 			<Route path={routes.about} element={<About />} />
 			<Route path={routes.news} element={<ListContainer Component={NewsList} endpoint={"/news"} />}>
-				<Route path='/:id' element={<ListContainer Component={NewsDetail} endpoint={"/news"} /> }/>
+				<Route path=':id' element={<ListContainer Component={NewsList} endpoint={"/news"} /> }/>
 			</Route>
 			<Route path={routes.testimonials} element={<Testimonials />} />
 			<Route

@@ -6,13 +6,15 @@ import Loader from "../Loader/Loader"
 function ListContainer({ Component, endpoint }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
+    const [data, setData] = useState([]);
     const { id } = useParams()
+    const { get } = require('../../Services/publicApiService')
 
     useEffect(() => {
-        get(endpoint + id && `/${id}`)
+        get(`${endpoint}${id && `/${id}`}`)
             .then(result => {
-                setItems(result)
+                console.log(result)
+                setData(result)
                 setIsLoaded(true)
             },
                 (err) => {
@@ -20,15 +22,16 @@ function ListContainer({ Component, endpoint }) {
                     setError(err)
                 }
             )
-    }, [paramId])
+    }, [id])
 
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-        return <div style={{ height: "100vh" }} ><Loader key="1" size="200px" image="./images/Somos-Mas/LOGO-SomosMas.png" /></div>
+        return <div  ><Loader key="1" size="200px" image="./images/Somos-Mas/LOGO-SomosMas.png" /></div>
     } else {
+        const dataCopy = id ? data.slice(0) : {...data}
         return (
-            <Component items={items.slice(0)} />
+            <Component data={dataCopy} />
         );
     }
 }

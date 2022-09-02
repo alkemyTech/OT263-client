@@ -14,6 +14,8 @@ import TestimonialForm from '../Testimonials/TestimonialsForm'
 
 import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
+import ListContainer from '../ListContainer/ListContainer'
+import NewsList from '../News/NewsList'
 
 const AppRoutes = () => {
 	const user = false // TODO: replace for store value
@@ -23,7 +25,9 @@ const AppRoutes = () => {
 		<Routes>
 			<Route path={routes.home} element={<Home />} />
 			<Route path={routes.about} element={<About />} />
-			<Route path={routes.news} element={<News />} />
+			<Route path={routes.news} element={<ListContainer Component={NewsList} endpoint={"/news"} />}>
+				<Route path='/:id' element={<ListContainer Component={NewsDetail} endpoint={"/news"} /> }/>
+			</Route>
 			<Route path={routes.testimonials} element={<Testimonials />} />
 			<Route
 				path={routes.newTestimonial}

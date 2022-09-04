@@ -1,7 +1,14 @@
 import React from 'react'
+import { confirmationAlert, displayAlert } from '../Components/Alert/Alert'
 
 const Home = () => {
-	return <div>Hola! Bienvenidx</div>
+	const handleClick = async () => {
+		// const confirm = await confirmationAlert()
+		// if (!confirm) return
+
+		displayAlert(false)
+	}
+	return <button onClick={handleClick}>Alert</button>
 }
 
 export default Home

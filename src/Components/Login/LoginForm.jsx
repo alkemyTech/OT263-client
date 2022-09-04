@@ -1,6 +1,7 @@
 import 'bulma/css/bulma.min.css';
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
+import { PostLogin } from "../../Services/privateApiService"
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Se requiere email'),
@@ -8,6 +9,10 @@ const SignupSchema = Yup.object().shape({
   });
 
 const LoginForm =()=> {
+
+  const onSubmit = (data) => {
+   PostLogin(data).then(val=> console.log(val))
+  }
 
     return(
         <div>
@@ -18,9 +23,7 @@ const LoginForm =()=> {
                         password:""
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={values => {
-                        console.log(values);
-                    }}
+                    onSubmit={onSubmit}
                     >
                         {({
                             errors, touched

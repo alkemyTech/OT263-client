@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
-import axios from "axios"
-import {useNavigate} from "react-router-dom";
+import { PostRegister } from "../../Services/privateApiService"
+// import {useNavigate} from "react-router-dom";
 
 
 const RegisterForm = () => {
-  const navigate = useNavigate()
-  const [apiError, setApiError] = useState({})
+  // const navigate = useNavigate()
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -25,14 +24,9 @@ const RegisterForm = () => {
         lastName,
         email,
         password
-    }
-      axios.post("http://localhost:3000/users/auth/register", newUser).then((response) => {
-        navigate("/")
-      }).catch(error => {
-        setApiError({
-          state: error.response.status, 
-          message: error.response.data.details[0].message})
-        })
+      }
+      PostRegister(newUser)
+        
     },
   });
 
@@ -88,7 +82,7 @@ const RegisterForm = () => {
             type="submit">
               <span className='has-text-white-ter is-size-4'>Registrarse</span>
           </button>
-        </form>
+      </form>
       </div>
       <p className='' style={{paddingTop:'150px', textAlign:"center"}}>
         ¿Ya tienes una cuenta? <strong style={{color:'red'}}>Inicia Sesión</strong>

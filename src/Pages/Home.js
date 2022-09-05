@@ -4,48 +4,38 @@ import FlatList from 'flatlist-react';
 import SliderContainer from '../Components/Slider/SliderContainer'
 
 
-const Home = () => {
-  const [listOfNews, setListOfNews] = useState([
-    {image: "image",
-      content:"Este es un ejemplo de una gran novedad novedosa"}
-  ])
+const Home = (values) => {
+  const {textBienvenida} = values
+  const [listOfNews, setListOfNews] = useState([])
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/RUTA-DE-NEWS-").then((response) => {
-  //     setListOfNews(response.data)
-  //   })
-  // }, [])
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/albums/1/photos").then((response) => {
+      setListOfNews(response.data)
+    })
+  }, [])
 
   const renderNews= (value, index) => {
     return(
       <div className='mainContainer'
         style={{display:"flex", alignItems:"center"}}
       >
-        <div className='card mr-5 p-1' 
-          style={{display:"flex", borderRadius: 20, backgroundColor: "#6d7aee", width:350}}>
-          <div className='imageContainer column card-image'>
-            <figure class="image" style={{width: 150}}>
-              <img style={{borderRadius: 20, height: 158}} src={'/images/placeholder/150x150.png'} alt="imagen"/>
-            </figure>
-          </div>
-          <div className='contentContainer column card-content'>
-            <div className='content'>{value.content}</div>
-          </div>
-        </div>
-
-        <div className='card mr-5 p-1' 
-          style={{display:"flex", borderRadius: 20, backgroundColor: "#6d7aee", width:350}}>
-          <div className='imageContainer column card-image'>
-            <figure class="image" style={{width: 150}}>
-              <img style={{borderRadius: 20, height: 158}} src={'/images/placeholder/150x150.png'} alt="imagen"/>
-            </figure>
-          </div>
-          <div className='contentContainer column card-content'>
-            <div className='content'>{value.content}</div>
+        <div 
+          key={index} 
+          className="new" 
+          onClick={ () => {/*navigate(`/news/${value.id}`)*/}}
+        >
+          <div className='card mr-5 p-1' 
+            style={{display:"flex", borderRadius: 20, backgroundColor: "#6d7aee", width:350}}>
+            <div className='imageContainer column card-image'>
+              <figure class="image" style={{width: 150}}>
+                <img style={{borderRadius: 20, height: 158}} src={value.url} alt="imagen"/>
+              </figure>
+            </div>
+            <div className='contentContainer column card-content'>
+              <div className='content'>{value.title}</div>
+            </div>
           </div>
         </div>
-
-
       </div>
     )
   }
@@ -54,7 +44,7 @@ const Home = () => {
     <div className='columns is-vcentered is-centered' style={{margin: 15}}>
       <div className='rows column is-5' style={{marginRight: 5}}>
         <h1 className='row title'>Hola! Bienvenidx</h1>
-        <h3 className='row'>texto de bienvenida</h3>
+        <span className='row'>{textBienvenida}</span>
         <button className='row'>Contactenos</button>
       </div>
       <div className='column is-5' style={{marginLeft: 5}}>

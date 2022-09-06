@@ -1,14 +1,19 @@
 import 'bulma/css/bulma.min.css';
 import logo from './Group-33.png';
 import { routes } from '../../Config/routes';
+import {useSelector} from 'react-redux';
 
 const Header =()=> {
+    const user = useSelector(state => state.user.currentUser);
+	const isAdmin = user?.roleId === 1
+
     const toggleBurger = () => {
         let burgerIcon = document.getElementById('burger');
         let dropMenu = document.getElementById('navMenu');
         burgerIcon.classList.toggle('is-active');
         dropMenu.classList.toggle('is-active');
       };
+      
 
     return(
         <nav className="navbar has-navbar-fixed-top has-shadow" role='navigation'>
@@ -30,20 +35,25 @@ const Header =()=> {
                     <a className="navbar-item" href={routes.testimonials}>Testimonios</a>
                     <a className="navbar-item" href={routes.contact}>Contacto</a>
                     <a className="navbar-item" href={routes.getInvolved}>Contribuye</a>
-                    <div className="navbar-item">
-                        <div className="field is-grouped">
-                            <p className="control">
-                                <a className="button is-rounded" href={routes.login}>
-                                    <span>Log in</span>
-                                </a>
-                            </p>
-                            <p className="control">
-                                <a className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} href={routes.signup}>
-                                    <span>Registrate</span>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                    {user 
+                        ?   isAdmin 
+                            ?   <a className="navbar-item" href={routes.admin.root}>Backoffice</a>
+                            :   <a className="navbar-item" href={routes.profile}>Mi Perfil</a> 
+                        :   <div className="navbar-item">
+                                <div className="field is-grouped">
+                                    <p className="control">
+                                        <a className="button is-rounded" href={routes.login}>
+                                            <span>Log in</span>
+                                        </a>
+                                    </p>
+                                    <p className="control">
+                                        <a className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} href={routes.signup}>
+                                            <span>Registrate</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                    }
                 </div>
             </div>
         </nav>

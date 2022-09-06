@@ -14,10 +14,11 @@ import TestimonialForm from '../Testimonials/TestimonialsForm'
 
 import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
+import { useSelector } from 'react-redux'
 
 const AppRoutes = () => {
-	const user = false // TODO: replace for store value
-	const isAdmin = true // TODO: replace for store value
+	const user = useSelector((state) => state.user.currentUser)
+	const isAdmin = user?.roleId === 1
 
 	return (
 		<Routes>

@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import FlatList from 'flatlist-react';
 import SliderContainer from '../Components/Slider/SliderContainer'
+import {useNavigate} from "react-router-dom";
 
 
 const Home = (values) => {
   const {textBienvenida} = values
   const [listOfNews, setListOfNews] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/albums/1/photos").then((response) => {
@@ -19,21 +21,18 @@ const Home = (values) => {
       <div className='mainContainer'
         style={{display:"flex", alignItems:"center"}}
       >
-        <div 
-          key={index} 
-          className="new" 
-          onClick={ () => {/*navigate(`/news/${value.id}`)*/}}
+        <div key={index}
+          className='card mr-5 p-1' 
+          style={{display:"flex", borderRadius: 20, backgroundColor: "#6d7aee", width:350, cursor: "pointer"}}
+          onClick={ () => {navigate(`/novedades/${value.id}`)}}
         >
-          <div className='card mr-5 p-1' 
-            style={{display:"flex", borderRadius: 20, backgroundColor: "#6d7aee", width:350}}>
-            <div className='imageContainer column card-image'>
-              <figure class="image" style={{width: 150}}>
-                <img style={{borderRadius: 20, height: 158}} src={value.url} alt="imagen"/>
-              </figure>
-            </div>
-            <div className='contentContainer column card-content'>
-              <div className='content'>{value.title}</div>
-            </div>
+          <div className='imageContainer column card-image'>
+            <figure class="image" style={{width: 150}}>
+              <img style={{borderRadius: 20, height: 158}} src={value.url} alt="imagen"/>
+            </figure>
+          </div>
+          <div className='contentContainer column card-content'>
+            <div className='content'>{value.title}</div>
           </div>
         </div>
       </div>
@@ -77,8 +76,12 @@ const Home = (values) => {
     </div>
 
     <div className='container'>
-      <div>
-        <h2 className='subtitle is-4' style={{color:"black", fontWeight:"800" }}>Ultimas Novedades</h2>
+      <div style={{display: "flex", justifyContent:"space-between"}}>
+        <h2 className='subtitle is-4 is-inline' style={{color:"black", fontWeight:"800" }}>Ultimas Novedades</h2>
+        <span 
+          className='is-flex' 
+          style={{cursor: "pointer"}} 
+          onClick={ () => {navigate(`/novedades`)}}>ver todos</span>
       </div>
       <div 
         className='container is-centered' 
@@ -87,6 +90,7 @@ const Home = (values) => {
         <FlatList 
           list={listOfNews}
           renderItem={renderNews}
+          limit={3}
           reversed
         />
       </div>

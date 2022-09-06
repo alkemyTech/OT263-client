@@ -11,7 +11,7 @@ const SignupSchema = Yup.object().shape({
 const LoginForm =()=> {
 
   const onSubmit = (data) => {
-   PostLogin(data).then(val=> console.log(val))
+    console.log(PostLogin(data))
   }
 
     return(

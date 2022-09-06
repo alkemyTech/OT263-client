@@ -23,7 +23,7 @@ export const PostRegister = async (newUser) => {
 export const PostLogin = (user) => {
   axios
     .post('http://localhost:3001/users/auth/login', user)
-    .then(res => {return (res, console.log(res))})
+    .then(res => {return res})
     .catch(error => {return error})
 }
 

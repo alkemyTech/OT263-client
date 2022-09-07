@@ -38,9 +38,7 @@ const Header =()=> {
                     <Link to={routes.contact} className="navbar-item" >Contacto</Link>
                     <Link to={routes.getInvolved} className="navbar-item" >Contribuye</Link>
                     {user 
-                        ?   isAdmin 
-                            ?   <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>
-                            :   <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
+                        ?   <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
                         :   <div className="navbar-item">
                                 <div className="field is-grouped">
                                     <p className="control">
@@ -56,6 +54,7 @@ const Header =()=> {
                                 </div>
                             </div>
                     }
+                    {isAdmin && <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>}
                 </div>
             </div>
         </nav>

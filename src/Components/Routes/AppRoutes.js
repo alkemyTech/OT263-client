@@ -18,7 +18,7 @@ import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 
 const AppRoutes = () => {
-	const user = false // TODO: replace for store value
+	const user = true // TODO: replace for store value
 	const isAdmin = true // TODO: replace for store value
 
 	return (

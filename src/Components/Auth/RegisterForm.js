@@ -2,11 +2,11 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
 import { PostRegister } from "../../Services/privateApiService"
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const RegisterForm = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -17,7 +17,7 @@ const RegisterForm = () => {
 
     },
     validationSchema: registerSchema,
-    onSubmit: values => {
+    onSubmit: async values => {
       const {firstName, lastName, email, password} = values
       const newUser = {
         firstName,
@@ -25,8 +25,9 @@ const RegisterForm = () => {
         email,
         password
       }
-      PostRegister(newUser)
-        
+      const user = await PostRegister(newUser)
+      console.log(user)
+      navigate('/')
     },
   });
 

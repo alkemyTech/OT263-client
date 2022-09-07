@@ -2,6 +2,8 @@ import 'bulma/css/bulma.min.css';
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { PostLogin } from "../../Services/privateApiService"
+import {useNavigate} from "react-router-dom";
+
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Se requiere email'),
@@ -9,9 +11,12 @@ const SignupSchema = Yup.object().shape({
   });
 
 const LoginForm =()=> {
+  const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    console.log(PostLogin(data))
+  const onSubmit = async (data) => {
+    const user = await PostLogin(data)
+    console.log(user)
+    navigate('/')
   }
 
     return(

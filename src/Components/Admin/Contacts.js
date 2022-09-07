@@ -1,5 +1,17 @@
 import React from 'react'
 
+function renderRow(contact, index) {
+	return (
+		<tr key={index}>
+			<th>{index + 1}</th>
+			<td>{contact.name}</td>
+			<td>{contact.phone}</td>
+			<td>{contact.email}</td>
+			<td>{contact.message}</td>
+		</tr>
+	)
+}
+
 const Contacts = () => {
 	const data = mockData()
 	return (
@@ -19,18 +31,6 @@ const Contacts = () => {
 				<tbody>{data?.map(renderRow)}</tbody>
 			</table>
 		</div>
-	)
-}
-
-function renderRow(contact, index) {
-	return (
-		<tr key={index}>
-			<th>{index + 1}</th>
-			<td>{contact.name}</td>
-			<td>{contact.phone}</td>
-			<td>{contact.email}</td>
-			<td>{contact.message}</td>
-		</tr>
 	)
 }
 

@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@ckeditor/ckeditor5-build-classic": "^35.1.0",
+		"@ckeditor/ckeditor5-react": "^5.0.2",
 		"@reduxjs/toolkit": "^1.6.1",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.3.0",
@@ -17,8 +19,8 @@
 		"react-responsive-carousel": "^3.2.23",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "^4.0.3",
-		"yup": "^0.32.11",
-		"react-spinners": "^0.13.4"
+		"react-spinners": "^0.13.4",
+		"yup": "^0.32.11"
 	},
 	"scripts": {
 		"start": "react-scripts start",

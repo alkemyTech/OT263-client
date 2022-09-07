@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { registerSchema } from '../../schemas';
+import { registerSchema } from '../../Schemas';
 
 
 const onSubmit = (values, actions) => {

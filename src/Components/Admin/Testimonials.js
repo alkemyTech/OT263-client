@@ -7,12 +7,14 @@ import { IoIosSave } from 'react-icons/io'
 import { BsCardImage } from 'react-icons/bs'
 import { MdOutlineImageNotSupported } from 'react-icons/md'
 import { ImFolderUpload } from 'react-icons/im'
+import { VscNewFile } from 'react-icons/vsc'
 
 import './Testimonials.css'
 import 'react-quill/dist/quill.snow.css'
 
 function Testimonials() {
 	const [data, setData] = useState(mockData())
+	const { showForm, setShowForm } = useState(true)
 
 	const handleChange = (index, name, value) => {
 		const newData = [...data]
@@ -37,10 +39,14 @@ function Testimonials() {
 		// TODO: dispatch
 	}
 
+	const handleAdd = e => {
+		console.log(e)
+	}
+
 	return (
 		<div className='table-container'>
 			<table className='table is-fullwidth'>
-				<Header />
+				<Header onClick={handleAdd} />
 				<tbody>
 					{data?.map((row, index) => (
 						<Row
@@ -54,12 +60,13 @@ function Testimonials() {
 					))}
 				</tbody>
 			</table>
+			<FormModal showForm={showForm} />
 		</div>
 	)
 }
 
-function Row({ index, data, onChange, onDelete, onSubmit }) {
-	const [editable, setEditable] = useState(false)
+function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
+	const [editable, setEditable] = useState(isNew)
 	const [showModal, setShowModal] = useState(false)
 	const toggleClass = editable ? 'has-background-primary-light' : ''
 
@@ -182,6 +189,23 @@ function Row({ index, data, onChange, onDelete, onSubmit }) {
 	)
 }
 
+function FormModal({ showForm, onClick, imgUrl }) {
+	return (
+		<div className={`modal ${showForm ? 'is-active' : ''}`}>
+			<div className='modal-background'></div>
+			<div className='modal-content'>
+				<div className='field'>
+					<label className='label'>Name</label>
+					<div className='control'>
+						<input className='input' type='text' placeholder='Text input' />
+					</div>
+				</div>
+			</div>
+			<button className='modal-close is-large' aria-label='close' onClick={onClick}></button>
+		</div>
+	)
+}
+
 function Modal({ show, onClick, imgUrl }) {
 	return (
 		<div className={`modal ${show ? 'is-active' : ''}`}>
@@ -196,7 +220,7 @@ function Modal({ show, onClick, imgUrl }) {
 	)
 }
 
-function Header() {
+function Header({ onClick }) {
 	return (
 		<thead>
 			<tr>
@@ -206,7 +230,16 @@ function Header() {
 				<th>Nombre</th>
 				<th>Imagen</th>
 				<th>Mensaje</th>
-				<th></th>
+				<th>
+					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
+						<button className='button' onClick={onClick}>
+							<span className='icon'>
+								<VscNewFile />{' '}
+							</span>
+							<span>Nuevo</span>
+						</button>
+					</div>
+				</th>
 			</tr>
 		</thead>
 	)

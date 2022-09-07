@@ -1,5 +1,6 @@
 import '../FormStyles.css';
 import {useState}from 'react'
+import { post } from '../../Services/apiService';
 
 function ContactForm() {    
     const [error, setError] = useState('')
@@ -13,7 +14,7 @@ function ContactForm() {
             setContact({...contact, [target.name]: target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async  (e) => {
         e.preventDefault()
         if(Object.values(contact).includes('')){
             setError('Todos los campos son obligatorios')
@@ -23,7 +24,13 @@ function ContactForm() {
             setError("El email debe tener un formato valido")
             return
         }
-        console.log(contact)
+        try{
+            await post('http://localhost:3001/contacts',contact)
+            //sweet alert
+        }catch(err){
+            //sweet alert
+            console.log(err)
+        }
     }
     return (
         <form className="form-container" onSubmit={handleSubmit}>

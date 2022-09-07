@@ -14,7 +14,7 @@ import 'react-quill/dist/quill.snow.css'
 
 function Testimonials() {
 	const [data, setData] = useState(mockData())
-	const { showForm, setShowForm } = useState(true)
+	const [showForm, setShowForm] = useState(false)
 
 	const handleChange = (index, name, value) => {
 		const newData = [...data]
@@ -39,14 +39,10 @@ function Testimonials() {
 		// TODO: dispatch
 	}
 
-	const handleAdd = e => {
-		console.log(e)
-	}
-
 	return (
 		<div className='table-container'>
 			<table className='table is-fullwidth'>
-				<Header onClick={handleAdd} />
+				<Header onClick={() => setShowForm(true)} />
 				<tbody>
 					{data?.map((row, index) => (
 						<Row
@@ -60,7 +56,7 @@ function Testimonials() {
 					))}
 				</tbody>
 			</table>
-			<FormModal showForm={showForm} />
+			<FormModal showForm={showForm} onClose={() => setShowForm(false)} />
 		</div>
 	)
 }
@@ -189,7 +185,7 @@ function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
 	)
 }
 
-function FormModal({ showForm, onClick, imgUrl }) {
+function FormModal({ showForm, onClose }) {
 	return (
 		<div className={`modal ${showForm ? 'is-active' : ''}`}>
 			<div className='modal-background'></div>
@@ -201,7 +197,7 @@ function FormModal({ showForm, onClick, imgUrl }) {
 					</div>
 				</div>
 			</div>
-			<button className='modal-close is-large' aria-label='close' onClick={onClick}></button>
+			<button className='modal-close is-large' aria-label='close' onClick={onClose}></button>
 		</div>
 	)
 }

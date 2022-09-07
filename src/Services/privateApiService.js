@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const config = {
 	headers: {
-		Group: 1 //Aqui va el ID del equipo!!
+		Group: 263 //Aqui va el ID del equipo!!
 	}
 }
 
@@ -12,5 +12,24 @@ const Get = () => {
 		.then(res => console.log(res))
 		.catch(err => console.log(err))
 }
+
+export const getUsers = async () => {
+	try{
+    const users= await axios.get('http://localhost:3001/users', config)	
+    return users.data	
+	}catch(err){
+		return err
+	}
+
+}
+
+export const deleteUser = async (id) => {
+  await axios.delete(`http://localhost:3001/users/${id}`).then((res) => {
+    return res.status
+  }).catch(err => {
+    return err
+  })
+}
+
 
 export default Get

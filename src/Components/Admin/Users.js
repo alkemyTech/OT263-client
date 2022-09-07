@@ -1,7 +1,8 @@
 import React from 'react'
+import UserListContainer from '../Users/UserListContainer'
 
 const Users = () => {
-	return <div>Usuarios</div>
+	return <UserListContainer/>
 }
 
 export default Users

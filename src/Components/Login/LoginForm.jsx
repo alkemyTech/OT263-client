@@ -1,14 +1,9 @@
 import 'bulma/css/bulma.min.css';
-import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { PostLogin } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
+import { loginSchema } from '../../schemas';
 
-
-const SignupSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Se requiere email'),
-    password: Yup.string().required('Se requiere contraseña').min(6, 'La contraseña requiere al menos 6 caracteres')
-  });
 
 const LoginForm =()=> {
   const navigate = useNavigate()
@@ -27,7 +22,7 @@ const LoginForm =()=> {
                         email:"",
                         password:""
                     }}
-                    validationSchema={SignupSchema}
+                    validationSchema={loginSchema}
                     onSubmit={onSubmit}
                     >
                         {({

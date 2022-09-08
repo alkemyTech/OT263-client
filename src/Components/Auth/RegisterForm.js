@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 
 const RegisterForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -27,7 +27,7 @@ const RegisterForm = () => {
       }
       const user = await PostRegister(newUser)
       console.log(user)
-      navigate('/')
+      user && navigate('/')
     },
   });
 

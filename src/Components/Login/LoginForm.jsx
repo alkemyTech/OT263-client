@@ -11,7 +11,7 @@ const LoginForm =()=> {
   const onSubmit = async (data) => {
     const user = await PostLogin(data)
     console.log(user)
-    navigate('/')
+    user && navigate('/')
   }
 
     return(

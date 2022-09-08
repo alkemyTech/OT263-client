@@ -24,14 +24,9 @@
 		"react-redux": "^7.2.4",
 		"react-responsive-carousel": "^3.2.23",
 		"react-router-dom": "^6.3.0",
-<<<<<<< HEAD
-		"react-scripts": "^4.0.3",
-		"react-spinners": "^0.13.4",
-=======
 		"react-scripts": "^5.0.1",
 		"react-spinners": "^0.13.4",
 		"react-toastify": "^9.0.8",
->>>>>>> fbc5e7cbdb4fc1639bac70ca840e28e06dd42cb8
 		"yup": "^0.32.11"
 	},
 	"scripts": {

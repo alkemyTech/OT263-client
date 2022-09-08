@@ -16,14 +16,16 @@ import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
 
 const AppRoutes = () => {
-	const user = false // TODO: replace for store value
+	const user = true // TODO: replace for store value
 	const isAdmin = true // TODO: replace for store value
 
 	return (
 		<Routes>
 			<Route path={routes.home} element={<Home />} />
 			<Route path={routes.about} element={<About />} />
-			<Route path={routes.news} element={<News />} />
+			<Route path={routes.news} element={<News />} >
+				<Route path=':id' element={<News />} />
+			</Route>
 			<Route path={routes.testimonials} element={<Testimonials />} />
 			<Route
 				path={routes.newTestimonial}

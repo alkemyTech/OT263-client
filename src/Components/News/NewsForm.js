@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import '../../Components/FormStyles.css';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import TextEditor from '../Admin/ActivityForm/TextEditor';
+import { placeholder } from '@babel/types';
 
 
-const NewsForm = () => {
+const NewsForm = (props) => {
     const [initialValues, setInitialValues] = useState({
         title: '',
         content: '',
@@ -25,8 +27,8 @@ const NewsForm = () => {
         console.log(initialValues);
     }
 
-    const handleCKEditor = (event, editor) => {
-        const data = editor.getData();
+    const handleEditor = (value) => {
+        const data = value;
         setInitialValues({...initialValues, content: data})
     }
 
@@ -39,17 +41,16 @@ const NewsForm = () => {
                         <div className="control">
                             <input className="input" type="text" name='title' placeholder="Ingrese Título" onChange={handleChange} />
                         </div>
+                        <label className='label'>Imagen</label>
+                        <div className="control">
+                            <input className="input" type="File" name='image' placeholder="Inserte Imagen" onChange={handleChange} />
+                        </div>
                         <label className='label'>Contenido</label>
-                        <CKEditor
-                        editor={ClassicEditor}
-                        data= 'Agrega lo que quieras aquíii'
-                        onInit={editor=> {
-
-                        }}
-                        onChange={handleCKEditor}
-                        
+                        <TextEditor 
+                        placeholder={'Novedades'}
+                        value={initialValues.content}
+                        onChange={handleEditor}
                         />
-
 
                         <label className='label'>Categoria</label>
                         <div class="select">

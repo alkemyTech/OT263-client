@@ -1,11 +1,11 @@
-.ql-container {
+table .ql-container {
 	border-bottom-left-radius: 0.5em;
 	border-bottom-right-radius: 0.5em;
 	background: #fefcfc;
 }
 
 /* Snow Theme */
-.ql-snow.ql-toolbar {
+table .ql-snow.ql-toolbar {
 	display: block;
 	background: #eaecec;
 	border-top-left-radius: 0.5em;
@@ -13,13 +13,13 @@
 }
 
 /* Bubble Theme */
-.ql-bubble .ql-editor {
+table .ql-bubble .ql-editor {
 	background: #ebfffc;
 	border: 1px solid #ccc;
 	border-radius: 0.5em;
 }
 
-.ql-editor {
+table .ql-editor {
 	background: #ebfffc;
 	color: initial;
 	font-size: initial;

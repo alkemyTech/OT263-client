@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill'
+import useAxios from '../../app/hooks/useAxios'
+
+import Form from '../Admin/ActivityForm/Form'
+import Input from '../Admin/ActivityForm/Input'
+import TextEditor from '../Admin/ActivityForm/TextEditor'
+import Button from './ActivityForm/Button'
 
 import { GrEdit } from 'react-icons/gr'
 import { RiDeleteBin5Line } from 'react-icons/ri'
@@ -61,6 +67,58 @@ function Testimonials() {
 	)
 }
 
+function ImageInput({ onChange, label = null }) {
+	const [name, setName] = useState('No hay imagen seleccionada')
+	const handleChange = e => {
+		setName(e.target.files[0].name)
+		onChange(e)
+	}
+
+	return label ? (
+		<div className='field'>
+			<div className='field-label is-normal mb-2'>
+				<label className='label has-text-left'>{label}</label>
+			</div>
+			<div className='field-body'>
+				<div className='field'>
+					<p className='control is-expanded'>
+						<div className='file has-name'>
+							<label className='file-label'>
+								<input className='file-input' type='file' name='resume' onChange={handleChange} />
+								<span className='file-cta'>
+									<span className='file-icon'>
+										<i className='fas fa-upload'></i>
+									</span>
+									<span className='file-label'>Eelgí tu imagen…</span>
+								</span>
+								<span className='file-name'>{name}</span>
+							</label>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	) : (
+		<>
+			<button className='button has-background-primary-light'>
+				<label htmlFor='image' style={{ cursor: 'pointer' }}>
+					<span className='icon'>
+						<ImFolderUpload />
+					</span>
+				</label>
+			</button>
+			<input
+				style={{ display: 'none' }}
+				id='image'
+				type='file'
+				className='input'
+				accept='image/*'
+				onChange={onChange}
+			/>
+		</>
+	)
+}
+
 function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
 	const [editable, setEditable] = useState(isNew)
 	const [showModal, setShowModal] = useState(false)
@@ -115,23 +173,7 @@ function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
 				</td>
 				<td className={toggleClass}>
 					{editable ? (
-						<>
-							<button className='button has-background-primary-light'>
-								<label htmlFor='image' style={{ cursor: 'pointer' }}>
-									<span className='icon'>
-										<ImFolderUpload />
-									</span>
-								</label>
-							</button>
-							<input
-								style={{ display: 'none' }}
-								id='image'
-								type='file'
-								className='input'
-								accept='image/*'
-								onChange={e => onChange(index, 'image', e.target.files)}
-							/>
-						</>
+						<ImageInput onChange={e => onChange(index, 'image', e.target.files)} />
 					) : (
 						<abbr title='Mostrar Imagen' style={{ textDecoration: 'none' }}>
 							<span
@@ -186,16 +228,56 @@ function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
 }
 
 function FormModal({ showForm, onClose }) {
+	const [name, setName] = useState('')
+	const [image, setImage] = useState('')
+	const [content, setContent] = useState('')
+
+	const { fetchData, error, response } = useAxios({
+		method: 'post',
+		headers: JSON.stringify({
+			'Content-Type': 'application/json',
+			Accept: '*/*',
+			Authorization: 'Bearer token' // TODO: add user token
+		}),
+		url: 'http://localhost:3001/testimonials',
+		body: JSON.stringify({
+			name,
+			image,
+			content
+		}),
+		autoRun: false
+	})
+
+	const handleSubmit = e => {
+		e.preventDefault()
+		fetchData()
+
+		if (error) return
+
+		setName('')
+		setContent('')
+	}
+
 	return (
 		<div className={`modal ${showForm ? 'is-active' : ''}`}>
 			<div className='modal-background'></div>
-			<div className='modal-content'>
-				<div className='field'>
-					<label className='label'>Name</label>
-					<div className='control'>
-						<input className='input' type='text' placeholder='Text input' />
-					</div>
-				</div>
+			<div className='modal-content has-background-white'>
+				<Form onSubmit={handleSubmit} title='Testimonio'>
+					<Input
+						label={'Nombre'}
+						placeholder={'Nombre de la actividad'}
+						onChange={setName}
+						value={name}
+					/>
+					<ImageInput onChange={console.log} label='Imagen' />
+					<TextEditor
+						label={'Descripción'}
+						placeholder={'Agregá la descripción'}
+						onChange={setContent}
+						value={content}
+					/>
+					<Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
+				</Form>
 			</div>
 			<button className='modal-close is-large' aria-label='close' onClick={onClose}></button>
 		</div>

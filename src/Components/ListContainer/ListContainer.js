@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Loader from "../Loader/Loader"
-
+import { get } from '../../Services/publicApiService'
 
 function ListContainer({ Component, endpoint }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
     const { id } = useParams()
-    const { get } = require('../../Services/publicApiService')
-
+    console.log(Component)
+    
     useEffect(() => {
-        get(`${endpoint}${id && `/${id}`}`)
-            .then(result => {
-                console.log(result)
-                setData(result)
+        const newEndpoint = id ? `${endpoint}/${id}` : endpoint
+        get(newEndpoint)
+            .then(({data}) => {
+                console.log(data)
+                setData(data)
                 setIsLoaded(true)
             },
                 (err) => {
@@ -29,7 +30,7 @@ function ListContainer({ Component, endpoint }) {
     } else if (!isLoaded) {
         return <div  ><Loader key="1" size="200px" image="./images/Somos-Mas/LOGO-SomosMas.png" /></div>
     } else {
-        const dataCopy = id ? data.slice(0) : {...data}
+        const dataCopy = id ? { ...data } : data.slice(0)
         return (
             <Component data={dataCopy} />
         );

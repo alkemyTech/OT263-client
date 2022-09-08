@@ -19,10 +19,10 @@ const Get = () => {
 
 export const get=async (endPoint)=>{
 	try{
-		const { data }= await axiosBaseUrl.get(endPoint)
-		return data 
+		return await axiosBaseUrl.get(endPoint)		
 	}catch(err){
-		return {message:err.message}
+		console.log(err)
+		return err
 	}
 }
 

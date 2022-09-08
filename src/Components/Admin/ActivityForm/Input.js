@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ label, placeholder, value, onChange }) => {
+const Input = ({ label, placeholder, value, onChange, error = '' }) => {
 	return (
 		<div className='field'>
 			<div className='field-label is-normal mb-2'>
@@ -15,13 +15,14 @@ const Input = ({ label, placeholder, value, onChange }) => {
 							id='name'
 							name='name'
 							placeholder={placeholder}
-							className='input'
+							className={`input ${error ? 'is-danger' : ''}`}
 							value={value}
 							onChange={e => onChange(e.target.value)}
 						></input>
 					</p>
 				</div>
 			</div>
+			<p className='help is-danger'>{error}</p>
 		</div>
 	)
 }

@@ -1,22 +1,132 @@
 import React, { useEffect, useState } from 'react'
-import ReactQuill from 'react-quill'
 import useAxios from '../../app/hooks/useAxios'
 
 import Form from '../Admin/ActivityForm/Form'
 import Input from '../Admin/ActivityForm/Input'
 import TextEditor from '../Admin/ActivityForm/TextEditor'
 import Button from './ActivityForm/Button'
+import ImageInput from './Common/ImageInput'
 
 import { GrEdit } from 'react-icons/gr'
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { IoIosSave } from 'react-icons/io'
 import { BsCardImage } from 'react-icons/bs'
 import { MdOutlineImageNotSupported } from 'react-icons/md'
-import { ImFolderUpload } from 'react-icons/im'
 import { VscNewFile } from 'react-icons/vsc'
 
 import './Testimonials.css'
 import 'react-quill/dist/quill.snow.css'
+import RichTextInput from './Common/RichTextInput'
+
+function ImageIcon({ showModal, hasImage }) {
+	return (
+		<abbr title='Mostrar Imagen' style={{ textDecoration: 'none' }}>
+			<span className='icon' onClick={showModal} style={{ cursor: 'pointer' }}>
+				{hasImage ? <BsCardImage /> : <MdOutlineImageNotSupported />}
+			</span>
+		</abbr>
+	)
+}
+
+function Header({ onClick }) {
+	return (
+		<thead>
+			<tr>
+				<th>
+					<abbr title='Número'>N°</abbr>
+				</th>
+				<th>Nombre</th>
+				<th>Imagen</th>
+				<th>Mensaje</th>
+				<th>
+					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
+						<button className='button' onClick={onClick}>
+							<span className='icon'>
+								<VscNewFile />{' '}
+							</span>
+							<span>Nuevo</span>
+						</button>
+					</div>
+				</th>
+			</tr>
+		</thead>
+	)
+}
+
+function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
+	const [editable, setEditable] = useState(isNew)
+	const [showModal, setShowModal] = useState(false)
+	const toggleClass = editable ? 'has-background-primary-light' : ''
+	const [error, setError] = useState({ name: '', message: '' })
+
+	useEffect(() => {
+		setEditable(false)
+	}, [data])
+
+	return (
+		<>
+			<tr key={index}>
+				<th className={toggleClass}>{index + 1}</th>
+				<td className={toggleClass}>
+					{editable ? (
+						<input
+							data-index={index}
+							onChange={e => onChange(index, 'name', e.target.value)}
+							type='text'
+							value={data?.name}
+							className={`${toggleClass} input`}
+						></input>
+					) : (
+						data.name
+					)}
+				</td>
+				<td className={toggleClass}>
+					{editable ? (
+						<ImageInput onChange={e => onChange(index, 'image', e.target.files)} />
+					) : (
+						<ImageIcon showModal={() => setShowModal(true)} hasImage={data.image} />
+					)}
+				</td>
+				<td className={toggleClass}>
+					{editable ? (
+						<RichTextInput
+							className={toggleClass}
+							value={data.message}
+							onChange={value => onChange(index, 'message', value)}
+						/>
+					) : (
+						<div
+							className='static-text'
+							dangerouslySetInnerHTML={{ __html: editable ? '' : data.message }}
+						></div>
+					)}
+				</td>
+				<td className={toggleClass}>
+					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
+						<button
+							disabled={(editable && !data.name) || !data.message || data.message === '<p><br></p>'}
+							className='button'
+							onClick={() => {
+								if (editable) onSubmit(index)
+								setEditable(!editable)
+							}}
+						>
+							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
+						</button>
+						<button data-index={index} className='button' onClick={onDelete}>
+							<span className='icon'>
+								<RiDeleteBin5Line />
+							</span>
+						</button>
+					</div>
+				</td>
+				<td hidden={!showModal}>
+					<Modal show={showModal} onClick={() => setShowModal(false)} imgUrl={data.image} />
+				</td>
+			</tr>
+		</>
+	)
+}
 
 function Testimonials() {
 	const [data, setData] = useState(mockData())
@@ -67,163 +177,17 @@ function Testimonials() {
 	)
 }
 
-function ImageInput({ onChange, label = null }) {
-	const [name, setName] = useState('No hay imagen seleccionada')
-	const handleChange = e => {
-		setName(e.target.files[0].name)
-		onChange(e)
-	}
-
-	return label ? (
-		<div className='field'>
-			<div className='field-label is-normal mb-2'>
-				<label className='label has-text-left'>{label}</label>
-			</div>
-			<div className='field-body'>
-				<div className='field'>
-					<p className='control is-expanded'>
-						<div className='file has-name'>
-							<label className='file-label'>
-								<input className='file-input' type='file' name='resume' onChange={handleChange} />
-								<span className='file-cta'>
-									<span className='file-icon'>
-										<i className='fas fa-upload'></i>
-									</span>
-									<span className='file-label'>Eelgí tu imagen…</span>
-								</span>
-								<span className='file-name'>{name}</span>
-							</label>
-						</div>
-					</p>
-				</div>
-			</div>
-		</div>
-	) : (
-		<>
-			<button className='button has-background-primary-light'>
-				<label htmlFor='image' style={{ cursor: 'pointer' }}>
-					<span className='icon'>
-						<ImFolderUpload />
-					</span>
-				</label>
-			</button>
-			<input
-				style={{ display: 'none' }}
-				id='image'
-				type='file'
-				className='input'
-				accept='image/*'
-				onChange={onChange}
-			/>
-		</>
-	)
-}
-
-function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
-	const [editable, setEditable] = useState(isNew)
-	const [showModal, setShowModal] = useState(false)
-	const toggleClass = editable ? 'has-background-primary-light' : ''
-
-	useEffect(() => {
-		setEditable(false)
-	}, [data])
-
-	const modules = {
-		toolbar: [
-			[{ header: '1' }, { header: '2' }],
-			['bold', 'italic', 'underline'],
-			[{ list: 'ordered' }, { list: 'bullet' }],
-			['link', 'image'],
-			['clean']
-		],
-		clipboard: {
-			matchVisual: false
-		}
-	}
-
-	const formats = [
-		'header',
-		'bold',
-		'italic',
-		'underline',
-		'strike',
-		'blockquote',
-		'list',
-		'bullet',
-		'link',
-		'image'
-	]
-
+function Modal({ show, onClick, imgUrl }) {
 	return (
-		<>
-			<tr key={index}>
-				<th className={toggleClass}>{index + 1}</th>
-				<td className={toggleClass}>
-					{editable ? (
-						<input
-							data-index={index}
-							onChange={e => onChange(index, 'name', e.target.value)}
-							type='text'
-							value={data?.name}
-							className={`${toggleClass} input`}
-						></input>
-					) : (
-						data.name
-					)}
-				</td>
-				<td className={toggleClass}>
-					{editable ? (
-						<ImageInput onChange={e => onChange(index, 'image', e.target.files)} />
-					) : (
-						<abbr title='Mostrar Imagen' style={{ textDecoration: 'none' }}>
-							<span
-								className='icon'
-								onClick={() => setShowModal(true)}
-								style={{ cursor: 'pointer' }}
-							>
-								{data.image ? <BsCardImage /> : <MdOutlineImageNotSupported />}
-							</span>
-						</abbr>
-					)}
-				</td>
-				<td className={toggleClass}>
-					{editable ? (
-						<ReactQuill
-							theme='snow'
-							className={toggleClass}
-							value={data.message}
-							onChange={value => onChange(index, 'message', value)}
-							modules={modules}
-							formats={formats}
-						/>
-					) : (
-						<div
-							className='static-text'
-							dangerouslySetInnerHTML={{ __html: editable ? '' : data.message }}
-						></div>
-					)}
-				</td>
-				<td className={toggleClass}>
-					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
-						<button
-							className='button'
-							onClick={() => {
-								if (editable) onSubmit(index)
-								setEditable(!editable)
-							}}
-						>
-							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
-						</button>
-						<button data-index={index} className='button' onClick={onDelete}>
-							<span className='icon'>
-								<RiDeleteBin5Line />
-							</span>
-						</button>
-					</div>
-				</td>
-			</tr>
-			<Modal show={showModal} onClick={() => setShowModal(false)} imgUrl={data.image} />
-		</>
+		<div className={`modal ${show ? 'is-active' : ''}`}>
+			<div className='modal-background'></div>
+			<div className='modal-content'>
+				<p className='image is-4by3'>
+					<img src={imgUrl} alt='' />
+				</p>
+			</div>
+			<button className='modal-close is-large' aria-label='close' onClick={onClick}></button>
+		</div>
 	)
 }
 
@@ -250,11 +214,15 @@ function FormModal({ showForm, onClose }) {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		fetchData()
+		// fetchData()
 
 		if (error) return
 
+		// TODO: dispatch
+		console.log(response)
+
 		setName('')
+		setImage('')
 		setContent('')
 	}
 
@@ -265,7 +233,7 @@ function FormModal({ showForm, onClose }) {
 				<Form onSubmit={handleSubmit} title='Testimonio'>
 					<Input
 						label={'Nombre'}
-						placeholder={'Nombre de la actividad'}
+						placeholder={'Agregá tu nombre completo'}
 						onChange={setName}
 						value={name}
 					/>
@@ -279,47 +247,8 @@ function FormModal({ showForm, onClose }) {
 					<Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
 				</Form>
 			</div>
-			<button className='modal-close is-large' aria-label='close' onClick={onClose}></button>
+			<button onClick={onClose} className='modal-close is-large' aria-label='close'></button>
 		</div>
-	)
-}
-
-function Modal({ show, onClick, imgUrl }) {
-	return (
-		<div className={`modal ${show ? 'is-active' : ''}`}>
-			<div className='modal-background'></div>
-			<div className='modal-content'>
-				<p className='image is-4by3'>
-					<img src={imgUrl} alt='' />
-				</p>
-			</div>
-			<button className='modal-close is-large' aria-label='close' onClick={onClick}></button>
-		</div>
-	)
-}
-
-function Header({ onClick }) {
-	return (
-		<thead>
-			<tr>
-				<th>
-					<abbr title='Número'>N°</abbr>
-				</th>
-				<th>Nombre</th>
-				<th>Imagen</th>
-				<th>Mensaje</th>
-				<th>
-					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
-						<button className='button' onClick={onClick}>
-							<span className='icon'>
-								<VscNewFile />{' '}
-							</span>
-							<span>Nuevo</span>
-						</button>
-					</div>
-				</th>
-			</tr>
-		</thead>
 	)
 }
 

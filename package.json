@@ -11,6 +11,7 @@
 		"@testing-library/user-event": "^13.2.1",
 		"axios": "^0.21.1",
 		"bulma": "^0.9.4",
+		"flatlist-react": "^1.5.0",
 		"formik": "^2.2.9",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
@@ -20,15 +21,9 @@
 		"react-redux": "^7.2.4",
 		"react-responsive-carousel": "^3.2.23",
 		"react-router-dom": "^6.3.0",
-<<<<<<< HEAD
-		"react-scripts": "^4.0.3",
-		"react-spinners": "^0.13.4",
-		"sweetalert2": "^11.4.29",
-=======
 		"react-scripts": "^5.0.1",
 		"react-spinners": "^0.13.4",
 		"react-toastify": "^9.0.8",
->>>>>>> fbc5e7cbdb4fc1639bac70ca840e28e06dd42cb8
 		"yup": "^0.32.11"
 	},
 	"scripts": {

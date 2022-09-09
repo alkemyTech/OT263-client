@@ -14,7 +14,7 @@ export const routes = {
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
 		contacts: 'consultas',
-		news: 'novedades',
+		news: 'news',
 		activities: 'actividades',
 		categories: 'categorias',
 		testimonials: 'testimonios',

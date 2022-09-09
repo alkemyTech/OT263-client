@@ -13,6 +13,20 @@ const Get = () => {
 		.catch(err => console.log(err))
 }
 
+export const PostRegister = async (newUser) => {
+  const user = await axios.post('http://localhost:3001/users/auth/register', newUser)
+    .then(res => {return res})
+    .catch(err => {return err})
+  return user.data
+}
+
+export const PostLogin = async (data) => {
+  const user = await axios.post('http://localhost:3001/users/auth/login', data)
+    .then(res => {return res})
+    .catch(err => {return err})
+  return user.data
+}
+
 export const getUsers = async () => {
 	try{
     const users= await axios.get('http://localhost:3001/users', config)	

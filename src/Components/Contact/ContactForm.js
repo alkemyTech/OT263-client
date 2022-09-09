@@ -1,6 +1,7 @@
 import '../FormStyles.css';
 import {useState}from 'react'
-import { post } from '../../Services/apiService';
+import { createNewContact } from '../../Services/contact';
+
 
 function ContactForm() {    
     const [error, setError] = useState('')
@@ -24,13 +25,7 @@ function ContactForm() {
             setError("El email debe tener un formato valido")
             return
         }
-        try{
-            await post('http://localhost:3001/contacts',contact)
-            //sweet alert
-        }catch(err){
-            //sweet alert
-            console.log(err)
-        }
+        createNewContact(contact)?alert("Consulta enviada con exito"):alert("No se pudo enviar la consulta")
     }
     return (
         <form className="form-container" onSubmit={handleSubmit}>

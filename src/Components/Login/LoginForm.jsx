@@ -10,7 +10,7 @@ const LoginForm =()=> {
 
   const onSubmit = async (data) => {
     const user = await PostLogin(data)
-    console.log(user)
+    localStorage.setItem("token", user.token)
     user && navigate('/')
   }
 

@@ -26,7 +26,7 @@ const RegisterForm = () => {
         password
       }
       const user = await PostRegister(newUser)
-      console.log(user)
+      localStorage.setItem("token", user.token)
       user && navigate('/')
     },
   });

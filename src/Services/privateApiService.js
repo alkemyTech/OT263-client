@@ -37,11 +37,7 @@ export const getUsers = async () => {
 }
 
 export const deleteRequest = async (endpoint, id) => {
-  await axios.delete(`http://localhost:3001/${endpoint}/${id}`, config).then((res) => {
-    return res.status
-  }).catch(err => {
-    return err
-  })
+ return axios.delete(`http://localhost:3001/${endpoint}/${id}`, config)
 }
 
 

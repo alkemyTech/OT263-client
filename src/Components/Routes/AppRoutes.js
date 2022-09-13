@@ -16,10 +16,11 @@ import Profile from '../../Pages/Profile'
 import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
+import { useSelector } from 'react-redux'
 
 const AppRoutes = () => {
-	const user = true // TODO: replace for store value
-	const isAdmin = true // TODO: replace for store value
+	const user = useSelector((state) => state.user.currentUser)
+	const isAdmin = user?.roleId === 1
 
 	return (
 		<Routes>

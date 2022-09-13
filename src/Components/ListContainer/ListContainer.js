@@ -8,13 +8,11 @@ function ListContainer({ Component, endpoint }) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
     const { id } = useParams()
-    console.log(Component)
     
     useEffect(() => {
         const newEndpoint = id ? `${endpoint}/${id}` : endpoint
         get(newEndpoint)
             .then(({data}) => {
-                console.log(data)
                 setData(data)
                 setIsLoaded(true)
             },

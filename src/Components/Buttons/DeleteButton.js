@@ -4,17 +4,22 @@ import { deleteRequest } from "../../Services/privateApiService";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import Alert from "../Alert/Alert";
 
-function DeleteButton({ endpoint, id }) {
-    // Example : <DeleteButton endpoint={'novedades'} id={id}/>
-    
+function DeleteButton({ endpoint, id, list, setList }) {
+    // Example : <DeleteButton endpoint={'novedades'} id={id} list={news} setList={setNews} />
+
     const handleDelete = async (endpoint, id) => {
         try {
-            await deleteRequest(endpoint, id);
+            await deleteRequest(endpoint, id); //deletes from database
+
+            //deletes from view
+            const newList = list.filter((item) => item.id !== id);
+            setList(newList);
+
             Alert.success().timer().center().fire("Eliminado con éxito");
         } catch (error) {
             Alert.error().timer().center().fire("Operación Fallida");
         }
-    }
+    };
 
     const emitDeleteAlert = async () => {
         const result = await Alert.question()
@@ -34,7 +39,7 @@ function DeleteButton({ endpoint, id }) {
             onClick={emitDeleteAlert}
         >
             <span className="icon">
-                <RiDeleteBack2Fill size='2em'/>
+                <RiDeleteBack2Fill size="2em" />
             </span>
         </button>
     );

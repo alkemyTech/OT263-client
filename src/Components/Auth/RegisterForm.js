@@ -3,10 +3,13 @@ import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
 import { PostRegister } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../actions/userActions';
 
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -26,6 +29,8 @@ const RegisterForm = () => {
         password
       }
       const user = await PostRegister(newUser)
+      dispatch(logIn(user))
+
       localStorage.setItem("token", user.token)
       user && navigate('/')
     },

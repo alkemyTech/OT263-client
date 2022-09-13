@@ -29,8 +29,8 @@ const LoginForm =()=> {
                             errors, touched
                         }) => (
                             <Form className='box is-shadowless'>
-                                <p className='field'>Bienvenido</p>
-                                <h6 className='field'>Inicia sesión en tu cuenta!</h6>
+                                <p className='field mb-0 is-size-5'>Bienvenido</p>
+                                <h6 className='field is-size-3 has-text-weight-semibold'>Inicia sesión en tu cuenta!</h6>
                                 <Field className="field input" name="email" type="email" placeholder="Email" />
                                 {errors.email && touched.email ? <div>{errors.email}</div> : null}
                                 <Field className=" field input" name="password" type="password" placeholder="Contraseña" />

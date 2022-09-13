@@ -6,10 +6,12 @@ function Register() {
     return (
         <div className="columns my-0">
             <div className="column is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
-                <p className="subtitle">Bienvenido</p>
+                <div >
+                    <p className="subtitle mb-0">Bienvenido</p>
                 <span className="title">Crea una cuenta</span>
                 <RegisterForm />
-                <p className="">
+                    </div>
+                <p>
                     ¿Ya tienes una cuenta?{" "}
                     <strong style={{ color: "red" }}>Inicia Sesión</strong>
                 </p>

@@ -34,7 +34,7 @@ const RegisterForm = () => {
 
   return (
 
-        <form className='form-container'  onSubmit={handleSubmit}>
+        <form className='register-container' onSubmit={handleSubmit}>
           <input className={`input is-hovered ${errors.firstName ? 'is-danger mb-0': 'mb-2'}`}
             id="firstName" 
             type="text" 

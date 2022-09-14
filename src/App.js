@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import CategoryList from './Components/Categories/CategoryList'
 import Header from './Components/Header/Header'
 import AppRoutes from './Components/Routes/AppRoutes'
 
@@ -11,7 +10,7 @@ function App() {
 				<Header/>
 				<AppRoutes />				
 			</BrowserRouter>
-			<CategoryList/>
+			
 		</div>
 	)
 }

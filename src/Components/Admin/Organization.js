@@ -41,14 +41,14 @@ const Organization = () => {
 			const fileUrl = URL.createObjectURL(file)
 			setImgUrl(fileUrl)
 		}
-
 		getImgData(formik.values.image)
-	}, [formik.values.image])
+	}, [formik.values.image, formik])
 
 	return (
 		<div className='hero is-fullheight'>
 			<div className='hero-body columns is-centered'>
 				<div className='column is-10-desktop is-full-mobile'>
+					<h1 className='title'>Editar Organización</h1>
 					<form onSubmit={formik.handleSubmit} encType='multipart/form-data' className='box'>
 						<div
 							className='field'
@@ -61,10 +61,13 @@ const Organization = () => {
 							}}
 						></div>
 						<div className='field'>
-							<label className='label'>Nombre</label>
+							<label className='label' htmlFor='name'>
+								Nombre
+							</label>
 							<input
 								className={`input ${hasErrors('name') ? 'is-danger' : ''}`}
 								type='text'
+								id='name'
 								name='name'
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
@@ -84,7 +87,10 @@ const Organization = () => {
 								name='image'
 								type='file'
 								accept='image/*'
-								onChange={e => formik.setFieldValue('image', e.currentTarget.files[0])}
+								onChange={e => {
+									formik.setFieldValue('image', e.currentTarget.files[0])
+									if (!formik.touched.image) formik.setTouched({ ...formik.touched, image: true })
+								}}
 								onBlur={formik.handleBlur}
 							/>
 							<div className=''>{formik.values.image?.name}</div>
@@ -97,7 +103,15 @@ const Organization = () => {
 							<div className='field-body'>
 								<div className='field'>
 									<div className='control is-expanded has-text-right'>
-										<button className='button  is-link' type='submit'>
+										<button
+											className='button  is-link'
+											type='submit'
+											disabled={
+												!Object.keys(formik.touched).length ||
+												hasErrors('name') ||
+												hasErrors('image')
+											}
+										>
 											Guardar
 										</button>
 									</div>

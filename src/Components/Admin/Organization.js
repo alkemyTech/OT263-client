@@ -1,12 +1,14 @@
-import React from 'react'
-import { FormikProvider, useFormik } from 'formik'
+import React, { useEffect, useState } from 'react'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
+// import useAxios from '../../app/hooks/useAxios'
 
 const Organization = () => {
 	const formik = useFormik({
 		initialValues: {
-			name: '',
-			image: ''
+			name: 'Somos Más',
+			image:
+				'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
 		},
 		validationSchema: Yup.object({
 			name: Yup.string()
@@ -21,15 +23,43 @@ const Organization = () => {
 		}
 	})
 
+	// TODO: fetchData on submit
+	// const { fetchData, response, error, liading } = useAxios({
+	// 	url: 'http://localhost:3001/organization/1',
+	// 	method: 'put',
+	// 	body: formik.values,
+	// 	autorun: false
+	// })
+
+	const [imgUrl, setImgUrl] = useState(formik.values.image)
+
 	const hasErrors = field => formik.touched[field] && formik.errors[field]
 
-	console.log(formik)
+	useEffect(() => {
+		const getImgData = file => {
+			if (typeof file !== 'object') return file
+			const fileUrl = URL.createObjectURL(file)
+			setImgUrl(fileUrl)
+		}
+
+		getImgData(formik.values.image)
+	}, [formik.values.image])
 
 	return (
 		<div className='hero is-fullheight'>
 			<div className='hero-body columns is-centered'>
 				<div className='column is-10-desktop is-full-mobile'>
 					<form onSubmit={formik.handleSubmit} encType='multipart/form-data' className='box'>
+						<div
+							className='field'
+							style={{
+								height: '33vh',
+								background: `url(${imgUrl})`,
+								backgroundSize: 'cover',
+								backgroundRepeat: 'no-repeat',
+								backgroundPosition: 'center center'
+							}}
+						></div>
 						<div className='field'>
 							<label className='label'>Nombre</label>
 							<input

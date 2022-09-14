@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const useAxios = ({ url, method, body = null, headers = null, autoRun = true }) => {
+const useAxios = ({ url, method = 'get', body = null, autoRun = true }) => {
 	const [response, setResponse] = useState(null)
 	const [error, setError] = useState('')
 	const [loading, setloading] = useState(true)
 
 	const fetchData = () => {
-		axios[method](url, JSON.parse(headers), JSON.parse(body))
+		axios[method](url, JSON.parse(body))
 			.then(res => {
 				setResponse(res)
 			})
@@ -22,7 +22,7 @@ const useAxios = ({ url, method, body = null, headers = null, autoRun = true }) 
 	useEffect(() => {
 		if (!autoRun) return
 		fetchData()
-	}, [method, url, body, headers, autoRun])
+	}, [method, url, body, autoRun])
 
 	return { fetchData, response, error, loading }
 }

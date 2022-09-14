@@ -1,7 +1,6 @@
 import styles from './CarouselImage.module.css'
 
 function Slider({ imageUrl, text, align }) {
-    console.log(imageUrl)
     const imgStyle = {
         width: '100%',
         maxWidth: '100vw',

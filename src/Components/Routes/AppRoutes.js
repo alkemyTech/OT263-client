@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux'
 
 const AppRoutes = () => {
 	const user = useSelector((state) => state.user.currentUser)
-	const isAdmin = true
+	const isAdmin = user?.roleId === 1
 
 	return (
 		<Routes>

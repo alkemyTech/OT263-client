@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './TextEditor.css'
 
-const TextEditor = ({ placeholder, value, onChange }) => {
+const TextEditor = ({ placeholder, value, onChange, error = '' }) => {
 	const modules = {
 		toolbar: [
 			[{ header: '1' }, { header: '2' }],
@@ -46,9 +46,11 @@ const TextEditor = ({ placeholder, value, onChange }) => {
 						onChange={onChange}
 						modules={modules}
 						formats={formats}
+						className={`${error ? 'is-danger' : ''}`}
 					/>
 				</div>
 			</div>
+			<p className='help is-danger'>{error}</p>
 		</div>
 	)
 }

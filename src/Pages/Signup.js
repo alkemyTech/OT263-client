@@ -1,10 +1,10 @@
 import React from 'react'
-import RegisterForm from '../Components/Auth/RegisterForm'
+import Register from '../Components/Register/Register'
 
 const Signup = () => {
 	return (
 		<div>
-			<RegisterForm />
+			<Register />
 		</div>
 	)
 }

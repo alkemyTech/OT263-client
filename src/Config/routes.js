@@ -1,7 +1,7 @@
 export const routes = {
 	home: '/',
 	about: '/nosotros',
-	news: '/novedades',
+	news: '/news',
 	testimonials: '/testimonios',
 	newTestimonial: '/nuevo-testimonio',
 	contact: '/contacto',
@@ -9,12 +9,13 @@ export const routes = {
 	login: '/ingreso',
 	signup: '/registro',
 	profile: '/mi-perfil',
+	activities: '/actividades',
 	admin: {
 		root: '/backoffice',
 		newMember: 'agregar-miembro',
 		newNotice: 'agregar-novedad',
 		contacts: 'consultas',
-		news: 'novedades',
+		news: 'news',
 		activities: 'actividades',
 		categories: 'categorias',
 		testimonials: 'testimonios',

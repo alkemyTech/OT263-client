@@ -31,7 +31,7 @@ const CreateOrEditNews = ({ news: { id, name, image, content, category } }) => {
   });
 
   const { fetchData, error, response } = useAxios({
-		method: isNewNote ? 'post' : 'patch',
+		method: isNewNote ? 'post' : 'put',
 		headers: JSON.stringify({
 			'Content-Type': 'application/json',
 			Accept: '*/*',

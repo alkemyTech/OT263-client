@@ -1,17 +1,16 @@
 import React from "react";
 import "./NewsDetail.css";
 
-
-const NewsDetail = ({ news }) => {
+const NewsDetail = ({ data }) => {    
     return (
         <div className="news-detail-container">
             <img
                 className="news-detail-image"
-                src={news.image}
-                alt={news.name}
+                src={data.image}
+                alt={data.name}
             />
-            <h1 className="news-detail-title">{news.name}</h1>
-            <p className="news-detail-body">{news.content}</p>
+            <h1 className="news-detail-title">{data.name}</h1>
+            <p className="news-detail-body">{data.content}</p>
         </div>
     );
 };

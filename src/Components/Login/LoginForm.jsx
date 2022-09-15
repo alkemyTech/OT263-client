@@ -1,13 +1,22 @@
 import 'bulma/css/bulma.min.css';
-import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
-
-const SignupSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Se requiere email'),
-    password: Yup.string().required('Se requiere contraseña').min(6, 'La contraseña requiere al menos 6 caracteres')
-  });
+import { PostLogin } from "../../Services/privateApiService"
+import {useNavigate} from "react-router-dom";
+import { loginSchema } from '../../schemas';
+import { logIn } from '../../actions/userActions';
+import { useDispatch } from 'react-redux';
 
 const LoginForm =()=> {
+  const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+  const onSubmit = async (data) => {
+    const user = await PostLogin(data)
+    dispatch(logIn(user))
+    
+    localStorage.setItem('token', user.token)
+    user && navigate('/')
+  }
 
     return(
         <div>
@@ -17,17 +26,15 @@ const LoginForm =()=> {
                         email:"",
                         password:""
                     }}
-                    validationSchema={SignupSchema}
-                    onSubmit={values => {
-                        console.log(values);
-                    }}
+                    validationSchema={loginSchema}
+                    onSubmit={onSubmit}
                     >
                         {({
                             errors, touched
                         }) => (
                             <Form className='box is-shadowless'>
-                                <p className='field'>Bienvenido</p>
-                                <h6 className='field'>Inicia sesión en tu cuenta!</h6>
+                                <p className='field mb-0 is-size-5'>Bienvenido</p>
+                                <h6 className='field is-size-3 has-text-weight-semibold'>Inicia sesión en tu cuenta!</h6>
                                 <Field className="field input" name="email" type="email" placeholder="Email" />
                                 {errors.email && touched.email ? <div>{errors.email}</div> : null}
                                 <Field className=" field input" name="password" type="password" placeholder="Contraseña" />

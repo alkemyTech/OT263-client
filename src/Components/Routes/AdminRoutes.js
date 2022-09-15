@@ -7,12 +7,12 @@ import MembersForm from '../Members/MembersForm'
 import Contacts from '../Admin/Contacts'
 import AdminNews from '../Admin/News'
 import Activities from '../Admin/Activities'
-import Categories from '../Admin/Categories'
 import AdminTestimonials from '../Admin/Testimonials'
 import Organization from '../Admin/Organization'
 import Slides from '../Admin/Slides'
 import Users from '../Admin/Users'
 import Members from '../Admin/Members'
+import CategoriesList from '../Admin/Categories/CategoriesList'
 
 import { routes } from '../../Config/routes'
 
@@ -22,7 +22,7 @@ const AdminRoutes = () => {
 			<Route path={routes.home} element={<Admin />} />
 			<Route path={routes.admin.news} element={<AdminNews />} />
 			<Route path={routes.admin.activities} element={<Activities />} />
-			<Route path={routes.admin.categories} element={<Categories />} />
+			<Route path={routes.admin.categories} element={<CategoriesList />} />
 			<Route path={routes.admin.testimonials} element={<AdminTestimonials />} />
 			<Route path={routes.admin.organization} element={<Organization />} />
 			<Route path={routes.admin.slides} element={<Slides />} />

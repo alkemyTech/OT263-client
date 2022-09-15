@@ -1,10 +1,15 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { registerSchema } from '../../Schemas';
+import { registerSchema } from '../../schemas';
+import { PostRegister } from "../../Services/privateApiService"
+import {useNavigate} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../actions/userActions';
 
 
 const RegisterForm = () => {
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const {values, errors, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -15,28 +20,26 @@ const RegisterForm = () => {
 
     },
     validationSchema: registerSchema,
-    onSubmit: values => {
+    onSubmit: async values => {
       const {firstName, lastName, email, password} = values
       const newUser = {
         firstName,
         lastName,
         email,
         password
-    }
-      
+      }
+      const user = await PostRegister(newUser)
+      dispatch(logIn(user))
+
+      localStorage.setItem("token", user.token)
+      user && navigate('/')
     },
   });
 
 
   return (
-    <div className='columns'>
-    <div className='column bulma-center-mixin-parent is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-center mx-0 px-0'>
-      <div className='mt-4 bulma-center-mixin'>
-        <div className='is-flex is-flex-direction-column mb-4' style={{margin:"0 auto", maxWidth: "450px"}}>
-        <p className='subtitle is-6'>Bienvenido</p>
-        <span className='title'>Crea una cuenta</span>
-        </div>
-        <form className='form-container'  onSubmit={handleSubmit}>
+
+        <form className='register-container' onSubmit={handleSubmit}>
           <input className={`input is-hovered ${errors.firstName ? 'is-danger mb-0': 'mb-2'}`}
             id="firstName" 
             type="text" 
@@ -79,16 +82,8 @@ const RegisterForm = () => {
             type="submit">
               <span className='has-text-white-ter is-size-4'>Registrarse</span>
           </button>
-        </form>
-      </div>
-      <p className='' style={{paddingTop:'150px', textAlign:"center"}}>
-        ¿Ya tienes una cuenta? <strong style={{color:'red'}}>Inicia Sesión</strong>
-      </p>
-    </div>
-    <figure className='column is-hidden-mobile is-half' style={{boxSizing:'border-box'}}>
-    <img  src='images/Rectangle-4.png' alt="" />
-    </figure>
-    </div>
+      </form>
+   
   );
 }
  

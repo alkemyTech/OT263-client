@@ -1,7 +1,8 @@
 import React from 'react'
+import TableNews from '../Tables/TableNews/TableNews'
 
 const News = () => {
-	return <div>Novedades</div>
+	return <TableNews/>;
 }
 
 export default News

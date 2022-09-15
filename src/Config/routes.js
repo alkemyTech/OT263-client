@@ -9,6 +9,7 @@ export const routes = {
 	login: '/ingreso',
 	signup: '/registro',
 	profile: '/mi-perfil',
+	activities: '/actividades',
 	admin: {
 		root: '/backoffice',
 		newMember: 'agregar-miembro',

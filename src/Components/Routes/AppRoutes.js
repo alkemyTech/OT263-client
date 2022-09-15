@@ -11,6 +11,7 @@ import Login from '../../Pages/Login'
 import Signup from '../../Pages/Signup'
 import AdminRoutes from './AdminRoutes'
 import TestimonialForm from '../Testimonials/TestimonialsForm'
+import Activity from '../Activities/Activity'
 
 import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
@@ -27,6 +28,7 @@ const AppRoutes = () => {
 			<Route path={routes.news} element={<News />} >
 				<Route path=':id' element={<News />} />
 			</Route>
+			<Route path={`${routes.activities}/:id`} element={<Activity/>}/>
 			<Route path={routes.testimonials} element={<Testimonials />} />
 			<Route
 				path={routes.newTestimonial}

@@ -3,7 +3,6 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 
 import Home from '../../Pages/Home'
 import About from '../../Pages/About'
-import News from '../../Pages/News'
 import Testimonials from '../../Pages/Testimonials'
 import Contact from '../../Pages/Contact'
 import GetInvolved from '../../Pages/GetInvolved'
@@ -15,6 +14,9 @@ import Activity from '../Activities/Activity'
 
 import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
+import ListContainer from '../ListContainer/ListContainer'
+import NewsList from '../News/NewsList'
+import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
 
 const AppRoutes = () => {
@@ -25,8 +27,9 @@ const AppRoutes = () => {
 		<Routes>
 			<Route path={routes.home} element={<Home />} />
 			<Route path={routes.about} element={<About />} />
-			<Route path={routes.news} element={<News />} >
-				<Route path=':id' element={<News />} />
+			<Route path='news'>	
+				<Route index element={<ListContainer Component={NewsList} endpoint={"/news"} />}/>
+				<Route path=':id' element={<ListContainer Component={NewsDetail} endpoint={"/news"} />}/>
 			</Route>
 			<Route path={`${routes.activities}/:id`} element={<Activity/>}/>
 			<Route path={routes.testimonials} element={<Testimonials />} />

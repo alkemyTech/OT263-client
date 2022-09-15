@@ -1,7 +1,7 @@
 export const routes = {
 	home: '/',
 	about: '/nosotros',
-	news: '/novedades',
+	news: '/news',
 	testimonials: '/testimonios',
 	newTestimonial: '/nuevo-testimonio',
 	contact: '/contacto',

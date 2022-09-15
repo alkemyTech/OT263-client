@@ -7,7 +7,7 @@ const useAxios = ({ url, method, body = null, headers = null, autoRun = true }) 
 	const [loading, setloading] = useState(true)
 
 	const fetchData = () => {
-		axios[method](url, JSON.parse(headers), JSON.parse(body))
+		axios[method](url, body) //TODO: Agregar la configuración para headers
 			.then(res => {
 				setResponse(res)
 			})

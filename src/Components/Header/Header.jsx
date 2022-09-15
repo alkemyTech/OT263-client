@@ -24,7 +24,7 @@ const Header =()=> {
             </div>
             <div id="navMenu" className="navbar-menu">
                 <div className="navbar-end">
-                    <a className="navbar-item" style={{"font-weight":"bold"}} href={routes.home}>Inicio</a>
+                    <a className="navbar-item" style={{fontWeight:"bold"}} href={routes.home}>Inicio</a>
                     <a className="navbar-item" href={routes.about}>Nosotros</a>
                     <a className="navbar-item" href={routes.news}>Novedades</a>
                     <a className="navbar-item" href={routes.testimonials}>Testimonios</a>
@@ -38,7 +38,7 @@ const Header =()=> {
                                 </a>
                             </p>
                             <p className="control">
-                                <a className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} href={routes.signup}>
+                                <a className="button is-rounded" style={{backgroundColor:"#FF0000", color:"white"}} href={routes.signup}>
                                     <span>Registrate</span>
                                 </a>
                             </p>

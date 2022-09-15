@@ -12,7 +12,8 @@ export const routes = {
 	admin: {
 		root: '/backoffice',
 		newMember: 'agregar-miembro',
-		newNotice: 'agregar-novedad',
+		newNews: 'nueva-novedad',
+		editNews: 'Editar-novedad',
 		contacts: 'consultas',
 		news: 'novedades',
 		activities: 'actividades',

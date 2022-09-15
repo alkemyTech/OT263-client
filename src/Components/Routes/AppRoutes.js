@@ -16,7 +16,7 @@ import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
 
 const AppRoutes = () => {
-	const user = true // TODO: replace for store value
+	const user = false // TODO: replace for store value
 	const isAdmin = true // TODO: replace for store value
 
 	return (

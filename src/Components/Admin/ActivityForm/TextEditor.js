@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './TextEditor.css'
 
-const TextEditor = ({ placeholder, value, onChange }) => {
+const TextEditor = ({ placeholder, value, onChange, label="Descripción"}) => {
 	const modules = {
 		toolbar: [
 			[{ header: '1' }, { header: '2' }],
@@ -34,7 +34,7 @@ const TextEditor = ({ placeholder, value, onChange }) => {
 	return (
 		<div className='field'>
 			<div className='field-label is-normal mb-2'>
-				<label className='label has-text-left'>Descripción</label>
+				<label className='label has-text-left'>{label}</label>
 			</div>
 			<div className='field-body'>
 				<div className='field'>

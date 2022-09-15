@@ -1,6 +1,7 @@
 import React from "react";
 import "./NewsDetail.css";
 
+
 const NewsDetail = ({ news }) => {
     return (
         <div className="news-detail-container">

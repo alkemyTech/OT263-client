@@ -3,11 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-<<<<<<< HEAD
 		"@ckeditor/ckeditor5-build-classic": "^35.1.0",
-=======
-		"@ckeditor/ckeditor5-build-classic": "^35.0.1",
->>>>>>> fbc5e7cbdb4fc1639bac70ca840e28e06dd42cb8
 		"@ckeditor/ckeditor5-react": "^5.0.2",
 		"@reduxjs/toolkit": "^1.6.1",
 		"@testing-library/jest-dom": "^5.16.5",

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const token = localStorage.getItem('token');
 
-export const get =async(url)=> {
+export const get =async(url, data)=> {
     //Si no hay token se ejecuta este bloque para las solicitudes get
     if(!token){
         try {

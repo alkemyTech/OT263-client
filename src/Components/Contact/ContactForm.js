@@ -1,5 +1,7 @@
 import '../FormStyles.css';
 import {useState}from 'react'
+import { createNewContact } from '../../Services/contact';
+
 
 function ContactForm() {    
     const [error, setError] = useState('')
@@ -13,7 +15,7 @@ function ContactForm() {
             setContact({...contact, [target.name]: target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async  (e) => {
         e.preventDefault()
         if(Object.values(contact).includes('')){
             setError('Todos los campos son obligatorios')
@@ -23,7 +25,7 @@ function ContactForm() {
             setError("El email debe tener un formato valido")
             return
         }
-        console.log(contact)
+        createNewContact(contact)?alert("Consulta enviada con exito"):alert("No se pudo enviar la consulta")
     }
     return (
         <form className="form-container" onSubmit={handleSubmit}>

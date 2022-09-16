@@ -18,6 +18,7 @@ import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
+import TestimonialsList from '../Testimonials/TestiminialsList'
 
 const AppRoutes = () => {
 	const user = useSelector((state) => state.user.currentUser)
@@ -32,7 +33,7 @@ const AppRoutes = () => {
 				<Route path=':id' element={<ListContainer Component={NewsDetail} endpoint={"/news"} />}/>
 			</Route>
 			<Route path={`${routes.activities}/:id`} element={<Activity/>}/>
-			<Route path={routes.testimonials} element={<Testimonials />} />
+			<Route path={routes.testimonials} element={<ListContainer Component={TestimonialsList} endpoint={"/testimonials"}/>} />
 			<Route
 				path={routes.newTestimonial}
 				element={user ? <TestimonialForm /> : <Navigate to={routes.login} />}

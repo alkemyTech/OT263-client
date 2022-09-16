@@ -2,12 +2,16 @@ import React from 'react';
 import 'bulma/css/bulma.min.css';
 import logo from './Group-33.png';
 import { routes } from '../../Config/routes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import { useJwt } from "react-jwt";
+import { logOut } from "../../actions/userActions";
 
 const Header =()=> {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.user.currentUser);
-	const isAdmin = user?.roleId === 1
+    const { decodedToken } = useJwt(user);
+    const isAdmin = decodedToken?.roleId === 1;
 
     const toggleBurger = () => {
         let burgerIcon = document.getElementById('burger');
@@ -15,7 +19,11 @@ const Header =()=> {
         burgerIcon.classList.toggle('is-active');
         dropMenu.classList.toggle('is-active');
       };
-      
+    
+    const handleLogOut = () => {
+        localStorage.removeItem("token");
+        dispatch(logOut());
+    };
 
     return(
         <nav className="navbar has-navbar-fixed-top has-shadow" role='navigation'>
@@ -37,8 +45,17 @@ const Header =()=> {
                     <Link to={routes.testimonials} className="navbar-item" >Testimonios</Link>
                     <Link to={routes.contact} className="navbar-item" >Contacto</Link>
                     <Link to={routes.getInvolved} className="navbar-item" >Contribuye</Link>
+                    {isAdmin && <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>}
                     {user 
-                        ?   <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
+                        ?   <>  
+                                <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
+                                <button
+                                    className="button is-danger is-outlined is-rounded is-size-7 is-align-self-center mx-3"
+                                    onClick={handleLogOut}
+                                    >
+                                    Cerrar Sesión
+                                </button>
+                            </>
                         :   <div className="navbar-item">
                                 <div className="field is-grouped">
                                     <p className="control">
@@ -54,7 +71,6 @@ const Header =()=> {
                                 </div>
                             </div>
                     }
-                    {isAdmin && <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>}
                 </div>
             </div>
         </nav>

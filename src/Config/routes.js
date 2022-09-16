@@ -19,7 +19,7 @@ export const routes = {
 		activities: 'actividades',
 		categories: 'categorias',
 		testimonials: 'testimonios',
-		organization: 'organizacion',
+		organization: 'editar-organizacion',
 		slides: 'slides',
 		users: 'usuarios',
 		members: 'miembros'

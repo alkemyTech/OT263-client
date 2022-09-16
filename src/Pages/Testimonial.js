@@ -1,6 +1,6 @@
-export default function Testimonial({ testimonial, showSelected} ) {
+export default function Testimonial({ testimonial } ) {
     return (
-        <div onClick={()=> showSelected(testimonial)} className="column is-two-thirds-mobile is-two-thirds-tablet is-half-desktop is-one-quarter-widescreen  m-auto">
+        <div  className="column is-two-thirds-mobile is-two-thirds-tablet is-half-desktop is-one-quarter-widescreen  m-auto">
             <div style={{ background: "#FDFFA4", border: "1px solid #0038FF", fontFamily: "Poppins", borderRadius: "2rem" }} className="card is-rounded">
                 <div className="card-content p-4">
                     <div className="">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { deleteRequest } from "../../../Services/privateApiService";
 import Category from './Category'
+import deleteHelper from '../../Buttons/deleteHelper'
 import './Category.css'
 
 
@@ -18,14 +18,7 @@ export default function CategoriesList({ data }) {
     }, [])
 
     const handleDelete = async (id) => {
-        try {
-        await deleteRequest('categories', id); 
-        
-        const newList = categories.filter((item) => item.id !== id);
-        setCategories(newList);
-        } catch (error) {
-            console.log(error)
-        }
+        await deleteHelper(id, 'categories', categories, setCategories)
     }
     
     if(loaded)

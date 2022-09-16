@@ -6,7 +6,7 @@ export default function Category({ category: { id, name, email }, handleDelete }
             <td>{id}</td>
             <th>{name}</th>
             <td>{email}</td>
-            <td><DeleteButton onDelete={() => handleDelete(id)} /></td>
+            <td><DeleteButton handleDelete={() => handleDelete(id)} /></td>
         </tr>
     )
 }

@@ -23,23 +23,24 @@ const TestimonialForm = () => {
 
 	return (
 		<form className='form-container' onSubmit={handleSubmit}>
-			<h1>Deja tu Testimonio</h1>
+			<h1 className='title'>Deja tu Testimonio</h1>
 			<input
 				className='input-field'
 				type='text'
 				name='name'
 				value={initialValues.name}
 				onChange={handleChange}
-				placeholder='Testimonial Title'
+				placeholder='Titulo'
 			></input>
-			<input
+			<textarea
+				style={{height:"15rem"}}
 				className='input-field'
 				type='text'
 				name='description'
 				value={initialValues.description}
 				onChange={handleChange}
-				placeholder='Testimonial description'
-			></input>
+				placeholder='Descripción'
+			></textarea>
 			<button className='submit-btn' type='submit'>
 				Send
 			</button>

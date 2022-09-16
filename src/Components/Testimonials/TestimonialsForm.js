@@ -23,7 +23,7 @@ const TestimonialForm = () => {
 
 	return (
 		<form className='form-container' onSubmit={handleSubmit}>
-			<h1 className='title'>Deja tu Testimonio</h1>
+			<h1 className='title is-4'>Deja tu Testimonio</h1>
 			<input
 				className='input-field'
 				type='text'

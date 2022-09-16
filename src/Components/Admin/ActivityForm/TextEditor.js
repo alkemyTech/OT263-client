@@ -4,11 +4,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './TextEditor.css'
 
-<<<<<<< HEAD
-const TextEditor = ({ placeholder, value, onChange, label="Descripción"}) => {
-=======
-const TextEditor = ({ placeholder, value, onChange, error = '' }) => {
->>>>>>> 2896bd3c745196b88dc4b279bf50ed386619e863
+const TextEditor = ({ placeholder, value, onChange, label="Descripción", error}) => {
 	const modules = {
 		toolbar: [
 			[{ header: '1' }, { header: '2' }],

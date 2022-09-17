@@ -38,12 +38,12 @@ const CreateOrEditNews = ({ news: { id, name, image, content, category } }) => {
       Authorization: 'Bearer token'
 		}),
 		url: `http://localhost:3001/news/${!isNewNote? id : ''}`,
-		body:{
+		body:JSON.stringify({
 			name: values.name,
       image: values.image,
       content: values.content,
       categoryId: values.category
-    },
+    }),
 		autoRun: false
 	})
 

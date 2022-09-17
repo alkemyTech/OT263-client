@@ -1,9 +1,8 @@
-import { MdEdit, MdDelete } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
+import DeleteButton from '../../Buttons/DeleteButton';
 
-const TableTemplate =(props)=> {
-    const { data } = props;
-
-    return(
+const TableTemplate =({ data, handleDelete})=> {
+        return(
         <table className="table is-bordered is-hoverable has-text-centered">
             <thead>
                 <tr>
@@ -13,12 +12,22 @@ const TableTemplate =(props)=> {
                 </tr>
             </thead>
             <tbody>
-                {data.map((i, index) => (<tr key={index}>{
-                    Object.entries(i).map((i, index) => (<td key={index}>{(i[0]=='image')?<img width={320} src={i[1]}/>:i[1]}</td>) )    
-                }
-                <td><MdEdit/></td>
-                <td><MdDelete/></td>
-                </tr>))}
+                {data.map((i, index) => (
+                    <tr key={index}>{
+                        Object.entries(i).map((i, index) => (
+                        <td key={index}>
+                            {(i[0]=='image') 
+                                ? <img width={320} src={i[1]}/>
+                                : i[1]
+                                }
+                        </td>
+                ))}
+                        <td><MdEdit/></td>
+                            <td key={index}>
+                                <DeleteButton handleDelete={() => handleDelete(i.id)}/>
+                            </td>
+                    </tr>
+                    ))}
             </tbody>
         </table>
     );

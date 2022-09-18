@@ -17,11 +17,10 @@ const Get = () => {
 		.catch(err => console.log(err))
 }
 
-export const get=async (endPoint)=>{
+export const get=endPoint=>{
 	try{
-		return await axiosBaseUrl.get(endPoint)		
-	}catch(err){
-		console.log(err)
+		return  axiosBaseUrl.get(endPoint)		
+	}catch(err){		
 		return err
 	}
 }

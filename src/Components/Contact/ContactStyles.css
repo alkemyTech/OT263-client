@@ -1,7 +1,18 @@
 *{
     font-family: 'Poppins';
 }
+.container{
+    margin: 0 1rem 0 1rem
+}
 
+.text-container{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 .contact-container {
     position: relative;
     width: 90%;
@@ -19,16 +30,9 @@
     overflow: hidden;
 }
 
-.text-container {
-    width: 30%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
 
 .input-field {
-    width: 90%;
+    width: 100%;
     height: 35px;    
     background: #FFFFFF;
     border: 0.698095px solid #000000;
@@ -44,7 +48,7 @@
 }
 
 .textarea-field {
-    width: 90%;
+    width: 100%;
     height: 100px;
     background: #FFFFFF;
     border: 0.698095px solid #000000;
@@ -76,4 +80,8 @@
 .submit-btn:hover{
     cursor: pointer;
     background-color: #3498DB;
+}
+
+@media only screen and (max-width: 600px) {
+    
 }

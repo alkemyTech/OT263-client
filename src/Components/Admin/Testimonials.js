@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useAxios from '../../app/hooks/useAxios'
+import Fade from 'react-reveal/Fade';
 
 import Form from '../Admin/ActivityForm/Form'
 import Input from '../Admin/ActivityForm/Input'
@@ -156,6 +157,7 @@ function Testimonials() {
 	}
 
 	return (
+    <Fade>
 		<div className='table-container'>
 			<table className='table is-fullwidth'>
 				<Header onClick={() => setShowForm(true)} />
@@ -174,6 +176,7 @@ function Testimonials() {
 			</table>
 			<FormModal showForm={showForm} onClose={() => setShowForm(false)} />
 		</div>
+    </Fade>
 	)
 }
 

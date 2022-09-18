@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Category from './Category'
 import './Category.css'
+import Fade from 'react-reveal/Fade';
 
 
 export default function CategoriesList({ data }) {
@@ -18,6 +19,7 @@ export default function CategoriesList({ data }) {
     }, [])
     if(loaded)
     return (
+      <Fade>
         <div className="container">
             <h1 className="title is-1" >Lista de categorias</h1>
             <table className="table box media-center">
@@ -34,5 +36,6 @@ export default function CategoriesList({ data }) {
                 </tbody>
             </table>
         </div>
+      </Fade>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../Components/FormStyles.css';
+import Fade from 'react-reveal/Fade';
 
 const NewsForm = () => {
     const [initialValues, setInitialValues] = useState({
@@ -24,6 +25,7 @@ const NewsForm = () => {
     }
 
     return (
+      <Fade>
         <form className="form-container" onSubmit={handleSubmit}>
             <input className="input-field" type="text" name="title" value={initialValues.title || ''} onChange={handleChange}></input>
             <input className="input-field" type="text" name="content" value={initialValues.content || ''} onChange={handleChange}></input>
@@ -35,6 +37,7 @@ const NewsForm = () => {
             </select>
             <button className="submit-btn" type="submit">Send</button>
         </form>
+      </Fade>
     );
 }
  

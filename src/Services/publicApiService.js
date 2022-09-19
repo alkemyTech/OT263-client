@@ -25,4 +25,13 @@ export const get=endPoint=>{
 	}
 }
 
+export const post=endPoint=>{
+	try{
+		return  axiosBaseUrl.post(endPoint)		
+	}catch(err){		
+		return err
+	}
+}
+
+
 export default Get

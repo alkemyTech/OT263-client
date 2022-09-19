@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const config = {
 	headers: {
-		Group: 263 //Aqui va el ID del equipo!!
+		'Authorization': 'Bearer ' + localStorage.getItem('token')
 	}
 }
 
@@ -34,15 +34,10 @@ export const getUsers = async () => {
 	}catch(err){
 		return err
 	}
-
 }
 
-export const deleteUser = async (id) => {
-  await axios.delete(`http://localhost:3001/users/${id}`).then((res) => {
-    return res.status
-  }).catch(err => {
-    return err
-  })
+export const deleteRequest = async (endpoint, id) => {
+ return axios.delete(`http://localhost:3001/${endpoint}/${id}`, config)
 }
 
 

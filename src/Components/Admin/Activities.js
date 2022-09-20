@@ -1,7 +1,8 @@
 import React from 'react'
+import TableActivities from '../Tables/TableActivities/TableActivities'
 
 const Activities = () => {
-	return <div>Actividades</div>
+	return <TableActivities/>
 }
 
 export default Activities

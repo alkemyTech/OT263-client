@@ -17,17 +17,17 @@ const Get = () => {
 		.catch(err => console.log(err))
 }
 
-export const get=endPoint=>{
+export const get=(endPoint, credentials)=>{
 	try{
-		return  axiosBaseUrl.get(endPoint)		
+		return  axiosBaseUrl.get(endPoint, credentials)		
 	}catch(err){		
 		return err
 	}
 }
 
-export const post=endPoint=>{
+export const post=(endPoint, data)=>{
 	try{
-		return  axiosBaseUrl.post(endPoint)		
+		return  axiosBaseUrl.post(endPoint, data)		
 	}catch(err){		
 		return err
 	}

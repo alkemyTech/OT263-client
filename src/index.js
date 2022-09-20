@@ -9,11 +9,18 @@ import 'bulma/css/bulma.css'
 
 import 'bulma/css/bulma.min.css'
 
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
+
+let persistor = persistStore(store)
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<PersistGate persistor={persistor}>
+				<App />
+			</PersistGate>
 		</Provider>
 	</React.StrictMode>
 )

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { get } from "immer/dist/internal";
+import { get } from "../../Services/publicApiService";
 import { post } from "../../Services/publicApiService";
 
 
@@ -7,10 +7,8 @@ export const logedSlice= createSlice({
     name: 'loged',
     initialState:{},
     reducers:{
-        createLogedUser: (state, action)=>{
-            state.value(
-                state.value=action.payload
-            )
+        createLogedUser: (state, action)=>{            
+            state.value=action.payload
         },
         deleteLogedUser: state=>{
             state.value={}
@@ -23,14 +21,20 @@ export const logedSlice= createSlice({
 
 export const { createLogedUser, deleteLogedUser}= logedSlice.actions
 
-export const login = user =>async dispatch => {
-    const token = await post('users/auth/login', user)    
-    const user = await get('users/auth/me', {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
-    dispatch(createLogedUser({token, ...user}))
+export const login = user =>async dispatch => {    
+    try{
+        console.log(user)
+        const {data:{token}} = await post('users/auth/login', user)
+        
+        const {data:newUser} = await get('users/auth/me', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        dispatch(createLogedUser({token, ...newUser}))
+    }catch(err){
+        console.log(err.message)
+    }
 }
 
 export const selectLoges = state=> state.loged.value

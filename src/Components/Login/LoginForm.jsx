@@ -2,17 +2,16 @@ import 'bulma/css/bulma.min.css';
 import { Formik, Form, Field } from "formik";
 import { PostLogin } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
-import { loginSchema } from '../../Schemas';
-import { logIn } from '../../actions/userActions';
+import { loginSchema } from '../../schemas';
 import { useDispatch } from 'react-redux';
+import { login } from '../../features/login/logedSlice';
 
 const LoginForm =()=> {
   const navigate = useNavigate()
     const dispatch = useDispatch()
 
   const onSubmit = async (data) => {
-    const user = await PostLogin(data)
-    dispatch(logIn(user))
+    const user=dispatch(login(data))   
     
     localStorage.setItem('token', user.token)
     user && navigate('/')

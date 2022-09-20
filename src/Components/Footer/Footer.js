@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Footer.css";
 import { routes } from "../../Config/routes";
 import { Link } from "react-router-dom";
-import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin } from "react-icons/bs";
 
 function Footer() {
     const [data, setData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
-            fetch("http://localhost:3000/organizations/1/public")
+            fetch("http://localhost:3001/organizations/1/public")
                 .then((res) => res.json())
                 .then((data) => {
                     setData(data);
@@ -41,6 +41,8 @@ function Footer() {
                     <li className="footer-column-link">
                         <Link to={routes.news}>Novedades</Link>
                     </li>
+                </ul>
+                <ul className="footer-column-links">
                     <li className="footer-column-link">
                         <Link to={routes.testimonials}>Testimonios</Link>
                     </li>
@@ -53,26 +55,26 @@ function Footer() {
                 </ul>
             </div>
             <div className="footer-column">
-                <ul className="footer-column-links">
+                <ul className="footer-column-media">
                     <li className="footer-column-link">
-                        <a href="https://www.facebook.com/somosmas-ong"
+                        <a href={data.facebook}
                             className="footer-column-link-icon"
                         >
                             <BsFacebook />
                         </a>
                     </li>
                     <li className="footer-column-link">
-                        <a href="https://www.instagram.com/somosmas-ong"
+                        <a href={data.instagram}
                             className="footer-column-link-icon"
                         >
                             <BsInstagram />
                         </a>
                     </li>
                     <li className="footer-column-link">
-                        <a href="https://twitter.com/somosmas-ong"
+                        <a href={data.linkedin}
                             className="footer-column-link-icon"
                         >
-                            <BsTwitter />
+                            <BsLinkedin />
                         </a>
                     </li>
                 </ul>

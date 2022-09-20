@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Admin from '../../Pages/Admin'
-import CreateOrEditNews from '../News/CreateOrEditNews'
+import createOrEditNews from '../News/createOrEditNews'
 import MembersForm from '../Members/MembersForm'
 import Contacts from '../Admin/Contacts'
 import AdminNews from '../Admin/News'
@@ -29,8 +29,8 @@ const AdminRoutes = () => {
 			<Route path={routes.admin.users} element={<Users />} />
 			<Route path={routes.admin.members} element={<Members />} />
 			<Route path={routes.admin.newMember} element={<MembersForm />} />
-			<Route path={routes.admin.newNews} element={<CreateOrEditNews/>} />
-			<Route path={routes.admin.editNews} element={<CreateOrEditNews/>} />
+			<Route path={routes.admin.newNews} element={<createOrEditNews/>} />
+			<Route path={routes.admin.editNews} element={<createOrEditNews/>} />
 			<Route path={routes.admin.contacts} element={<Contacts />} />
 		</Routes>
 	)

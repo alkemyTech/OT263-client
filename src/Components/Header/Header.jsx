@@ -10,7 +10,7 @@ import { logOut } from "../../actions/userActions";
 const Header =()=> {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.currentUser);
-    const { decodedToken } = useJwt(user);
+    const { decodedToken } = useJwt(user?.token);
     const isAdmin = decodedToken?.roleId === 1;
 
     const toggleBurger = () => {

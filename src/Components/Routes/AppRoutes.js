@@ -17,11 +17,13 @@ import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
-import TestimonialsList from '../Testimonials/TestiminialsList'
+import TestimonialsList from '../Testimonials/TestimonialsList'
+import { useJwt } from 'react-jwt'
 
 const AppRoutes = () => {
-	const user = useSelector((state) => state.user.currentUser)
-	const isAdmin = true //user?.roleId === 1
+    const user = useSelector(state => state.user.currentUser);
+    const { decodedToken } = useJwt(user?.token);
+    const isAdmin = decodedToken?.roleId === 1;
 
 	return (
 		<Routes>

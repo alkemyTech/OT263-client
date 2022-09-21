@@ -15,6 +15,7 @@ const LoginForm =()=> {
     dispatch(logIn(user))
     
     localStorage.setItem('token', user.token)
+    localStorage.setItem('userData', user.data)
     user && navigate('/')
   }
 

@@ -24,6 +24,7 @@ export const PostLogin = async (data) => {
   const user = await axios.post('http://localhost:3001/users/auth/login', data)
     .then(res => {return res})
     .catch(err => {return err})
+	console.log(user.data)
   return user.data
 }
 
@@ -38,6 +39,15 @@ export const getUsers = async () => {
 
 export const deleteRequest = async (endpoint, id) => {
  return axios.delete(`http://localhost:3001/${endpoint}/${id}`, config)
+}
+
+export const authUser = async () => {
+	try{
+		const user= await axios.get('http://localhost:3001/users', config)	
+		return user.data	
+		}catch(err){
+			return err
+		}
 }
 
 

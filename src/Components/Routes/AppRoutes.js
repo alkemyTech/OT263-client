@@ -17,11 +17,12 @@ import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
-import TestimonialsList from '../Testimonials/TestiminialsList'
+import TestimonialsList from '../Testimonials/TestimonialsList'
 
 const AppRoutes = () => {
 	const user = useSelector((state) => state.user.currentUser)
-	const isAdmin = true //user?.roleId === 1
+	console.log(user)
+	const isAdmin = user?.roleId === 1
 
 	return (
 		<Routes>

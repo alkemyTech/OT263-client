@@ -1,7 +1,8 @@
 import React from 'react'
+import Fade from 'react-reveal/Fade';
 
 const Members = () => {
-	return <div>Miembros</div>
+	return <Fade>Miembros</Fade>
 }
 
 export default Members

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../Components/FormStyles.css';
+import Fade from 'react-reveal/Fade';
 import TextEditor from '../Admin/ActivityForm/TextEditor';
 
 const categories = [
@@ -16,6 +17,7 @@ const NewsForm = ({values, errors, handleChange, handleSubmit, handleImageChange
     
 
     return (
+      <Fade>
         <div className="container my-4">
             <div className='columns is-mobile'>
                 <div className="column is-half-tablet is-offset-one-quarter-tablet is-full-mobile ">
@@ -54,6 +56,7 @@ const NewsForm = ({values, errors, handleChange, handleSubmit, handleImageChange
                 </div>
             </div>
         </div>
+      </Fade>
     );
 }
 

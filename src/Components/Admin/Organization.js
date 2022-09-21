@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import Fade from 'react-reveal/Fade';
 // import useAxios from '../../app/hooks/useAxios'
 
 const Organization = () => {
@@ -45,6 +46,7 @@ const Organization = () => {
 	}, [formik.values.image, formik])
 
 	return (
+    <Fade>
 		<div className='hero is-fullheight'>
 			<div className='hero-body columns is-centered'>
 				<div className='column is-10-desktop is-full-mobile'>
@@ -122,6 +124,7 @@ const Organization = () => {
 				</div>
 			</div>
 		</div>
+    </Fade>
 	)
 }
 

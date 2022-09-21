@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import Fade from 'react-reveal/Fade';
 
 import { routes } from '../Config/routes'
 
@@ -58,6 +59,7 @@ const Profile = () => {
 	}
 
 	return (
+    <Fade>
 		<div className='hero is-fullheight has-background-success-light'>
 			<div className='hero-body columns is-centered'>
 				<div className='column is-half-desktop'>
@@ -165,6 +167,7 @@ const Profile = () => {
 				</div>
 			</div>
 		</div>
+    </Fade>
 	)
 }
 

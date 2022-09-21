@@ -1,7 +1,10 @@
 import React from 'react'
+import Fade from 'react-reveal/Fade';
 
 const GetInvolved = () => {
-	return <div>¿Queres contribuir?</div>
+	return <Fade>
+    <div>¿Queres contribuir?</div>
+  </Fade>
 }
 
 export default GetInvolved

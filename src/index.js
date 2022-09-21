@@ -9,8 +9,8 @@ import 'bulma/css/bulma.css'
 
 import 'bulma/css/bulma.min.css'
 
-import { PersistGate } from 'redux-persist/integration/react'
-import { persistStore } from 'redux-persist'
+import { PersistGate } from 'reduxjs-toolkit-persist/integration/react'
+import { persistStore } from 'reduxjs-toolkit-persist'
 
 let persistor = persistStore(store)
 

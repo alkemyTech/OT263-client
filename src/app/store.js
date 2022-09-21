@@ -2,7 +2,7 @@ import { configureStore, combineReducers, getDefaultMiddleware  } from '@reduxjs
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist';
 import userReducer from '../reducers/userReducer';
 import logedReducer from '../features/login/logedSlice'
-import storage from 'redux-persist/lib/storage';
+import storage from 'reduxjs-toolkit-persist/lib/storage';
 
 
 const persistConfig= {

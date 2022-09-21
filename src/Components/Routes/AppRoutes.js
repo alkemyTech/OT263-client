@@ -18,19 +18,16 @@ import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import TestimonialsList from '../Testimonials/TestimonialsList'
-import { useDispatch, useSelector } from 'react-redux'
-import { roleAdmin } from '../../features/login/logedSlice'
+import { useSelector } from 'react-redux'
 import { selectLoges } from '../../features/login/logedSlice'
 
 const AppRoutes = () => {
 	const [isAdmin, setIsAdmin] = useState(false)
-	const dispatch=useDispatch()
+	
 	const userLoged = useSelector(selectLoges)
-	console.log(userLoged?.id)
 	useEffect(() => {
 		setIsAdmin(userLoged?.roleId===1)
 	}, [userLoged?.id])
-	console.log(isAdmin)
 
 	return (
 		<Routes>

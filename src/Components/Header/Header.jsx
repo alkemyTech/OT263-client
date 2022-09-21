@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import { logOut } from "../../actions/userActions";
+import { deleteLogedUser, selectLoges } from '../../features/login/logedSlice';
 
 const Header =()=> {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.currentUser);
-    const { decodedToken } = useJwt(user);
-    const isAdmin = decodedToken?.roleId === 1;
-
+    const user = useSelector(selectLoges);    
+    const isAdmin = user?.roleId === 1;
+    
     const toggleBurger = () => {
         let burgerIcon = document.getElementById('burger');
         let dropMenu = document.getElementById('navMenu');
@@ -22,7 +22,7 @@ const Header =()=> {
     
     const handleLogOut = () => {
         localStorage.removeItem("token");
-        dispatch(logOut());
+        dispatch(deleteLogedUser());
     };
 
     return(
@@ -39,14 +39,14 @@ const Header =()=> {
             </div>
             <div id="navMenu" className="navbar-menu">
                 <div className="navbar-end">
-                    <Link to={routes.home} className="navbar-item" style={{"font-weight":"bold"}} >Inicio</Link>
+                    <Link to={routes.home} className="navbar-item" style={{fontWeight:"bold"}} >Inicio</Link>
                     <Link to={routes.about} className="navbar-item" >Nosotros</Link>
                     <Link to={routes.news} className="navbar-item" > Novedades</Link>
                     <Link to={routes.testimonials} className="navbar-item" >Testimonios</Link>
                     <Link to={routes.contact} className="navbar-item" >Contacto</Link>
                     <Link to={routes.getInvolved} className="navbar-item" >Contribuye</Link>
                     {isAdmin && <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>}
-                    {user 
+                    {user?.id
                         ?   <>  
                                 <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
                                 <button
@@ -64,7 +64,7 @@ const Header =()=> {
                                         </Link>
                                     </p>
                                     <p className="control">
-                                        <Link to={routes.signup} className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} >
+                                        <Link to={routes.signup} className="button is-rounded" style={{backgroundColor:"#FF0000", color:"white"}} >
                                             <span>Registrate</span>
                                         </Link>
                                     </p>

@@ -8,7 +8,7 @@ import { login } from '../../features/login/logedSlice';
 
 const LoginForm =()=> {
   const navigate = useNavigate()
-    const dispatch = useDispatch()
+const dispatch = useDispatch()
 
   const onSubmit = async (data) => {
     const user=dispatch(login(data))   

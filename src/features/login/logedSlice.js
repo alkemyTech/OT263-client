@@ -12,18 +12,14 @@ export const logedSlice= createSlice({
         },
         deleteLogedUser: state=>{
             state.value={}
-        },
-        isAdmin: state=>{
-            return state.value.role===1
-        }
+        }        
     }
 })
 
-export const { createLogedUser, deleteLogedUser}= logedSlice.actions
+export const { createLogedUser, deleteLogedUser }= logedSlice.actions
 
 export const login = user =>async dispatch => {    
     try{
-        console.log(user)
         const {data:{token}} = await post('users/auth/login', user)
         
         const {data:newUser} = await get('users/auth/me', {

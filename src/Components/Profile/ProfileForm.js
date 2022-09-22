@@ -19,7 +19,7 @@ function ProfileForm({user}) {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            password: '',
+            // password: '',
         },
         enableReinitialize: true,
         validationSchema: ProfileFormSchema,
@@ -163,7 +163,7 @@ function ProfileForm({user}) {
                                 </div>
                             ) : null}
 
-                            <div className="field">
+                            {/* <div className="field">
                                 <div className="control">
                                     <label
                                         className="label has-text-warning-dark"
@@ -187,7 +187,7 @@ function ProfileForm({user}) {
                                         {formik.errors.password}
                                     </div>
                                 ) : null}
-                            </div>
+                            </div> */}
                         </form>
                     </div>
                 </div>

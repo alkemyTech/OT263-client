@@ -40,17 +40,6 @@ const NewsForm = ({
                 <p className=' mt-1 pt-0 help is-danger has-text-right'>{errors.name}</p>
               )}
               <label className='label mb-1 mt-3 pl-1'>Imagen</label>
-              {/* <div className='control'>
-                <input
-                  className={`input ${errors.image ? 'is-danger' : ''}`}
-                  type='File'
-                  name='image'
-                  accept='image/*'
-                  value={values.image.filename ? values.image.filename : undefined}
-                  placeholder='Inserte Imagen'
-                  onChange={handleImageChange}
-                />
-                          </div> */}
               <div className='file has-name is-fullwidth'>
                 <label className='file-label'>
                   <input className='file-input' type='file' name='image' onChange={handleImageChange}/>
@@ -98,7 +87,7 @@ const NewsForm = ({
               </div>
               <p className='control has-text-right'>
                 <button
-                  className='button is-primary my-5'
+                  className='button is-link my-5'
                   type='submit'
                   disabled={Object.keys(errors).length}
                 >

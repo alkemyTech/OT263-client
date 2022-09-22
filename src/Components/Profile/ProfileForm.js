@@ -5,8 +5,12 @@ import { routes } from "../../Config/routes";
 import "bulma/css/bulma.min.css";
 import Fade from "react-reveal/Fade";
 import ProfileFormSchema from '../../Schemas/ProfileFormSchema';
+import { deleteRequest } from '../../Services/privateApiService';
+import { logOut } from '../../actions/userActions';
+import { useDispatch } from 'react-redux';
 
 function ProfileForm({user}) {
+    const dispatch = useDispatch();
     const [isEditable, setIsEditable] = useState(false);
     const navigate = useNavigate();
 
@@ -24,7 +28,6 @@ function ProfileForm({user}) {
         onSubmit: (values) => {
             if (isEditable) return;
 
-            // TODO: update user
             console.log(JSON.stringify(values, null, 2));
         },
     });
@@ -40,9 +43,9 @@ function ProfileForm({user}) {
     };
 
     const handleDeleteAccount = () => {
-        // TODO: delete user
-        const { value } = formik.getFieldProps();
-        console.log(value);
+        deleteRequest('users', user.id)
+        localStorage.removeItem("token");
+        dispatch(logOut());
         navigate(routes.home, { replace: true });
     };
 
@@ -63,6 +66,7 @@ function ProfileForm({user}) {
                                 <span className="title title-3 is-size-3-tablet is-size-2-desktop mr-auto is-hidden-mobile">
                                     Mis Datos
                                 </span>
+
                                 <button
                                     className="is-rounded is-responsive button is-info mx-2"
                                     type="submit"
@@ -75,6 +79,7 @@ function ProfileForm({user}) {
                                 >
                                     {isEditable ? "Guardar" : "Editar"}
                                 </button>
+
                                 <button
                                     className="is-rounded is-responsive button is-danger mx-2"
                                     type="button"

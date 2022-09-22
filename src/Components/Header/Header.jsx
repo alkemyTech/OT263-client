@@ -11,7 +11,7 @@ const Header =()=> {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.currentUser);
     const { decodedToken } = useJwt(user);
-    const isAdmin = decodedToken?.roleId === 1;
+    const isAdmin =  true//decodedToken?.roleId === 1;
 
     const toggleBurger = () => {
         let burgerIcon = document.getElementById('burger');

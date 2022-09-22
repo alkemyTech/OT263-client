@@ -62,10 +62,20 @@ function ProfileForm({user}) {
                             className="box"
                             id="profileForm"
                         >
-                            <div className="field is-grouped is-grouped-right">
+                            <div className="field is-grouped is-grouped-right"> 
                                 <span className="title title-3 is-size-3-tablet is-size-2-desktop mr-auto is-hidden-mobile">
                                     Mis Datos
                                 </span>
+
+                                {isEditable && (
+                                    <button
+                                        className='is-rounded is-responsive button is-info mx-2'
+                                        type="button"
+                                        onClick={() => setIsEditable(false)}
+                                        >
+                                            Cancelar
+                                        </button>
+                                )}
 
                                 <button
                                     className="is-rounded is-responsive button is-info mx-2"

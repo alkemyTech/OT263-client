@@ -19,7 +19,7 @@ export default function BannerHome({ Component, endpoint }) {
     }, [])
     if (loaded)
         return (
-            <div className="is-flex is-flex-wrap-nowrap">
+            <div className="is-flex is-flex-wrap-nowrap mb-5">
                 {data.map(element => <Component key={element.id} item={element} />)}
             </div>
         )

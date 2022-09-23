@@ -3,7 +3,7 @@ import 'bulma/css/bulma.min.css';
 import logo from './Group-33.png';
 import { routes } from '../../Config/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import { logOut } from "../../actions/userActions";
 
@@ -26,29 +26,27 @@ const Header =()=> {
     };
 
     return(
-        <nav className="navbar has-navbar-fixed-top has-shadow" role='navigation'>
+        <nav className="navbar has-navbar-fixed-top box has-shadow py-3 has-shadow is-fixed-top has-text-weight-medium is-size-5 has-text-black" role='navigation'>
             <div className="navbar-brand">
-                <Link to={routes.home} className="navbar-item">
-                    <img src={logo} alt="" width="100" height="52" />
-                </Link>
-                <button id='burger' className="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
-                    <span ></span>
-                    <span ></span>
-                    <span ></span>
+                <NavLink to={routes.home} className="navbar-item" style={{width: '150px', background: `url(${logo})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></NavLink>
+                <button id='burger' className={`navbar-burger burger is-size-1`} data-target="navMenu" aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
             <div id="navMenu" className="navbar-menu">
                 <div className="navbar-end">
-                    <Link to={routes.home} className="navbar-item" style={{"font-weight":"bold"}} >Inicio</Link>
-                    <Link to={routes.about} className="navbar-item" >Nosotros</Link>
-                    <Link to={routes.news} className="navbar-item" > Novedades</Link>
-                    <Link to={routes.testimonials} className="navbar-item" >Testimonios</Link>
-                    <Link to={routes.contact} className="navbar-item" >Contacto</Link>
-                    <Link to={routes.getInvolved} className="navbar-item" >Contribuye</Link>
-                    {isAdmin && <Link to={routes.admin.root} className="navbar-item" >Backoffice</Link>}
+                    <NavLink to={routes.home} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`}>Inicio</NavLink>
+                    <NavLink to={routes.about} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} >Nosotros</NavLink>
+                    <NavLink to={routes.news} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} > Novedades</NavLink>
+                    <NavLink to={routes.testimonials} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} >Testimonios</NavLink>
+                    <NavLink to={routes.contact} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} >Contacto</NavLink>   
+                    <NavLink to={routes.getInvolved} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} >Contribuye</NavLink>
+                    {isAdmin && <NavLink to={routes.admin.root} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`} >Backoffice</NavLink>}
                     {user 
                         ?   <>  
-                                <Link to={routes.profile} className="navbar-item" >Mi Perfil</Link> 
+                                <NavLink to={routes.profile} className={({isActive}) => `navbar-item has-text-black ${isActive ? 'has-text-weight-bold' : ''}`}>Mi Perfil</NavLink> 
                                 <button
                                     className="button is-danger is-outlined is-rounded is-size-7 is-align-self-center mx-3"
                                     onClick={handleLogOut}
@@ -59,14 +57,14 @@ const Header =()=> {
                         :   <div className="navbar-item">
                                 <div className="field is-grouped">
                                     <p className="control">
-                                        <Link to={routes.login} className="button is-rounded" >
-                                            <span>Log in</span>
-                                        </Link>
+                                        <NavLink to={routes.login} className="button is-active is-rounded has-text-weight-medium is-size-5" >
+                                            Log in
+                                        </NavLink>
                                     </p>
                                     <p className="control">
-                                        <Link to={routes.signup} className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} >
-                                            <span>Registrate</span>
-                                        </Link>
+                                        <NavLink to={routes.signup} className="button is-rounded has-text-weight-medium is-size-5" style={{"backgroundColor":"#FF0000", color:"white", border: 'none'}} >
+                                            Registrate
+                                        </NavLink>
                                     </p>
                                 </div>
                             </div>

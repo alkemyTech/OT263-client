@@ -15,7 +15,7 @@ const Home = ({ textBienvenida }) => {
     <div className='columns is-vcentered is-centered' style={{ margin: 15 }}>
       <div className='rows column is-5' style={{ marginRight: 5 }}>
         <h1 className='row title'>Hola! Bienvenidx</h1>
-        <span className='row'>{user?.firstName}</span>
+        <span className='row column has-text-centered title is-4 has-text-info'>{user?.firstName}</span>
         <button className='button is-rounded' style={{backgroundColor:"#FF0000", color:"white"}}>Contactenos</button>
       </div>
       <div className='column is-5' style={{ marginLeft: 5 }}>

@@ -1,25 +1,34 @@
 import { Link } from 'react-router-dom';
 import '../CardListStyles.css';
+import moment from 'moment/moment';
 
-function New({ item: { id, image, name } }) {
+function New({ item: { id, image, name, createdAt } }) {
+    console.log(createdAt)
     return (
-        <Link to={`/news/${id}`} className="column is-full-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen  m-auto">
-            <div style={{ background: "#7E9AFD", border: "1px solid #0038FF", fontFamily: "Poppins", borderRadius: "2rem" }} className="card is-rounded">
-                <div className="card-content p-4 columns">
-                    <div className="card-image column">
-                        <figure className="image is-5by4">
-                            <img src={image} alt="news" />
-                        </figure>
-                    </div>
-                    <div className='card-media column'>
-                        <div class="media-right">
-                            <div className="title-container">
-                                <p className="title is-4">{name}</p>
-                            </div>
+        <Link to={`/news/${id}`} className="column is-two-fifths-tablet is-one-third-desktop is-one-third-widescreen mt-2">
+
+            <div className="card">
+                <div className="card-image">
+                    <figure className="image is-4by3">
+                        <img src={image} alt="news" />
+                    </figure>
+                </div>
+                <div className="card-content">
+                    <div className="media">
+                        <div className="media-content">
+                            <p className="title is-4">{name}</p>
                         </div>
                     </div>
+
+                    <div className="content">
+                        <time>{moment(createdAt).format('LL')}</time>
+                    </div>
                 </div>
+                <footer class="card-footer">
+                    <span class="card-footer-item">Ver más</span>
+                </footer>
             </div>
+
         </Link >
     )
 }

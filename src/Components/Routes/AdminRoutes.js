@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Admin from '../../Pages/Admin'
-import CreateOrEditNews from '../News/CreateOrEditNews'
+import CreateOrEditNews from '../News/createOrEditNews'
 import MembersForm from '../Members/MembersForm'
 import Contacts from '../Admin/Contacts'
 import AdminNews from '../Admin/News'

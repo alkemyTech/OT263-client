@@ -39,7 +39,7 @@ const Header =()=> {
             </div>
             <div id="navMenu" className="navbar-menu">
                 <div className="navbar-end">
-                    <Link to={routes.home} className="navbar-item" style={{"font-weight":"bold"}} >Inicio</Link>
+                    <Link to={routes.home} className="navbar-item" style={{"fontWeight":"bold"}} >Inicio</Link>
                     <Link to={routes.about} className="navbar-item" >Nosotros</Link>
                     <Link to={routes.news} className="navbar-item" > Novedades</Link>
                     <Link to={routes.testimonials} className="navbar-item" >Testimonios</Link>
@@ -64,7 +64,7 @@ const Header =()=> {
                                         </Link>
                                     </p>
                                     <p className="control">
-                                        <Link to={routes.signup} className="button is-rounded" style={{"background-color":"#FF0000", color:"white"}} >
+                                        <Link to={routes.signup} className="button is-rounded" style={{"backgroundColor":"#FF0000", color:"white"}} >
                                             <span>Registrate</span>
                                         </Link>
                                     </p>

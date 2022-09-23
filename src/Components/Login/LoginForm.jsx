@@ -2,7 +2,7 @@ import 'bulma/css/bulma.min.css';
 import { Formik, Form, Field } from "formik";
 import { PostLogin } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
-import { loginSchema } from '../../Schemas';
+import { loginSchema } from '../../schemas';
 import { logIn } from '../../actions/userActions';
 import { useDispatch } from 'react-redux';
 

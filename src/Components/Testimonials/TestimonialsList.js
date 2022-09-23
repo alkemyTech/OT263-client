@@ -6,7 +6,7 @@ export default function TestimonialsList({ data }) {
         <div className="container">
             <h1 className="title">Testimonios</h1>
             <div className="is-flex is-flex-wrap-wrap columns is-mobile">
-                {data.map(testimonial => <Testimonial testimonial={testimonial} />)}
+                {data.map(testimonial => <Testimonial item={testimonial} />)}
             </div>
             <TestimonialForm />
         </div>

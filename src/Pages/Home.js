@@ -5,6 +5,7 @@ import BannerHome from '../Components/BannerHome/BannerHome';
 import New from '../Components/News/New';
 import { selectLoges } from '../features/login/logedSlice';
 import { useSelector } from 'react-redux';
+import Testimonial from './Testimonial';
 
 
 const Home = ({ textBienvenida }) => {
@@ -32,7 +33,7 @@ const Home = ({ textBienvenida }) => {
           style={{ cursor: "pointer" }}
           onClick={() => { navigate(`/novedades`) }}>ver todos</span>
       </div>
-      <BannerHome Component={New} endpoint={'news'} />
+      <BannerHome Component={Testimonial} endpoint={'testimonials'} />
     </div>
 
     <div className='container is-clipped mt-5'>

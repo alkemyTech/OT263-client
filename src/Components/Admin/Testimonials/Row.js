@@ -6,7 +6,6 @@ import { GrEdit } from 'react-icons/gr'
 
 import ImageInput from '../Common/ImageInput'
 import ImageIcon from './ImageIco'
-import FormModal from './FormModal'
 import Modal from './Modal'
 
 
@@ -48,20 +47,20 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 					{editable ? (
 						<RichTextInput
 							className={toggleClass}
-							value={data.message}
-							onChange={value => onChange(index, 'message', value)}
+							value={data.content}
+							onChange={value => onChange(index, 'content', value)}
 						/>
 					) : (
 						<div
 							className='static-text'
-							dangerouslySetInnerHTML={{ __html: editable ? '' : data.message }}
+							dangerouslySetInnerHTML={{ __html: editable ? '' : data.content }}
 						></div>
 					)}
 				</td>
 				<td className={toggleClass}>
 					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
 						<button
-							disabled={(editable && !data.name) || !data.message || data.message === '<p><br></p>'}
+							//disabled={(editable && !data.name) || !data.message || data.message === '<p><br></p>'}
 							className='button'
 							onClick={() => {
 								if (editable) onSubmit(index)
@@ -70,7 +69,7 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 						>
 							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
 						</button>
-						<button data-index={index} className='button' onClick={onDelete}>
+						<button data-index={index} data-id={data.id} className='button' onClick={onDelete}>
 							<span className='icon'>
 								<RiDeleteBin5Line />
 							</span>

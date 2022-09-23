@@ -18,7 +18,7 @@ export default function FormModal({ showForm, onClose }) {
 			Accept: '*/*',
 			Authorization: 'Bearer token' // TODO: add user token
 		}),
-		url: 'http://localhost:3001/testimonials',
+		url: 'http://localhost:3001/news',
 		body: JSON.stringify({
 			name,
 			image,
@@ -45,7 +45,7 @@ export default function FormModal({ showForm, onClose }) {
 		<div className={`modal ${showForm ? 'is-active' : ''}`}>
 			<div className='modal-background'></div>
 			<div className='modal-content has-background-white'>
-				<Form onSubmit={handleSubmit} title='Testimonio'>
+				<Form onSubmit={handleSubmit} title='Novedad'>
 					<Input
 						label={'Nombre'}
 						placeholder={'Agregá tu nombre completo'}

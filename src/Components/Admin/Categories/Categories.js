@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import Fade from 'react-reveal/Fade';
+import Fade from 'react-reveal/Fade'
 
 import './Categories.css'
 import 'react-quill/dist/quill.snow.css'
 
-import Row from './Row';
-import Header from './Header';
-import FormModal from './FormModal';
-import { get } from '../../../Services/apiService';
+import Row from './Row'
+import Header from './Header'
+import FormModal from './FormModal'
+import { get, put } from '../../../Services/apiService'
+import deleteHelper from '../../Buttons/deleteHelper'
 
 const URI='http://localhost:3001/categories'
 
@@ -22,19 +23,19 @@ function Categories() {
 		newRow[name] = value
 		newData[index] = newRow
 
-//		setData(newData)
+		setData(newData)
 	}
 
-	const handleDelete = e => {
-		const { index } = e.currentTarget.dataset
+	const handleDelete =async e => {
+		const { index, id } = e.currentTarget.dataset
 		const newData = data.filter((val, i) => i !== Number(index))
+		await deleteHelper(id, 'categories', data, setData)
 
-//		setData(newData)
+		setData(newData)
 	}
 
 	const handleSubmit = index => {
-		console.log('PUT htttp://localhost:3000/testimonials/' + index)
-		console.log('data:', JSON.stringify(data[index]))
+		put(`${URI+"/"+data[index].id}`, data[index])
 		// TODO: dispatch
 	}
 
@@ -48,13 +49,14 @@ function Categories() {
 	return (
     <Fade>
 		<div className='table-container'>
+			<h1 className='title is-1 my-5 has-text-centered'> Tabla de Categorias</h1>	
 			<table className='table is-fullwidth'>
 				<Header onClick={() => setShowForm(true)} />
 				<tbody>
 					{data?.map((row, index) => (
 						<Row
 							key={index}
-							index={index}
+							index={index}							
 							data={row}
 							onChange={handleChange}
 							onDelete={handleDelete}

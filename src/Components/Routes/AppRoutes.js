@@ -21,6 +21,7 @@ import TestimonialsList from '../Testimonials/TestimonialsList'
 
 const AppRoutes = () => {
 	const user = useSelector((state) => state.user.currentUser)
+	
 	const isAdmin = true //user?.roleId === 1
 
 	return (

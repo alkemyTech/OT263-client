@@ -45,7 +45,7 @@ export default function FormModal({ showForm, onClose }) {
 		<div className={`modal ${showForm ? 'is-active' : ''}`}>
 			<div className='modal-background'></div>
 			<div className='modal-content has-background-white'>
-				<Form onSubmit={handleSubmit} title='Testimonio'>
+				<Form onSubmit={handleSubmit} title='Categoria'>
 					<Input
 						label={'Nombre'}
 						placeholder={'Agregá tu nombre completo'}

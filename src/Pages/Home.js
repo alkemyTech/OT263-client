@@ -1,4 +1,5 @@
 import SliderContainer from '../Components/Slider/SliderContainer'
+import Fade from 'react-reveal/Fade';
 import { useNavigate } from "react-router-dom";
 import BannerHome from '../Components/BannerHome/BannerHome';
 import New from '../Components/News/New';
@@ -10,8 +11,8 @@ const Home = ({ textBienvenida }) => {
   const user = useSelector(selectLoges)
   const navigate = useNavigate()
 
-
-  return <div className='rows'>
+  return <Fade>
+    <div className='rows'>
     <div className='columns is-vcentered is-centered' style={{ margin: 15 }}>
       <div className='rows column is-5' style={{ marginRight: 5 }}>
         <h1 className='row title'>Hola! Bienvenidx</h1>
@@ -56,6 +57,7 @@ const Home = ({ textBienvenida }) => {
       <BannerHome Component={New} endpoint={'news'} />
     </div>
   </div>
+  </Fade>
 }
 
 export default Home

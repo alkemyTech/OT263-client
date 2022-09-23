@@ -1,4 +1,5 @@
 import React from 'react'
+import Fade from 'react-reveal/Fade';
 
 function renderRow(contact, index) {
 	return (
@@ -15,6 +16,7 @@ function renderRow(contact, index) {
 const Contacts = () => {
 	const data = mockData()
 	return (
+    <Fade>
 		<div className='table-container'>
 			<table className='table is-is-fullwidth'>
 				<thead>
@@ -31,6 +33,7 @@ const Contacts = () => {
 				<tbody>{data?.map(renderRow)}</tbody>
 			</table>
 		</div>
+    </Fade>
 	)
 }
 

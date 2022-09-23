@@ -22,10 +22,30 @@
   font-size: 1rem;
   line-height: 1.5;
   text-align: justify;
-  padding: 20px;
+  padding: 1.5rem 0.5rem;
 }
 .news-detail-image {
   border-radius: 10px;
   margin-top: 20px;
   max-height: 60vh;
 }
+
+
+
+@media only screen and (min-width: 1400px) {
+  .news-detail-body {
+    padding: 1.5rem 7rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .PadDate{
+    padding-left: 4rem;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .PadDate{
+    padding-left: 0.5rem;
+  }
+}
+

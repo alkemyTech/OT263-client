@@ -102,17 +102,29 @@ const Home = ({ welcomeText }) => {
         
     <div className='container is-clipped mt-5'>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2 className='subtitle is-4 is-inline' style={{ color: "black", fontWeight: "800" }}>Ultimas Novedades</h2>
+        <h2 className='subtitle is-3 is-inline has-text-black has-text-weight-bold' style={{ color: "black", fontWeight: "800" }}>Ultimas Novedades</h2>
         <span
           className='is-flex is-align-items-center has-text-black'
           style={{ cursor: "pointer" }}
           onClick={() => { navigate(`/novedades`) }}>Ver todos <BsChevronRight /></span>
         </div>
+        <div className="columns is-multiline  is-variable is-2-mobile is-4-tablet is-5-desktop is-8-widescreen is-2-fullhd mx-2">
+          <div className="column is-flex is-justify-content-center my-4">
         <NewCard
           title={'Nuevos talleres técnicos'}
           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
           url='/'
           image='https://images.unsplash.com/photo-1580893206515-2fc3e8a2aa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' />
+          </div>    
+          <div className="column is-flex is-justify-content-center my-4">
+          <NewCard
+          title={'Nutrir'}
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          url='/'
+          image='https://images.unsplash.com/photo-1608686207856-001b95cf60ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80' />
+          </div>
+          </div>
+
     </div>
   </div>
   </Fade>

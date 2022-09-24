@@ -1,25 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import './NewCard.css'
 
 const NewCard = ({ title, text, image, url }) => {
   return (
     <div
-      className='is-flex box is-flex-direction-column px-4 py-2 pb-4 box is-justify-content-flex-start'
-      style={{ background: '#FDFFA4', width: '250px' }}
+      className='columns box'
+      style={{ background: '#7E9AFD', borderRadius: '1rem', border: '1px solid blue' }}
     >
       <div
+        className='column is-flex-grow-1 is-flex-shrink-0 new-image'
         style={{
           background: `url(${image})`,
-          width: '95px',
-          height: '95px',
+          backgroundPosition: 'center',
           backgroundSize: 'cover',
-          borderRadius: '50%'
+          borderRadius: '1rem'
+          // margin: '1rem'
         }}
       ></div>
-      <div className='content'>
-        <h2 className='is-size-5 has-text-black has-text-left has-text-weight-light my-3'>
+      <div className='column px-4 is-flex is-flex-direction-column is-align-items-flex-start'>
+        <h2 className='is-size-5 has-text-black has-text-left has-text-weight-light mb-3'>
           {title}
         </h2>
-        <p className='has-text-black mt-1 has-text-weight-light testimonial-text'>{text}</p>
+        <p className='has-text-black mt-1 has-text-weight-light new-text'>{text}</p>
+        <Link to={url} style={{ marginTop: 'auto', width: '100%' }}>
+          <span
+            className='button is-fullwidth mt-2 box has-text-weight-bold is-size-6'
+            style={{ background: 'blue', color: 'white', border: 'blue' }}
+          >
+            Ver novedad
+          </span>
+        </Link>
       </div>
     </div>
   )

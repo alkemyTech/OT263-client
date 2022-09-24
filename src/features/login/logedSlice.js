@@ -12,6 +12,7 @@ export const logedSlice= createSlice({
         },
         deleteLogedUser: state=>{
             state.value={}
+            localStorage.removeItem('token')
         }        
     }
 })
@@ -21,7 +22,7 @@ export const { createLogedUser, deleteLogedUser }= logedSlice.actions
 export const login = user =>async dispatch => {    
     try{
         const {data:{token}} = await post('users/auth/login', user)
-        
+        localStorage.setItem('token', token)
         const {data:newUser} = await get('users/auth/me', {
             headers: {
                 Authorization: `Bearer ${token}`

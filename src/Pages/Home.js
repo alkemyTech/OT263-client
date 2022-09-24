@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import Testimonial from './Testimonial';
 
 
-const Home = ({ textBienvenida }) => {
+const Home = () => {
   const user = useSelector(selectLoges)
   const navigate = useNavigate()
 

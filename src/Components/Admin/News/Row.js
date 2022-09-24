@@ -69,7 +69,7 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 						>
 							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
 						</button>
-						<button data-index={index} className='button' onClick={onDelete}>
+						<button data-index={index} data-id={data.id} className='button' onClick={onDelete}>
 							<span className='icon'>
 								<RiDeleteBin5Line />
 							</span>

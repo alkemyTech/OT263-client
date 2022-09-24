@@ -27,6 +27,7 @@ function AdminNews() {
 	const handleDelete =async (e) => {
 		const { index,id } = e.currentTarget.dataset
 		const newData = data.filter((val, i) => i !== Number(index))
+		console.log(id)
 		await deleteHelper(id, 'news', data, setData)
 		setData(newData)
 	}

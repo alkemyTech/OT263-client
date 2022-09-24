@@ -29,6 +29,7 @@ function Testimonials() {
 	const handleDelete =async (e) => {
 		const { index,id } = e.currentTarget.dataset
 		const newData = data.filter((val, i) => i !== Number(index))
+		console.log(id)
 		await deleteHelper(id, 'testimonials', data, setData)
 		setData(newData)
 	}

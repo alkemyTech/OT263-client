@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import BannerHome from '../Components/BannerHome/BannerHome';
 import New from '../Components/News/New';
 import MemberCard from '../Components/Members/MemberCard';
+import { BsChevronRight } from 'react-icons/bs'
+import TestimonialCard from '../Components/Testimonials/TestimonialCard'
+import NewCard from '../Components/News/NewCard'
 
 
 const Home = ({ welcomeText }) => {
@@ -31,11 +34,11 @@ const Home = ({ welcomeText }) => {
 
     <div className='container is-clipped mt-5'>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2 className='subtitle is-3 is-inline has-text-black ' style={{ color: "black", fontWeight: "800" }}>Nuestro Staff</h2>
+        <h2 className='subtitle is-3 is-inline has-text-black has-text-weight-bold'>Nuestro Staff</h2>
         <span
-          className='is-flex'
+          className='is-flex is-align-items-center has-text-black'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>Ver todos</span>
+          onClick={() => { navigate(`/novedades`) }}>Ver todos <BsChevronRight /></span>
         </div>
         <div className="columns is-multiline">
           <div className="column is-flex is-justify-content-center">
@@ -62,24 +65,54 @@ const Home = ({ welcomeText }) => {
 
     <div className='container is-clipped mt-5'>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2 className='subtitle is-4 is-inline' style={{ color: "black", fontWeight: "800" }}>Testimonios</h2>
+        <h2 className='subtitle is-3 is-inline has-text-black has-text-weight-bold'>Testimonios</h2>
         <span
-          className='is-flex'
+          className='is-flex is-align-items-center has-text-black'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>Ver todos</span>
-      </div>
-      <BannerHome Component={New} endpoint={'news'} />
-    </div>
+          onClick={() => { navigate(`/novedades`) }}>Ver todos <BsChevronRight /></span>
+        </div>
+        <div className="columns is-multiline">
+          <div className="column is-flex is-justify-content-center">
+          <TestimonialCard
+          name='Maria Fuentes'
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          img='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' />
+          </div>
+          <div className="column is-flex is-justify-content-center">
+          <TestimonialCard
+          name='Maria Fuentes'
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          img='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' />
+          </div>
+          <div className="column is-flex is-justify-content-center">
+          <TestimonialCard
+          name='Maria Fuentes'
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          img='https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' />
+          </div>
+          <div className="column is-flex is-justify-content-center">
+          <TestimonialCard
+          name='Maria Fuentes'
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          img='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80' />
+          </div>
+        </div>
 
+    </div>
+        
     <div className='container is-clipped mt-5'>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h2 className='subtitle is-4 is-inline' style={{ color: "black", fontWeight: "800" }}>Ultimas Novedades</h2>
         <span
-          className='is-flex'
+          className='is-flex is-align-items-center has-text-black'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>Ver todos</span>
-      </div>
-      <BannerHome Component={New} endpoint={'news'} />
+          onClick={() => { navigate(`/novedades`) }}>Ver todos <BsChevronRight /></span>
+        </div>
+        <NewCard
+          title={'Nuevos talleres técnicos'}
+          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          url='/'
+          image='https://images.unsplash.com/photo-1580893206515-2fc3e8a2aa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' />
     </div>
   </div>
   </Fade>

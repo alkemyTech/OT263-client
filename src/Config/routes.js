@@ -14,7 +14,7 @@ export const routes = {
 		root: '/backoffice',
 		newMember: 'agregar-miembro',
 		newNews: 'nueva-novedad',
-		editNews: 'Editar-novedad',
+		editNews: 'editar-novedad',
 		contacts: 'consultas',
 		news: 'news',
 		activities: 'actividades',

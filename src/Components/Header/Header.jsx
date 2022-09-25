@@ -3,8 +3,6 @@ import logo from './Group-33.png'
 import { routes } from '../../Config/routes'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { useJwt } from 'react-jwt'
-import { logOut } from '../../actions/userActions'
 import { deleteLogedUser, selectLoges } from '../../features/login/logedSlice';
 
 const Header =()=> {

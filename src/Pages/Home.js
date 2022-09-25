@@ -1,15 +1,18 @@
 import SliderContainer from '../Components/Slider/SliderContainer'
-import Fade from 'react-reveal/Fade';
-import { useNavigate } from "react-router-dom";
-import BannerHome from '../Components/BannerHome/BannerHome';
-import New from '../Components/News/New';
+import Fade from 'react-reveal/Fade'
+import { useNavigate } from 'react-router-dom'
+import BannerHome from '../Components/BannerHome/BannerHome'
+import New from '../Components/News/New'
+import MemberCard from '../Components/Members/MemberCard'
+import { BsChevronRight } from 'react-icons/bs'
+import TestimonialCard from '../Components/Testimonials/TestimonialCard'
+import NewCard from '../Components/News/NewCard'
 import { selectLoges } from '../features/login/logedSlice';
 import { useSelector } from 'react-redux';
 import Testimonial from './Testimonial';
 
 
-const Home = () => {
-  const user = useSelector(selectLoges)
+const Home = ({ textBienvenida }) => {
   const navigate = useNavigate()
 
   return <Fade>
@@ -61,4 +64,8 @@ const Home = () => {
   </Fade>
 }
 
+Home.defaultProps = {
+  welcomeText:
+    'Desde 1997 trabajamos con los chicos, chicas, mamás, papás, abuelos y vecinos del barrio La Cava. Gracias a la unión de las manos de todas las familias, del barrio y las que viven fuera de él, es que podemos pensar, crear y garantizar los procesos de inserción y crecimiento social. Hoy somos un centro comunitario que acompaña a más de 700 personas a través de las áreas de: educación, deportes, primera infancia, salud, alimentación y trabajo social.'
+}
 export default Home

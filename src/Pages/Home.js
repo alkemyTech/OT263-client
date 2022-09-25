@@ -31,7 +31,7 @@ const Home = () => {
         <span
           className='is-flex'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>ver todos</span>
+          onClick={() => { navigate(`/testimonios`) }}>ver todos</span>
       </div>
       <BannerHome Component={Testimonial} endpoint={'testimonials'} />
     </div>
@@ -42,7 +42,7 @@ const Home = () => {
         <span
           className='is-flex'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>ver todos</span>
+          onClick={() => { navigate(`/news`) }}>ver todos</span>
       </div>
       <BannerHome Component={New} endpoint={'news'} />
     </div>
@@ -53,7 +53,7 @@ const Home = () => {
         <span
           className='is-flex'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/novedades`) }}>ver todos</span>
+          onClick={() => { navigate(`/news`) }}>ver todos</span>
       </div>
       <BannerHome Component={New} endpoint={'news'} />
     </div>

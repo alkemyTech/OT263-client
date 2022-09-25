@@ -18,10 +18,10 @@ const Profile = () => {
 	// TODO: get initial values from store
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
-			lastName: '',
-			email: '',
-			password: ''
+			firstName: user?.firstName || '',
+			lastName: user?.lastName || '',
+			email: user?.email || '',
+			password: user?.password || ''
 		},
 		isSubmitting: isEditable,
 		validationSchema: Yup.object({

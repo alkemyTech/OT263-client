@@ -4,8 +4,6 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 import { IoIosSave } from 'react-icons/io'
 import { GrEdit } from 'react-icons/gr'
 
-import ImageInput from '../Common/ImageInput'
-import ImageIcon from './ImageIco'
 import Modal from './Modal'
 
 
@@ -13,7 +11,7 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 	const [editable, setEditable] = useState(isNew)
 	const [showModal, setShowModal] = useState(false)
 	const toggleClass = editable ? 'has-background-primary-light' : ''
-	const [error, setError] = useState({ name: '', message: '' })
+	//const [error, setError] = useState({ name: '', message: '' })
 
 	useEffect(() => {
 		setEditable(false)
@@ -38,29 +36,22 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 				</td>
 				<td className={toggleClass}>
 					{editable ? (
-						<ImageInput onChange={e => onChange(index, 'image', e.target.files)} />
-					) : (
-						<ImageIcon showModal={() => setShowModal(true)} hasImage={data.image} />
-					)}
-				</td>
-				<td className={toggleClass}>
-					{editable ? (
 						<RichTextInput
 							className={toggleClass}
-							value={data.message}
-							onChange={value => onChange(index, 'message', value)}
+							value={data.description}
+							onChange={value => onChange(index, 'description', value)}
 						/>
 					) : (
 						<div
 							className='static-text'
-							dangerouslySetInnerHTML={{ __html: editable ? '' : data.message }}
+							dangerouslySetInnerHTML={{ __html: editable ? '' : data.description }}
 						></div>
 					)}
 				</td>
 				<td className={toggleClass}>
 					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>
 						<button
-							disabled={(editable && !data.name) || !data.message || data.message === '<p><br></p>'}
+							//disabled={(editable && !data.name) || !data.message || data.message === '<p><br></p>'}
 							className='button'
 							onClick={() => {
 								if (editable) onSubmit(index)

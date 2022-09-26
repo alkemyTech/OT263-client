@@ -2,10 +2,10 @@ import SliderContainer from '../Components/Slider/SliderContainer'
 import Fade from 'react-reveal/Fade'
 import { useNavigate } from 'react-router-dom'
 import BannerHome from '../Components/BannerHome/BannerHome'
-import New from '../Components/News/New'
+import NewCard from '../Components/News/NewCard'
 import { selectLoges } from '../features/login/logedSlice';
 import { useSelector } from 'react-redux';
-import Testimonial from './Testimonial';
+import TestimonialCard from '../Components/Testimonials/TestimonialCard'
 
 
 const Home = () => {
@@ -33,7 +33,7 @@ const Home = () => {
           style={{ cursor: "pointer" }}
           onClick={() => { navigate(`/testimonios`) }}>ver todos</span>
       </div>
-      <BannerHome Component={Testimonial} endpoint={'testimonials'} />
+      <BannerHome Component={TestimonialCard} endpoint={'testimonials'} />
     </div>
 
     <div className='container is-clipped mt-5'>
@@ -42,9 +42,9 @@ const Home = () => {
         <span
           className='is-flex'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/news`) }}>ver todos</span>
+          onClick={() => { navigate(`news`) }}>ver todos</span>
       </div>
-      <BannerHome Component={New} endpoint={'news'} />
+      <BannerHome Component={NewCard} endpoint={'news'} />
     </div>
 
     <div className='container is-clipped mt-5'>
@@ -53,9 +53,9 @@ const Home = () => {
         <span
           className='is-flex'
           style={{ cursor: "pointer" }}
-          onClick={() => { navigate(`/news`) }}>ver todos</span>
+          onClick={() => { navigate(`news`) }}>ver todos</span>
       </div>
-      <BannerHome Component={New} endpoint={'news'} />
+      <BannerHome Component={NewCard} endpoint={'news'} />
     </div>
   </div>
   </Fade>

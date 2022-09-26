@@ -18,7 +18,6 @@ const Header =()=> {
       };
     
     const handleLogOut = () => {
-        localStorage.removeItem("token");
         dispatch(deleteLogedUser());
     };
 
@@ -112,7 +111,7 @@ const Header =()=> {
               Backoffice
             </NavLink>
           )}
-          {user && (
+          {user?.id && (
             <NavLink
               to={routes.profile}
               className={({ isActive }) =>
@@ -122,7 +121,7 @@ const Header =()=> {
               Mi Perfil
             </NavLink>
           )}
-          {user ? (
+          {user?.id ? (
             <div className='buttons'>
               <button
                 className='button is-rounded has-text-weight-medium mx-2'

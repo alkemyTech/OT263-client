@@ -1,12 +1,12 @@
-import Testimonial from "../../Pages/Testimonial"
 import TestimonialForm from "./TestimonialsForm"
+import TestimonialCard from './TestimonialCard'
 
 export default function TestimonialsList({ data }) {
     return (
         <div className="container">
             <h1 className="title">Testimonios</h1>
-            <div className="is-flex is-flex-wrap-wrap columns is-mobile">
-                {data.map(testimonial => <Testimonial item={testimonial} />)}
+            <div className="is-flex is-justify-around is-flex-wrap-wrap columns is-mobile gap-4">
+                {data.map(testimonial => <TestimonialCard item={testimonial} />)}
             </div>
             <TestimonialForm />
         </div>

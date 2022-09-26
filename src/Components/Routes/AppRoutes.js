@@ -27,7 +27,7 @@ const AppRoutes = () => {
 	const userLoged = useSelector(selectLoges)
 	useEffect(() => {
 		setIsAdmin(userLoged?.roleId===1)
-	}, [userLoged?.id])
+	}, [userLoged?.roleId])
 
 	return (
 		<Routes>

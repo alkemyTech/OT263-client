@@ -1,5 +1,5 @@
-import New from './New'
 import '../CardListStyles.css'
+import NewCard from './NewCard'
 
 function NewsList({ data }) {
   return (
@@ -7,7 +7,7 @@ function NewsList({ data }) {
       <h1 className='title'>Novedades</h1>
       <div className='is-flex-wrap-wrap hero columns is-mobile'>
         {data.map(news => (
-          <New key={news.id} item={news} />
+          <NewCard key={news.id} item={news} />
         ))}
       </div>
     </div>

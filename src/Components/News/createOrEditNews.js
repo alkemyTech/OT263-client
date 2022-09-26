@@ -1,7 +1,7 @@
 import { useFormik } from 'formik'
 import React, { useEffect } from 'react'
 import { PropTypes } from 'prop-types'
-import useAxios from '../../app/hooks/useAxios'
+import useAxios from '../../hooks/useAxios'
 import NewsForm from './NewsForm'
 import { validationSchema } from '../../Schemas/NewsFormSchema'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -63,7 +63,9 @@ const CreateOrEditNews = ({ news: { id, name, image, content, category } }) => {
 
   return (
     <>
-      <p className='title is-size-2 has-text-centered mt-6 is-capitalized'>{ params['*'].split('-').join(' ') }</p>
+      <p className='title is-size-2 has-text-centered mt-6 is-capitalized'>
+        {params['*'].split('-').join(' ')}
+      </p>
       <NewsForm
         values={values}
         errors={errors}

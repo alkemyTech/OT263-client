@@ -7,18 +7,21 @@ import Fade from 'react-reveal/Fade';
 import { routes } from '../Config/routes'
 
 import 'bulma/css/bulma.min.css'
+import { useSelector } from 'react-redux'
+import { selectLoges } from '../features/login/logedSlice'
 
 const Profile = () => {
+	const user=useSelector(selectLoges)	
 	const navigate = useNavigate()
 	const [isEditable, setIsEditable] = useState(false)
 
 	// TODO: get initial values from store
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
-			lastName: '',
-			email: '',
-			password: ''
+			firstName: user?.firstName || '',
+			lastName: user?.lastName || '',
+			email: user?.email || '',
+			password: user?.password || ''
 		},
 		isSubmitting: isEditable,
 		validationSchema: Yup.object({
@@ -93,6 +96,7 @@ const Profile = () => {
 									Nombre
 								</label>
 								<input
+									placeholder={user.firstName}
 									id='firstName'
 									type='text'
 									className='input is-large is-size-6-mobile'
@@ -112,6 +116,7 @@ const Profile = () => {
 									Apellido
 								</label>
 								<input
+									placeholder={user.lastName}
 									id='lastName'
 									type='text'
 									{...formik.getFieldProps('lastName')}
@@ -131,6 +136,7 @@ const Profile = () => {
 									Email
 								</label>
 								<input
+									placeholder={user.email}
 									id='email'
 									type='email'
 									{...formik.getFieldProps('email')}

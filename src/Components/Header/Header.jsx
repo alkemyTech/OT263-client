@@ -3,26 +3,23 @@ import logo from './Group-33.png'
 import { routes } from '../../Config/routes'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { useJwt } from 'react-jwt'
-import { logOut } from '../../actions/userActions'
+import { deleteLogedUser, selectLoges } from '../../features/login/logedSlice';
 
-const Header = () => {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user.currentUser)
-  const { decodedToken } = useJwt(user)
-  const isAdmin = decodedToken?.roleId === 1
-
-  const toggleBurger = () => {
-    let burgerIcon = document.getElementById('burger')
-    let dropMenu = document.getElementById('navMenu')
-    burgerIcon.classList.toggle('is-active')
-    dropMenu.classList.toggle('is-active')
-  }
-
-  const handleLogOut = () => {
-    localStorage.removeItem('token')
-    dispatch(logOut())
-  }
+const Header =()=> {
+    const dispatch = useDispatch();
+    const user = useSelector(selectLoges);    
+    const isAdmin = user?.roleId === 1;
+    
+    const toggleBurger = () => {
+        let burgerIcon = document.getElementById('burger');
+        let dropMenu = document.getElementById('navMenu');
+        burgerIcon.classList.toggle('is-active');
+        dropMenu.classList.toggle('is-active');
+      };
+    
+    const handleLogOut = () => {
+        dispatch(deleteLogedUser());
+    };
 
   return (
     <nav
@@ -114,7 +111,7 @@ const Header = () => {
               Backoffice
             </NavLink>
           )}
-          {user && (
+          {user?.id && (
             <NavLink
               to={routes.profile}
               className={({ isActive }) =>
@@ -124,7 +121,7 @@ const Header = () => {
               Mi Perfil
             </NavLink>
           )}
-          {user ? (
+          {user?.id ? (
             <div className='buttons'>
               <button
                 className='button is-rounded has-text-weight-medium mx-2'

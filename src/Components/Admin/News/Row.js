@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import RichTextInput from '../Common/RichTextInput'
-import { RiDeleteBin5Line } from 'react-icons/ri'
 import { IoIosSave } from 'react-icons/io'
 import { GrEdit } from 'react-icons/gr'
-
+import DeleteButton from '../../Buttons/DeleteButton'
 import ImageInput from '../Common/ImageInput'
 import ImageIcon from './ImageIco'
 import Modal from './Modal'
@@ -69,11 +68,7 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 						>
 							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
 						</button>
-						<button data-index={index} data-id={data.id} className='button' onClick={onDelete}>
-							<span className='icon'>
-								<RiDeleteBin5Line />
-							</span>
-						</button>
+						<DeleteButton handleDelete={() => onDelete(data.id)} />
 					</div>
 				</td>
 				<td hidden={!showModal}>

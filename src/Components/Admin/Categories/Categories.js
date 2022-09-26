@@ -26,12 +26,8 @@ function Categories() {
 		setData(newData)
 	}
 
-	const handleDelete =async e => {
-		const { index, id } = e.currentTarget.dataset
-		const newData = data.filter((val, i) => i !== Number(index))
+	const handleDelete =async (id) => {
 		await deleteHelper(id, 'categories', data, setData)
-
-		setData(newData)
 	}
 
 	const handleSubmit = index => {
@@ -45,7 +41,7 @@ function Categories() {
 				setData(data)
 			})
 	}, [])
-
+	
 	return (
     <Fade>
 		<div className='table-container'>

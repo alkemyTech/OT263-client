@@ -18,31 +18,34 @@ import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
 import TestimonialsList from '../Testimonials/TestimonialsList'
+import RequireAuth from '../../features/RequireAuth'
 
 const AppRoutes = () => {
 	const user = useSelector((state) => state.user.currentUser)
-	const isAdmin = true //user?.roleId === 1
 
 	return (
 		<Routes>
 			<Route path={routes.home} element={<Home />} />
 			<Route path={routes.about} element={<About />} />
+			<Route path={routes.contact} element={<Contact />} />
+			<Route path={routes.getInvolved} element={<GetInvolved />} />
 			<Route path='news'>	
 				<Route index element={<ListContainer Component={NewsList} endpoint={"/news"} />}/>
 				<Route path=':id' element={<ListContainer Component={NewsDetail} endpoint={"/news"} />}/>
 			</Route>
 			<Route path={`${routes.activities}/:id`} element={<Activity/>}/>
 			<Route path={routes.testimonials} element={<ListContainer Component={TestimonialsList} endpoint={"/testimonials"}/>} />
+			
+			<Route element={<RequireAuth allowedRoles={[2]}/>}>
 			<Route
-				path={routes.newTestimonial}
-				element={user ? <TestimonialForm /> : <Navigate to={routes.login} />}
-			/>
-			<Route path={routes.contact} element={<Contact />} />
-			<Route path={routes.getInvolved} element={<GetInvolved />} />
+				path={routes.newTestimonial} element={<TestimonialForm />} />
+			</Route>
+			
+			<Route element={<RequireAuth allowedRoles={[1,2]}/>}>
 			<Route
-				path={routes.profile}
-				element={user ? <Profile /> : <Navigate to={routes.login} />}
+				path={routes.profile} element={<Profile />}
 			/>
+			</Route>
 			<Route
 				path={routes.login}
 				element={!user ? <Login /> : <Navigate to={routes.home} />}
@@ -51,12 +54,12 @@ const AppRoutes = () => {
 				path={routes.signup}
 				element={!user ? <Signup /> : <Navigate to={routes.home} />}
 			/>
+			<Route element={<RequireAuth allowedRoles={[1]}/>}>
 			<Route
-				path={routes.admin.root + '/*'}
-				element={
-					isAdmin ? <AdminRoutes /> : <Navigate to={user ? routes.home : routes.login} />
-				}
+				path={routes.admin.root + '/*'} element={<AdminRoutes />}
 			/>
+			</Route>
+
 			<Route path='*' element={<Navigate to={routes.home} />} />
 		</Routes>
 	)

@@ -2,14 +2,14 @@ import useAxios from '../../../app/hooks/useAxios'
 import { useState } from 'react'
 import Form from '../ActivityForm/Form'
 import Input from '../ActivityForm/Input'
-import TextEditor from '../ActivityForm/TextEditor'
 import Button from '../ActivityForm/Button'
-import ImageInput from '../Common/ImageInput'
+import { post } from '../../../Services/apiService'
+
+const URI='http://localhost:3001/categories'
 
 export default function FormModal({ showForm, onClose }) {
 	const [name, setName] = useState('')
-	const [image, setImage] = useState('')
-	const [content, setContent] = useState('')
+	const [description, setDescription] = useState('')
 
 	const { fetchData, error, response } = useAxios({
 		method: 'post',
@@ -21,15 +21,14 @@ export default function FormModal({ showForm, onClose }) {
 		url: 'http://localhost:3001/testimonials',
 		body: JSON.stringify({
 			name,
-			image,
-			content
+			description
 		}),
 		autoRun: false
 	})
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		// fetchData()
+		post(URI, {name, description})
 
 		if (error) return
 
@@ -37,8 +36,7 @@ export default function FormModal({ showForm, onClose }) {
 		console.log(response)
 
 		setName('')
-		setImage('')
-		setContent('')
+		setDescription('')
 	}
 
 	return (
@@ -52,14 +50,14 @@ export default function FormModal({ showForm, onClose }) {
 						onChange={setName}
 						value={name}
 					/>
-					<ImageInput onChange={console.log} label='Imagen' />
-					<TextEditor
+					
+					<Input
 						label={'Descripción'}
 						placeholder={'Agregá la descripción'}
-						onChange={setContent}
-						value={content}
+						onChange={setDescription}
+						value={description}
 					/>
-					<Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
+					<Button text={'Guardar'} />
 				</Form>
 			</div>
 			<button onClick={onClose} className='modal-close is-large' aria-label='close'></button>

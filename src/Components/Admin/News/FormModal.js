@@ -5,6 +5,9 @@ import Input from '../ActivityForm/Input'
 import TextEditor from '../ActivityForm/TextEditor'
 import Button from '../ActivityForm/Button'
 import ImageInput from '../Common/ImageInput'
+import { post } from '../../../Services/apiService'
+
+const URI='http://localhost:3001/news'
 
 export default function FormModal({ showForm, onClose }) {
 	const [name, setName] = useState('')
@@ -30,7 +33,8 @@ export default function FormModal({ showForm, onClose }) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		// fetchData()
-
+		console.log(image)
+		post(URI, {name, content, image})
 		if (error) return
 
 		// TODO: dispatch
@@ -52,7 +56,7 @@ export default function FormModal({ showForm, onClose }) {
 						onChange={setName}
 						value={name}
 					/>
-					<ImageInput onChange={console.log} label='Imagen' />
+					<ImageInput onChange={e=>setImage(e.target.files[0].name)} label='Imagen' />
 					<TextEditor
 						label={'Descripción'}
 						placeholder={'Agregá la descripción'}

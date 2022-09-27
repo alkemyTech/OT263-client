@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import RichTextInput from '../Common/RichTextInput'
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { IoIosSave } from 'react-icons/io'
 import { GrEdit } from 'react-icons/gr'
@@ -36,10 +35,11 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 				</td>
 				<td className={toggleClass}>
 					{editable ? (
-						<RichTextInput
-							className={toggleClass}
+						<input
+							className={`${toggleClass} input`}
+							type='text'
 							value={data.description}
-							onChange={value => onChange(index, 'description', value)}
+							onChange={e => onChange(index, 'description', e.target.value)}
 						/>
 					) : (
 						<div

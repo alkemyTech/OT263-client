@@ -18,11 +18,9 @@ function Categories() {
 
 	const handleChange = (index, name, value) => {
 		const newData = [...data]
-
 		const newRow = data[index]
 		newRow[name] = value
 		newData[index] = newRow
-
 		setData(newData)
 	}
 
@@ -35,7 +33,9 @@ function Categories() {
 	}
 
 	const handleSubmit = index => {
-		put(`${URI+"/"+data[index].id}`, data[index])
+		const {name, description }=data[index]
+		
+		put(`${URI+"/"+data[index].id}`, {name, description} )
 		// TODO: dispatch
 	}
 

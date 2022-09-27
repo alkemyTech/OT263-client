@@ -27,7 +27,7 @@ function Footer() {
   return (
     <footer
       className='flex flex-col justify-between bg-zinc-400'
-      style={{ background: 'rgb(161,161,170)', marginTop: '5rem' }}
+      style={{ background: 'rgb(161,161,170)', marginTop: 'auto' }}
     >
       <div
         className='h-16 border-b-4 border-black flex justify-center items-center'

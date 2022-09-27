@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MenberCard = ({ name, role, src }) => {
+const Membercard = ({ name, role, src }) => {
   return (
     <div
       className='is-flex box is-flex-direction-column is-align-items-stretch is-justify-content-flex-end px-0 py-2'
@@ -20,4 +20,4 @@ const MenberCard = ({ name, role, src }) => {
   )
 }
 
-export default MenberCard
+export default Membercard

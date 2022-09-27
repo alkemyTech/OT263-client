@@ -3,7 +3,15 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   overflow: hidden;
-  text-align: justify;
+  text-align: start;
+}
+
+.new-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: start;
 }
 
 .new-image {

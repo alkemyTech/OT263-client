@@ -8,6 +8,7 @@ const TestimonialCard = ({ image, name, content }) => {
       style={{ background: '#FDFFA4', width: '260px', borderRadius: '1.5rem' }}
     >
       <div
+        className='mt-2'
         style={{
           background: `url(${image})`,
           width: '95px',

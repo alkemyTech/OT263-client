@@ -18,18 +18,19 @@ import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import { useSelector } from 'react-redux'
 import Testimonials from '../Testimonials/Testimonials'
+import News from '../News/News'
 
 const AppRoutes = () => {
   const user = useSelector(state => state.user.currentUser)
-  const isAdmin = true //user?.roleId === 1
+  const isAdmin = user?.roleId === 1
 
   return (
     <Routes>
       <Route path={routes.home} element={<Home />} />
       <Route path={routes.about} element={<About />} />
-      <Route path='news'>
-        <Route index element={<ListContainer Component={NewsList} endpoint={'/news'} />} />
-        <Route path=':id' element={<ListContainer Component={NewsDetail} endpoint={'/news'} />} />
+      <Route path={routes.news}>
+        <Route index element={<News />} />
+        <Route path=':id' element={<NewsDetail />} />
       </Route>
       <Route path={`${routes.activities}/:id`} element={<Activity />} />
       <Route path={routes.testimonials} element={<Testimonials />} />

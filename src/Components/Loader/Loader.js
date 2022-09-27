@@ -1,18 +1,16 @@
-import ClipLoader from "react-spinners/ClipLoader"
+import ClipLoader from 'react-spinners/ClipLoader'
 
+function Loader({ color = null, size = '7rem', weight = 15 }) {
+  const colors = ['red', 'yellow', 'blue']
+  const index = Date.now() % 3
 
-function Loader({ color, size, weight, image }) {
-    const override = {
-        display: "block",
-        margin: "0 auto",   
-        border:`${weight}px solid`,
-        backgroundImage: `url(${image})`
-    }
+  const override = {
+    display: 'block',
+    margin: 'auto',
+    border: `${weight}px solid ${color ? color : colors[index]}`
+  }
 
-return (
-    <ClipLoader cssOverride={override} size={size} color={color} />
-)
+  return <ClipLoader cssOverride={override} size={size} color={color ? color : colors[index]} />
 }
 
 export default Loader
-

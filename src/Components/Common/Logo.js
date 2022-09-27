@@ -26,7 +26,7 @@ export default function Logo() {
           x2='100.48'
           y2='31.6794'
           stroke='white'
-          stroke-width='1.05263'
+          strokeWidth='1.05263'
         />
       </svg>
     </Link>

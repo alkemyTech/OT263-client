@@ -62,34 +62,15 @@ const Profile = () => {
 	}
 
 	return (
-    <Fade>
-		<div className='hero is-fullheight has-background-success-light'>
-			<div className='hero-body columns is-centered'>
-				<div className='column is-half-desktop'>
-					<h1 className='title is-hidden-tablet is-size-3 ml-4'>Mis Datos</h1>
-					<form onSubmit={formik.handleSubmit} className='box' id='profileForm'>
-						<div className='field is-grouped is-grouped-right'>
-							<span className='title title-3 is-size-3-tablet is-size-2-desktop mr-auto is-hidden-mobile'>
-								Mis Datos
-							</span>
-							<button
-								className='is-rounded is-responsive button is-info mx-2'
-								type='submit'
-								form='profileForm'
-								onClick={() => setIsEditable(!isEditable)}
-								disabled={isEditable && Object.keys(formik.errors).length}
-							>
-								{isEditable ? 'Guardar' : 'Editar'}
-							</button>
-							<button
-								className='is-rounded is-responsive button is-danger mx-2'
-								type='button'
-								onClick={handleDeleteAccount}
-							>
-								Borrar Cuenta
-							</button>
-						</div>
+		<Fade>
+			<ProfileForm user={user} />
+		</Fade>
+	);
+};
 
+<<<<<<< HEAD
+export default Profile;
+=======
 						<div className='field'>
 							<div className='control'>
 								<label className='label has-text-warning-dark' htmlFor='firstName'>
@@ -178,3 +159,4 @@ const Profile = () => {
 }
 
 export default Profile
+>>>>>>> 27e2c4e2f77167ba5f432b57dc3bc64bea91a990

@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react"
 import { get } from "../../Services/apiService"
+import Loader from "../Loader/Loader"
 
-const newsMock = [
-    { id: 1, title: 'Titulo de prueba', image: "./images/Somos-Mas/News/new1.png", description: 'Descripcion de prueba' },
-    { id: 2, title: 'Titulo de prueba', image: "./images/Somos-Mas/News/new1.png", description: 'Descripcion de prueba' },
-    { id: 3, title: 'Titulo de prueba', image: "./images/Somos-Mas/News/new1.png", description: 'Descripcion de prueba' },
-    { id: 4, title: 'Titulo de prueba', image: "./images/Somos-Mas/News/new1.png", description: 'Descripcion de prueba' },
-    { id: 5, title: 'Titulo de prueba', image: "./images/Somos-Mas/News/new2.png", description: 'Descripcion de prueba' }
-]
+const URI='http://localhost:3001/'
 
 export default function BannerHome({ Component, endpoint }) {
     const [data, setData] = useState(null)
     const [loaded, setLoaded] = useState(false)
+    const [error, setError] = useState(false)
     useEffect(() => {
-        //get(endpoint)
-        setData(newsMock)
-        setLoaded(true)
+        get(URI+endpoint)
+        .then(({data})=>{
+            setData(data)
+            setLoaded(true)
+
+        },(error)=>{
+            setError(error.message)
+            setLoaded(false)
+        })
     }, [])
+    if (error) return <div>Error: {error.message}</div>
+    if (!loaded) return <div><Loader key="1" size="200px" image="./images/Somos-Mas/LOGO-SomosMas.png" /></div>
     if (loaded)
         return (
             <div className="is-flex is-flex-wrap-nowrap mb-5">

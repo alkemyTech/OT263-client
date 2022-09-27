@@ -1,26 +1,34 @@
 .ql-container {
-	border-bottom-left-radius: 0.5em;
-	border-bottom-right-radius: 0.5em;
-	background: #fefcfc;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  background: #fefcfc;
 }
 
 /* Snow Theme */
 .ql-snow.ql-toolbar {
-	display: block;
-	background: #eaecec;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
+  display: block;
+  background: #eaecec;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
 }
 
 /* Bubble Theme */
 .ql-bubble .ql-editor {
-	border: 1px solid #ccc;
-	border-radius: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
 }
 
 .ql-editor {
-	color: initial;
-	font-size: initial;
-	font-family: initial;
-	min-height: 18em;
+  color: initial;
+  font-size: initial;
+  font-family: initial;
+  min-height: 18em;
+}
+
+.field {
+  width: 100%;
+}
+
+.help.is-danger {
+  text-align: right;
 }

@@ -33,10 +33,10 @@ const TextEditor = ({ placeholder, value, onChange, label="Descripción", error}
 
 	return (
 		<div className='field'>
-			<div className='field-label is-normal mb-2'>
-				<label className='label has-text-left'>{label}</label>
+			<div className='field-label is-normal mb-1 mt-3'>
+				<label className='label has-text-left ml-1'>{label}</label>
 			</div>
-			<div className='field-body'>
+			<div className='field-body' style={{border: `1px solid ${error ? '#ef2e55' : 'rgb(219,219,219)'}`, borderRadius: '7px'}}>
 				<div className='field'>
 					<div className='control is-expanded'></div>
 					<ReactQuill
@@ -46,7 +46,7 @@ const TextEditor = ({ placeholder, value, onChange, label="Descripción", error}
 						onChange={onChange}
 						modules={modules}
 						formats={formats}
-						className={`${error ? 'is-danger' : ''}`}
+						style={{width: '100%'}}
 					/>
 				</div>
 			</div>

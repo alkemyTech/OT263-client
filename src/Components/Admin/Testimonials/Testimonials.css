@@ -1,0 +1,40 @@
+table .ql-container {
+	border-bottom-left-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+	background: #fefcfc;
+}
+
+/* Snow Theme */
+table .ql-snow.ql-toolbar {
+	display: block;
+	background: #eaecec;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+
+/* Bubble Theme */
+table .ql-bubble .ql-editor {
+	background: #ebfffc;
+	border: 1px solid #ccc;
+	border-radius: 0.5em;
+}
+
+table .ql-editor {
+	background: #ebfffc;
+	color: initial;
+	font-size: initial;
+	font-family: initial;
+	min-height: 18em;
+}
+
+/* ------------------------------- Static Text ------------------------------ */
+
+.static-text h1 {
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.static-text h2 {
+	font-size: x-large;
+	font-weight: bold;
+}

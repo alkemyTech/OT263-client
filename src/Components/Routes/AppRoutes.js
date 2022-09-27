@@ -12,18 +12,22 @@ import TestimonialForm from '../Testimonials/TestimonialsForm'
 import Activity from '../Activities/Activity'
 
 import { routes } from '../../Config/routes'
+import { useState, useEffect } from 'react'
 import Profile from '../../Pages/Profile'
 import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
-import { useSelector } from 'react-redux'
 import TestimonialsList from '../Testimonials/TestimonialsList'
-import { useJwt } from 'react-jwt'
+import { useSelector } from 'react-redux'
+import { selectLoges } from '../../features/login/logedSlice'
 
 const AppRoutes = () => {
-    const user = useSelector(state => state.user.currentUser);
-    const { decodedToken } = useJwt(user?.token);
-    const isAdmin = decodedToken?.roleId === 1;
+	const [isAdmin, setIsAdmin] = useState(false)
+	
+	const userLoged = useSelector(selectLoges)
+	useEffect(() => {
+		setIsAdmin(userLoged?.roleId===1)
+	}, [userLoged?.roleId])
 
 	return (
 		<Routes>
@@ -37,26 +41,26 @@ const AppRoutes = () => {
 			<Route path={routes.testimonials} element={<ListContainer Component={TestimonialsList} endpoint={"/testimonials"}/>} />
 			<Route
 				path={routes.newTestimonial}
-				element={user ? <TestimonialForm /> : <Navigate to={routes.login} />}
+				element={userLoged?.id ? <TestimonialForm /> : <Navigate to={routes.login} />}
 			/>
 			<Route path={routes.contact} element={<Contact />} />
 			<Route path={routes.getInvolved} element={<GetInvolved />} />
 			<Route
 				path={routes.profile}
-				element={user ? <Profile /> : <Navigate to={routes.login} />}
+				element={userLoged?.id ? <Profile /> : <Navigate to={routes.login} />}
 			/>
 			<Route
 				path={routes.login}
-				element={!user ? <Login /> : <Navigate to={routes.home} />}
+				element={!userLoged?.id ? <Login /> : <Navigate to={routes.home} />}
 			/>
 			<Route
 				path={routes.signup}
-				element={!user ? <Signup /> : <Navigate to={routes.home} />}
+				element={!userLoged?.id ? <Signup /> : <Navigate to={routes.home} />}
 			/>
 			<Route
 				path={routes.admin.root + '/*'}
 				element={
-					isAdmin ? <AdminRoutes /> : <Navigate to={user ? routes.home : routes.login} />
+					isAdmin ? <AdminRoutes /> : <Navigate to={userLoged?.id ? routes.home : routes.login} />
 				}
 			/>
 			<Route path='*' element={<Navigate to={routes.home} />} />

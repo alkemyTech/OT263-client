@@ -35,7 +35,8 @@ function Testimonials() {
 	}
 
 	const handleSubmit = index => {
-		put(`${URI+"/"+data[index].id}`, data[index])
+		const {name, content }=data[index]
+		put(`${URI+"/"+data[index].id}`, {name, content })
 		// TODO: dispatch
 	}
 

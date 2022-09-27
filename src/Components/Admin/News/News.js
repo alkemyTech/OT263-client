@@ -34,7 +34,7 @@ function AdminNews() {
 
 	const handleSubmit = index => {
 		const {name, content, image}=data[index]
-		put(`${URI+"/"+data[index].id}`, {name, content, image} )
+		put(`${URI+"/"+data[index].id}`, {name, content} )
 		// TODO: dispatch
 	}
 

@@ -34,7 +34,7 @@ export default function FormModal({ showForm, onClose }) {
 		e.preventDefault()
 		// fetchData()
 		console.log(image)
-		post(URI, {name, content, image})
+		post(URI, {name, content})
 		if (error) return
 
 		// TODO: dispatch

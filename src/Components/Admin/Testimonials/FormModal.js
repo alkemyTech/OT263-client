@@ -33,7 +33,7 @@ export default function FormModal({ showForm, onClose }) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		// fetchData()
-		post(URI, {name, content, image})
+		post(URI, {name, content})
 		if (error) return
 
 		// TODO: dispatch

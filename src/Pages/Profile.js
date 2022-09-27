@@ -9,6 +9,7 @@ import { routes } from '../Config/routes'
 import 'bulma/css/bulma.min.css'
 import { useSelector } from 'react-redux'
 import { selectLoges } from '../features/login/logedSlice'
+import { put } from '../Services/apiService';
 
 const Profile = () => {
 	const user=useSelector(selectLoges)	
@@ -20,8 +21,7 @@ const Profile = () => {
 		initialValues: {
 			firstName: user?.firstName || '',
 			lastName: user?.lastName || '',
-			email: user?.email || '',
-			password: user?.password || ''
+			email: user?.email || ''			
 		},
 		isSubmitting: isEditable,
 		validationSchema: Yup.object({
@@ -33,12 +33,12 @@ const Profile = () => {
 				.min(2, 'Mínimo 2 caracteres')
 				.max(15, 'Máximo 15 caracteres')
 				.required('Campo Obligatorio'),
-			email: Yup.string().email('Email inválido').required('Campo Obligatorio'),
-			password: Yup.string().min(5, 'Mínimo 5 caracteres').required('Campo Obligatorio')
+			email: Yup.string().email('Email inválido').required('Campo Obligatorio')
 		}),
 		onSubmit: values => {
-			if (isEditable) return
-
+			//if (isEditable) return
+			console.log(values)
+			put(`http://localhost:3001/users/${user.id}`, values)
 			// TODO: update user
 			console.log(JSON.stringify(values, null, 2))
 		}
@@ -149,26 +149,6 @@ const Profile = () => {
 						{formik.touched.email && formik.errors.email ? (
 							<div className='help is-danger'>{formik.errors.email}</div>
 						) : null}
-
-						<div className='field'>
-							<div className='control'>
-								<label className='label has-text-warning-dark' htmlFor='password'>
-									Contraseña
-								</label>
-
-								<input
-									id='password'
-									type='password'
-									{...formik.getFieldProps('password')}
-									className='input is-large is-size-6-mobile'
-									disabled={!isEditable}
-									style={inputStyles}
-								/>
-							</div>
-							{formik.touched.password && formik.errors.password ? (
-								<div className='help is-danger'>{formik.errors.password}</div>
-							) : null}
-						</div>
 					</form>
 				</div>
 			</div>

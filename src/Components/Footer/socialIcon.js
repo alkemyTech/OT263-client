@@ -1,6 +1,9 @@
+import './socialIcon.css'
+
 export default function SocialIcon({ children, to }) {
   return (
     <div
+      className='icon-container'
       style={{
         background: 'black',
         borderRadius: '50%',
@@ -14,7 +17,12 @@ export default function SocialIcon({ children, to }) {
         cursor: 'pointer'
       }}
     >
-      <a href={to} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <a
+        href={to}
+        target='_blank'
+        rel='noreferrer'
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
         {children}
       </a>
     </div>

@@ -2,10 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Logo() {
   return (
-    <Link
-      to={'/'}
-      className={{ width: '8rem', marginRight: 'auto', display: 'flex', flexShrink: '0' }}
-    >
+    <Link to={'/'} style={{ width: '8rem', marginRight: 'auto', display: 'flex', flexShrink: '0' }}>
       <svg
         width='8rem'
         height='64'

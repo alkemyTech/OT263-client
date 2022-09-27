@@ -5,7 +5,11 @@ import { FaLinkedinIn } from 'react-icons/fa'
 import { BsTwitter } from 'react-icons/bs'
 import SocialIcon from './socialIcon'
 
+import './socialIcon.css'
+
 const SocialIcons = ({ data }) => {
+  data.twitter = 'https://twitter.com/'
+
   return (
     <div
       style={{

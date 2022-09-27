@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <nav
-      className='navbar has-navbar-fixed-top box has-shadow py-3 has-shadow has-text-weight-medium has-text-black'
+      className='navbar has-navbar-fixed-top has-shadow py-3 has-shadow has-text-weight-medium has-text-black'
       role='navigation'
     >
       <div className='navbar-brand'>

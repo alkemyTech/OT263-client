@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Footer.css'
 import { routes } from '../../Config/routes'
 import { Link } from 'react-router-dom'
-import { BsFacebook, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import Logo from '../Common/Logo'
-// import Navbar from './common/navbar'
 import SocialIcons from './socialIcons'
 
 function Footer() {
@@ -30,7 +28,7 @@ function Footer() {
       style={{ background: 'rgb(161,161,170)', marginTop: 'auto' }}
     >
       <div
-        className='h-16 border-b-4 border-black flex justify-center items-center'
+        className='h-16 border-b-4 border-black flex justify-center items-center footer-logo'
         style={{
           height: '5rem',
           borderBottom: '3px solid black',
@@ -40,7 +38,7 @@ function Footer() {
         }}
       >
         <div
-          className='relative top-1/2 bg-zinc-400 px-10'
+          className='relative top-1/2 bg-zinc-400 px-10 logo-container'
           style={{
             position: 'relative',
             top: '50%',
@@ -108,14 +106,17 @@ function Footer() {
       </div>
 
       <div>
-        <div className='h-28'>
+        <div className='h-28 footer-icons'>
           <SocialIcons data={data} />
         </div>
         <div
-          className='h-32 text-lg text-center'
+          className='h-32 text-lg text-center footer-copyright'
           style={{ height: '9rem', fontWeight: '2rem', textAlign: 'center', color: 'black' }}
         >
-          {new Date().getFullYear()} por Alkemy. Todos los derechos reservados.
+          <span className='copyright-text has-text-weight-bold'>
+            {new Date().getFullYear()} por Alkemy.
+          </span>
+          <span className='copyright-text'> Todos los derechos reservados.</span>
         </div>
       </div>
     </footer>

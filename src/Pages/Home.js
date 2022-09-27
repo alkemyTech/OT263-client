@@ -1,11 +1,9 @@
-import SliderContainer from '../Components/Slider/SliderContainer'
 import Fade from 'react-reveal/Fade'
 import { useNavigate } from 'react-router-dom'
-import BannerHome from '../Components/BannerHome/BannerHome'
-import New from '../Components/News/New'
-import MemberCard from '../Components/Members/MemberCard'
 import { BsChevronRight } from 'react-icons/bs'
+import SliderContainer from '../Components/Slider/SliderContainer'
 import TestimonialCard from '../Components/Testimonials/TestimonialCard'
+import MemberCard from '../Components/Members/MemberCard'
 import NewCard from '../Components/News/NewCard'
 
 const Home = ({ welcomeText }) => {

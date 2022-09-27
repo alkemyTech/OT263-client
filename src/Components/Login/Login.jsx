@@ -6,7 +6,7 @@ import image4 from "./Rectangle-4.png";
 export const Login = () => {
     return (
         <div className="columns my-0">
-            <div className="column is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+            <div className="column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-black">
                 <div style={{maxWidth: "500px"}}>
                     <LoginForm />
                     <LoginFooter />

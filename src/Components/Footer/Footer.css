@@ -2,6 +2,32 @@
   footer .navbar-menu {
     display: none !important;
   }
+
+  footer .footer-icons {
+    height: 130px !important;
+  }
+
+  footer .copyright-text {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  footer .logo-container {
+    padding: 0 1.5rem !important;
+  }
+
+  footer .footer-copyright {
+    height: 80px !important;
+  }
+
+  footer .footer-icons {
+    height: 110px !important;
+  }
+
+  footer .footer-logo {
+    height: 50px !important;
+  }
 }
 
 footer .navbar-menu a:hover {

@@ -9,8 +9,8 @@ function Register() {
         <div className="columns my-0">
             <div className="column is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
                 <div>
-                    <p className="subtitle mb-0">Bienvenido</p>
-                    <span className="title">Crea una cuenta</span>
+                    <p className="subtitle mb-0 has-text-black">Bienvenido</p>
+                    <span className="title has-text-black">Crea una cuenta</span>
                     <RegisterForm />
                 </div>
                 <p>

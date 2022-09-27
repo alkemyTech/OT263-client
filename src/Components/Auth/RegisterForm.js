@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { registerSchema } from '../../Schemas';
+import { registerSchema } from '../../Schemas/index';
 import { PostRegister } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
 import { useDispatch } from 'react-redux';

@@ -3,7 +3,6 @@ import '../CardListStyles.css';
 import moment from 'moment/moment';
 
 function New({ item: { id, image, name, createdAt } }) {
-    console.log(createdAt)
     return (
         <Link to={`/news/${id}`} className="column is-two-fifths-tablet is-one-third-desktop is-one-third-widescreen mt-2">
 

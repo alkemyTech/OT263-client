@@ -17,8 +17,7 @@ import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
 import TestimonialsList from '../Testimonials/TestimonialsList'
 import RequireAuth from '../../features/RequireAuth'
-import { useSelector } from 'react-redux'
-import { selectLoges } from '../../features/login/logedSlice'
+
 
 const AppRoutes = () => {
 

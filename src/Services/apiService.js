@@ -13,3 +13,22 @@ export const post = async (url, data) => {
 
     return axios.post(url, data, { headers: { Authorization: `Bearer ${token}` } });
 };
+
+export const put =async(url, data)=> {
+    //Si no hay token se ejecuta este bloque para las solicitudes post
+    if(!token){
+        try {
+            return axios.put(url, data);   
+        } catch (error) {
+            return error;
+        }
+    }
+    //Si hay token se ejecuta este bloque para las solicitudes post usando el token
+    try {
+        return axios.put(url, data, {
+            headers:{"Authorization" : `Bearer ${token}`}
+        });   
+    } catch (error) {
+        return error;
+    }
+}

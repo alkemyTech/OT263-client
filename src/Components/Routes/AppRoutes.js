@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-
+import { routes } from '../../Config/routes'
 import Home from '../../Pages/Home'
 import About from '../../Pages/About'
 import Contact from '../../Pages/Contact'
@@ -11,17 +11,16 @@ import AdminRoutes from './AdminRoutes'
 import TestimonialForm from '../Testimonials/TestimonialsForm'
 import Activity from '../Activities/Activity'
 
-import { routes } from '../../Config/routes'
 import Profile from '../../Pages/Profile'
 import ListContainer from '../ListContainer/ListContainer'
 import NewsList from '../News/NewsList'
 import NewsDetail from '../News/NewsDetail'
-import { useSelector } from 'react-redux'
 import TestimonialsList from '../Testimonials/TestimonialsList'
 import RequireAuth from '../../features/RequireAuth'
+import { useSelector } from 'react-redux'
+import { selectLoges } from '../../features/login/logedSlice'
 
 const AppRoutes = () => {
-	const user = useSelector((state) => state.user.currentUser)
 
 	return (
 		<Routes>
@@ -36,7 +35,7 @@ const AppRoutes = () => {
 			<Route path={`${routes.activities}/:id`} element={<Activity/>}/>
 			<Route path={routes.testimonials} element={<ListContainer Component={TestimonialsList} endpoint={"/testimonials"}/>} />
 			
-			<Route element={<RequireAuth allowedRoles={[2]}/>}>
+			<Route element={<RequireAuth allowedRoles={[1,2]}/>}>
 			<Route
 				path={routes.newTestimonial} element={<TestimonialForm />} />
 			</Route>
@@ -46,14 +45,18 @@ const AppRoutes = () => {
 				path={routes.profile} element={<Profile />}
 			/>
 			</Route>
+			<Route element={<RequireAuth ifLoggedUser/>}>
 			<Route
 				path={routes.login}
-				element={!user ? <Login /> : <Navigate to={routes.home} />}
+				element={<Login />}
 			/>
+			</Route>
+			<Route element={<RequireAuth ifLoggedUser/>}>
 			<Route
 				path={routes.signup}
-				element={!user ? <Signup /> : <Navigate to={routes.home} />}
+				element={<Signup />}
 			/>
+			</Route>
 			<Route element={<RequireAuth allowedRoles={[1]}/>}>
 			<Route
 				path={routes.admin.root + '/*'} element={<AdminRoutes />}

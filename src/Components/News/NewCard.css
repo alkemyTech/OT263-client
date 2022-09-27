@@ -1,0 +1,17 @@
+.new-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.new-image {
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .new-image {
+    height: 300px;
+  }
+}

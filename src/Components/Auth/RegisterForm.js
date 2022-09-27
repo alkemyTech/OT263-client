@@ -1,10 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '../../Schemas';
-import { PostRegister } from "../../Services/privateApiService"
 import {useNavigate} from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../actions/userActions';
+import { login } from '../../features/login/logedSlice';
+import { post } from '../../Services/publicApiService';
 
 
 const RegisterForm = () => {
@@ -28,10 +28,8 @@ const RegisterForm = () => {
         email,
         password
       }
-      const user = await PostRegister(newUser)
-      dispatch(logIn(user))
-
-      localStorage.setItem("token", user.token)
+      const user = await post('users/auth/register',newUser)      
+      dispatch(login({email, password}))
       user && navigate('/')
     },
   });

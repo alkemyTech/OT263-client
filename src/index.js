@@ -9,13 +9,20 @@ import 'bulma/css/bulma.css'
 
 import 'bulma/css/bulma.min.css'
 
+import { PersistGate } from 'reduxjs-toolkit-persist/integration/react'
+import { persistStore } from 'reduxjs-toolkit-persist'
+
+let persistor = persistStore(store)
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<React.StrictMode>
+	
 		<Provider store={store}>
-			<App />
+			<PersistGate persistor={persistor}>
+				<App />
+			</PersistGate>
 		</Provider>
-	</React.StrictMode>
+	
 )
 
 // If you want your app to work offline and load faster, you can change

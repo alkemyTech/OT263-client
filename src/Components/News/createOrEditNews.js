@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { PropTypes } from 'prop-types'
 import useAxios from '../../hooks/useAxios'
 import NewsForm from './NewsForm'
-import { validationSchema } from '../../Schemas/NewsFormSchema'
+import { validationSchema } from '../../schemas/NewsFormSchema'
 import { useNavigate, useParams } from 'react-router-dom'
 import { routes } from '../../Config/routes'
 

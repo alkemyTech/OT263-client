@@ -6,13 +6,17 @@ import TextEditor from '../ActivityForm/TextEditor'
 import Button from '../ActivityForm/Button'
 import ImageInput from '../Common/ImageInput'
 import { post } from '../../../Services/apiService'
+import { useNavigate } from 'react-router-dom'
 
-const URI='http://localhost:3001/news'
+import { routes } from '../../../Config/routes'
+
+const URI = 'http://localhost:3001/news'
 
 export default function FormModal({ showForm, onClose }) {
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
   const [content, setContent] = useState('')
+  const navigate = useNavigate()
 
   const { fetchData, error, response } = useAxios({
     method: 'post',
@@ -30,41 +34,41 @@ export default function FormModal({ showForm, onClose }) {
     autoRun: false
   })
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		// fetchData()
-		post(URI, {name, content})
-		if (error) return
+  const handleSubmit = e => {
+    e.preventDefault()
 
-    // TODO: dispatch
+    post(URI, { name, content })
+    if (error) return
 
     setName('')
     setImage('')
     setContent('')
+
+    navigate(routes.admin.root)
   }
 
-	return (
-		<div className={`modal ${showForm ? 'is-active' : ''}`}>
-			<div className='modal-background'></div>
-			<div className='modal-content has-background-white'>
-				<Form onSubmit={handleSubmit} title='Novedad'>
-					<Input
-						label={'Nombre'}
-						placeholder={'Agregá tu nombre completo'}
-						onChange={setName}
-						value={name}
-					/>
-					<ImageInput onChange={e=>setImage(e.target.files[0].name)} label='Imagen' />
-					<TextEditor
-						label={'Descripción'}
-						placeholder={'Agregá la descripción'}
-						onChange={setContent}
-						value={content}
-					/>
-					<Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
-				</Form>
-			</div>
-			<button onClick={onClose} className='modal-close is-large' aria-label='close'></button>
-		</div>
-	)
+  return (
+    <div className={`modal ${showForm ? 'is-active' : ''}`}>
+      <div className='modal-background'></div>
+      <div className='modal-content has-background-white'>
+        <Form onSubmit={handleSubmit} title='Novedad'>
+          <Input
+            label={'Nombre'}
+            placeholder={'Agregá tu nombre completo'}
+            onChange={setName}
+            value={name}
+          />
+          <ImageInput onChange={e => setImage(e.target.files)} label='Imagen' />
+          <TextEditor
+            label={'Descripción'}
+            placeholder={'Agregá la descripción'}
+            onChange={setContent}
+            value={content}
+          />
+          <Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
+        </Form>
+      </div>
+      <button onClick={onClose} className='modal-close is-large' aria-label='close'></button>
+    </div>
+  )
 }

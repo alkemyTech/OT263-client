@@ -16,7 +16,6 @@ function ContactForm() {
   })
 
   const handleChange = ({ target }) => {
-    console.log(target.name, target.value)
     setContact({ ...contact, [target.name]: target.value })
   }
 
@@ -37,7 +36,6 @@ function ContactForm() {
 
     if (error.name !== '' || error.email !== '' || error.message !== '') return
 
-    createNewContact(contact).then(console.log).catch(console.log)
 
     // result ? alert('Consulta enviada con exito') : alert('No se pudo enviar la consulta')
 

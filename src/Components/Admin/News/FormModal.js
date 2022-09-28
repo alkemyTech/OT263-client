@@ -33,12 +33,10 @@ export default function FormModal({ showForm, onClose }) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		// fetchData()
-		console.log(image)
 		post(URI, {name, content})
 		if (error) return
 
     // TODO: dispatch
-    console.log(response)
 
     setName('')
     setImage('')

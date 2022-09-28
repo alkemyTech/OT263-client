@@ -33,7 +33,6 @@ export default function FormModal({ showForm, onClose }) {
     if (error) return
 
     // TODO: dispatch
-    console.log(response)
 
     setName('')
     setDescription('')

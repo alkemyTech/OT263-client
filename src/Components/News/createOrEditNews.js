@@ -51,7 +51,6 @@ const CreateOrEditNews = ({ news: { id, name, image, content, category } }) => {
     let reader = new FileReader()
     let file = e.target.files[0]
     if (file) {
-      console.log(file)
       reader.readAsDataURL(file)
       setFieldValue(e.target.name, file)
     }

@@ -37,10 +37,8 @@ const Profile = () => {
 		}),
 		onSubmit: values => {
 			//if (isEditable) return
-			console.log(values)
 			put(`http://localhost:3001/users/${user.id}`, values)
 			// TODO: update user
-			console.log(JSON.stringify(values, null, 2))
 		}
 	})
 
@@ -57,7 +55,6 @@ const Profile = () => {
     const handleDeleteAccount = () => {
         // TODO: delete user
         const { value } = formik.getFieldProps();
-        console.log(value);
         navigate(routes.home, { replace: true });
     };
 

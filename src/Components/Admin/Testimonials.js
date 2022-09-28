@@ -151,8 +151,6 @@ function Testimonials() {
   }
 
   const handleSubmit = index => {
-    console.log('PUT htttp://localhost:3000/testimonials/' + index)
-    console.log('data:', JSON.stringify(data[index]))
     // TODO: dispatch
   }
 
@@ -222,7 +220,6 @@ function FormModal({ showForm, onClose }) {
     if (error) return
 
     // TODO: dispatch
-    console.log(response)
 
     setName('')
     setImage('')

@@ -1,19 +1,11 @@
 import React from 'react'
 import './TestimonialsCard.css'
 
-<<<<<<< HEAD
 const TestimonialCard = ({ image, name, content }) => {
   return (
     <div
       className='is-flex box is-flex-direction-column px-4 py-2 pb-4 box is-justify-content-flex-start'
       style={{ background: '#FDFFA4', width: '260px', borderRadius: '1.5rem' }}
-=======
-const TestimonialCard = ({item:{ image, name, content }}) => {
-  return (
-    <div
-      className='column is-flex box is-flex-direction-column mx-4 px-4 py-2 pb-4 box is-justify-content-flex-start'
-      style={{ background: '#FDFFA4', width: '250px' }}
->>>>>>> 27e2c4e2f77167ba5f432b57dc3bc64bea91a990
     >
       <div
         className='mt-2'

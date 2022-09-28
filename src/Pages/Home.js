@@ -40,6 +40,8 @@ const Home = ({ welcomeText }) => {
     url: 'http://localhost:3001/news'
   })
 
+  console.log(news)
+
   const membersRoles = {
     'María Iraola': 'Presidenta',
     'Marita Gomez': 'Fundadora',
@@ -162,7 +164,7 @@ const Home = ({ welcomeText }) => {
               className='is-flex is-align-items-center has-text-black'
               style={{ cursor: 'pointer' }}
               onClick={() => {
-                navigate(`/novedades`)
+                navigate(routes.news)
               }}
             >
               Ver todos <BsChevronRight />
@@ -172,8 +174,8 @@ const Home = ({ welcomeText }) => {
             {news?.data.slice(0, 2).map(newItem => (
               <div className='column is-flex is-justify-content-center my-4' key={newItem.id}>
                 <NewCard
-                  title={newItem.title}
-                  text={newItem.content}
+                  title={newItem.name}
+                  content={newItem.content}
                   url={`/news/${newItem.id}`}
                   image={newItem.image}
                 />

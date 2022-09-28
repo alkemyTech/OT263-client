@@ -36,7 +36,13 @@ const News = () => {
           <div className='columns is-multiline is-justify-content-center'>
             {response.data.map(({ id, name, content, image }) => (
               <div className='column is-5-tablet is-3-fullhd m-2' key={id}>
-                <NewCard title={name} text={content} image={image} url={`/news/${id}`} key={id} />
+                <NewCard
+                  title={name}
+                  content={content}
+                  image={image}
+                  url={`/news/${id}`}
+                  key={id}
+                />
               </div>
             ))}
           </div>

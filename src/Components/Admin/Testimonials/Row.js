@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react'
 import RichTextInput from '../Common/RichTextInput'
-import { RiDeleteBin5Line } from 'react-icons/ri'
 import { IoIosSave } from 'react-icons/io'
 import { GrEdit } from 'react-icons/gr'
 
 import ImageInput from '../Common/ImageInput'
 import ImageIcon from './ImageIco'
 import Modal from './Modal'
+import DeleteButton from '../../Buttons/DeleteButton'
 
 
 export default function Row({ index, data, onChange, onDelete, onSubmit, isNew = false }) {
 	const [editable, setEditable] = useState(isNew)
 	const [showModal, setShowModal] = useState(false)
 	const toggleClass = editable ? 'has-background-primary-light' : ''
-	const [error, setError] = useState({ name: '', message: '' })
 
 	useEffect(() => {
 		setEditable(false)
@@ -69,11 +68,7 @@ export default function Row({ index, data, onChange, onDelete, onSubmit, isNew =
 						>
 							<span className='icon'>{editable ? <IoIosSave /> : <GrEdit />}</span>
 						</button>
-						<button data-index={index} data-id={data.id} className='button' onClick={onDelete}>
-							<span className='icon'>
-								<RiDeleteBin5Line />
-							</span>
-						</button>
+						<DeleteButton handleDelete={() => onDelete(data.id)} />
 					</div>
 				</td>
 				<td hidden={!showModal}>

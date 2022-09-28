@@ -13,6 +13,7 @@ const News = () => {
   const { error, loading, response } = useAxios({
     url: 'http://localhost:3001/news'
   })
+  console.log(response.data)
 
   return loading ? (
     <div className='hero is-large'>

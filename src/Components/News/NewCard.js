@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './NewCard.css'
 
-const NewCard = ({ title, content, image, id }) => {
+const NewCard = ({ title, content, image, url }) => {
   return (
     <div
       className='columns box new-card'
@@ -22,7 +22,7 @@ const NewCard = ({ title, content, image, id }) => {
           {title}
         </h2>
         <p className='has-text-black mt-1 has-text-weight-light new-text'>{content}</p>
-        <Link to={`news/${id}`} style={{ marginTop: 'auto', width: '100%' }}>
+        <Link to={url} style={{ marginTop: 'auto', width: '100%' }}>
           <span
             className='button is-fullwidth mt-2 box is-size-6'
             style={{ background: 'blue', color: 'white', border: 'blue' }}

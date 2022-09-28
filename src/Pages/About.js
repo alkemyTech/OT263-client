@@ -56,7 +56,7 @@ const About = () => {
                       {m.name}
                     </div>
 
-                    <div className='title has-text-weight-normal mb-2 has-text-black'>
+                    <div className='title has-text-weight-normal mb-2 has-text-black' key={m.name}>
                       {membersRoles[m.name]}
                     </div>
                   </>

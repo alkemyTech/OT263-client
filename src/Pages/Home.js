@@ -40,8 +40,6 @@ const Home = ({ welcomeText }) => {
     url: 'http://localhost:3001/news'
   })
 
-  console.log(news)
-
   const membersRoles = {
     'María Iraola': 'Presidenta',
     'Marita Gomez': 'Fundadora',

@@ -16,42 +16,36 @@ function ContactForm() {
   })
 
   const handleChange = ({ target }) => {
+    console.log(target.name, target.value)
     setContact({ ...contact, [target.name]: target.value })
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
 
-    Object.keys(contact).forEach(key => {
-      if (contact[key] === '') setError({ ...error, [key]: 'Campo Obligatorio' })
+    setError({
+      name: contact.name.trim().length ? '' : 'Campo Obligatorio',
+      email: !contact.email.trim().length
+        ? 'Campo Obligatorio'
+        : !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            contact.email
+          )
+        ? 'Email invalido'
+        : '',
+      message: contact.message.trim().length ? '' : 'Campo Obligatorio'
     })
 
-    // if (
-    //   contact.email !== '' &&
-    //   !contact.email.match(
-    //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //   )
-    // ) {
-    //   setError({ ...error, email: 'Email invalido' })
-    // }
+    if (error.name !== '' || error.email !== '' || error.message !== '') return
 
-    let hasErrors = false
+    createNewContact(contact).then(console.log).catch(console.log)
 
-    Object.values(error).forEach(v => {
-      if (v !== '') hasErrors = true
+    // result ? alert('Consulta enviada con exito') : alert('No se pudo enviar la consulta')
+
+    setContact({
+      name: '',
+      email: '',
+      message: ''
     })
-
-    if (hasErrors === true) return
-    else {
-      let result = await createNewContact(contact)
-      result ? alert('Consulta enviada con exito') : alert('No se pudo enviar la consulta')
-
-      setContact({
-        name: '',
-        email: '',
-        message: ''
-      })
-    }
   }
 
   return (

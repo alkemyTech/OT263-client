@@ -2,13 +2,26 @@ import axios from 'axios';
 
 const token = localStorage.getItem("token");
 
-export const get = (url) => {
-    if (!token) return axios.get(url);
+export const get =async(url)=> {
+    //Si no hay token se ejecuta este bloque para las solicitudes get
+    if(!token){
+        try {
+            return axios.get(url);
+        } catch (error) {
+            return error;
+        }
+    }
+    //Si hay token se ejecuta este bloque para las solicitudes get usando el token
+    try {
+        return axios.get(url, {
+            headers:{"Authorization" : `Bearer ${token}`}
+        });
+    } catch (error) {
+        return error;
+    }
+}
 
-    return axios.get(url, {
-        headers: { Authorization: `Bearer ${token}` },
-    });
-};
+
 
 export const post = async (url, data) => {
     //Si no hay token se ejecuta este bloque para las solicitudes post

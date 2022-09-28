@@ -7,8 +7,7 @@ export default function Header({ onClick }) {
 				<th>
 					<abbr title='Número'>N°</abbr>
 				</th>
-				<th>Nombre</th>
-				<th>Imagen</th>
+				<th>Nombre</th>				
 				<th>Mensaje</th>
 				<th>
 					<div className='buttons has-addons is-flex is-flex-wrap-nowrap'>

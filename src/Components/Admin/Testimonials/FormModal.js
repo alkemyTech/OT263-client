@@ -5,6 +5,9 @@ import Input from '../ActivityForm/Input'
 import TextEditor from '../ActivityForm/TextEditor'
 import Button from '../ActivityForm/Button'
 import ImageInput from '../Common/ImageInput'
+import { post } from '../../../Services/apiService'
+
+const URI='http://localhost:3001/testimonials'
 
 export default function FormModal({ showForm, onClose }) {
   const [name, setName] = useState('')
@@ -27,11 +30,11 @@ export default function FormModal({ showForm, onClose }) {
     autoRun: false
   })
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    // fetchData()
-
-    if (error) return
+	const handleSubmit = e => {
+		e.preventDefault()
+		// fetchData()
+		post(URI, {name, content})
+		if (error) return
 
     // TODO: dispatch
     console.log(response)
@@ -41,28 +44,28 @@ export default function FormModal({ showForm, onClose }) {
     setContent('')
   }
 
-  return (
-    <div className={`modal ${showForm ? 'is-active' : ''}`}>
-      <div className='modal-background'></div>
-      <div className='modal-content has-background-white'>
-        <Form onSubmit={handleSubmit} title='Testimonio'>
-          <Input
-            label={'Nombre'}
-            placeholder={'Agregá tu nombre completo'}
-            onChange={setName}
-            value={name}
-          />
-          <ImageInput onChange={console.log} label='Imagen' />
-          <TextEditor
-            label={'Descripción'}
-            placeholder={'Agregá la descripción'}
-            onChange={setContent}
-            value={content}
-          />
-          <Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
-        </Form>
-      </div>
-      <button onClick={onClose} className='modal-close is-large' aria-label='close'></button>
-    </div>
-  )
+	return (
+		<div className={`modal ${showForm ? 'is-active' : ''}`}>
+			<div className='modal-background'></div>
+			<div className='modal-content has-background-white'>
+				<Form onSubmit={handleSubmit} title='Testimonio'>
+					<Input
+						label={'Nombre'}
+						placeholder={'Agregá tu nombre completo'}
+						onChange={setName}
+						value={name}
+					/>
+					<ImageInput onChange={e=>setImage(e.target.files[0].name)} label='Imagen' />
+					<TextEditor
+						label={'Descripción'}
+						placeholder={'Agregá la descripción'}
+						onChange={setContent}
+						value={content}
+					/>
+					<Button text={'Guardar'} disabled={!name || !content || content === '<p><br></p>'} />
+				</Form>
+			</div>
+			<button onClick={onClose} className='modal-close is-large' aria-label='close'></button>
+		</div>
+	)
 }

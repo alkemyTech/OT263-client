@@ -47,7 +47,7 @@ const LoginForm = () => {
               <button
                 className='button is-fullwidth'
                 type='submit'
-                style={{ 'background-color': '#FF0000', color: 'white' }}
+                style={{ backgroundColor: '#FF0000', color: 'white' }}
               >
                 Inicia sesión
               </button>

@@ -13,7 +13,6 @@ const News = () => {
   const { error, loading, response } = useAxios({
     url: 'http://localhost:3001/news'
   })
-  console.log(response.data)
 
   return loading ? (
     <div className='hero is-large'>
@@ -35,7 +34,7 @@ const News = () => {
         </div>
         <div>
           <div className='columns is-multiline is-justify-content-center'>
-            {response.data.map(({ id, name, content, image }) => (
+            {response?.data.map(({ id, name, content, image }) => (
               <div className='column is-5-tablet is-3-fullhd m-2' key={id}>
                 <NewCard
                   title={name}

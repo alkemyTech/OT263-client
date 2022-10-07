@@ -1,7 +1,7 @@
 import 'bulma/css/bulma.min.css'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router-dom'
-import { loginSchema } from '../../schemas'
+import { loginSchema } from '../../Schemas'
 import { useDispatch } from 'react-redux'
 import { login } from '../../features/login/logedSlice'
 

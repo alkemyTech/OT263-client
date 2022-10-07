@@ -18,7 +18,7 @@ export default function FormModal({ showForm, onClose }) {
       Accept: '*/*',
       Authorization: 'Bearer token' // TODO: add user token
     }),
-    url: 'http://localhost:3001/testimonials',
+    url: 'http://localhost:3001/categories',
     body: JSON.stringify({
       name,
       description
